@@ -24,7 +24,7 @@ object Publish {
     },
 
     pomExtra := (
-      <url>https://github.com/sbocq/molecule</url>
+      <url>https://github.com/molecule-labs/molecule</url>
       <licenses>
         <license>
           <name>Apache 2</name>
@@ -34,8 +34,8 @@ object Publish {
         </license>
       </licenses>
       <scm>
-        <url>http://github.com/sbocq/molecule</url>
-        <connection>scm:git:git://github.com/sbocq/mbench.git</connection>
+        <url>http://github.com/molecule-labs/molecule</url>
+        <connection>scm:git:git://github.com/molecule-labs/molecule.git</connection>
       </scm>
       <developers>
         <developer>
