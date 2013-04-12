@@ -21,7 +21,7 @@ object Build extends Build {
   def extracted(state: State) = Project extract state
   
   val buildSettings:Seq[Setting[_]] = Seq(
-    organization       := "com.github.sbocq",
+    organization       := "com.github.molecule-labs",
 	version            := "0.5-SNAPSHOT",
 	manifestSetting,
     crossScalaVersions := Seq("2.9.3"),
