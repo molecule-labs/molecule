@@ -1,0 +1,50 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  EXCEPTION_STACK_OVERFLOW (0xc00000fd) at pc=0x7c90e8cb, pid=376, tid=5736
+#
+# JRE version: 6.0_22-b04
+# Java VM: Java HotSpot(TM) Server VM (17.1-b03 mixed mode windows-x86 )
+# Problematic frame:
+# C  [ntdll.dll+0xe8cb]
+#
+# If you would like to submit a bug report, please visit:
+#   http://java.sun.com/webapps/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x37ad3c00):  JavaThread "ForkJoinPool-1-worker-9" daemon [_thread_in_vm, id=5736, stack(0x380f0000,0x38140000)]
+
+siginfo: ExceptionCode=0xc00000fd, ExceptionInformation=0x00000001 0x380f0ffc 
+
+Registers:
+EAX=0x000001b6, EBX=0x003a0000, ECX=0x00002780, EDX=0x00000098
+ESP=0x380f1000, EBP=0x380f1234, ESI=0x003a0a48, EDI=0x00000014
+EIP=0x7c90e8cb, EFLAGS=0x00010287
+
+Top of Stack: (sp=0x380f1000)
+0x380f1000:   7c9101fd 7c910228 0000000c 7c91019b
+0x380f1010:   003a0a48 00000098 00000098 003a67e0
+0x380f1020:   00000000 00000000 00000000 00000000
+0x380f1030:   00000000 00000000 00000000 00000000
+0x380f1040:   00000000 00000000 00000000 00000000
+0x380f1050:   00000000 00000000 00000000 00000000
+0x380f1060:   00000000 00000000 00000000 00000000
+0x380f1070:   00000000 00000000 00000000 00000000 
+
+Instructions: (pc=0x7c90e8cb)
+0x7c90e8bb:   5b c3 8d 42 fd 5e 5f 5b c3 8d 42 fc 5e 5f 5b c3
+0x7c90e8cb:   68 20 e9 90 7c 64 a1 00 00 00 00 50 8b 44 24 10 
+
+
+Stack: [0x380f0000,0x38140000],  sp=0x380f1000,  free space=4380f0b34k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  [ntdll.dll+0xe8cb]
+C  [msvcr71.dll+0x16b3]
+C  [msvcr71.dll+0x16db]
+V  [jvm.dll+0x3c30e]
+V  [jvm.dll+0x1bb4f6]
+V  [jvm.dll+0x208d7f]
+V  [jvm.dll+0x20bcfa]
+V
