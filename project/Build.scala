@@ -129,7 +129,7 @@ object Build extends Build {
   lazy val moleculeParsers: Project = Project(
     id = "molecule-parsers",
     base = file("molecule-parsers"),
-    settings = moleculeTestSettings ++ Seq(
+    settings = sharedSettings ++ Seq(
        description := "Molecule parsers"
      )
   ) dependsOn(moleculeCore)
