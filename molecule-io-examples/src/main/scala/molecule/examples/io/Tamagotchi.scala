@@ -148,6 +148,8 @@ object Tamagotchi extends ProcessType1x1[Char, String, Unit] {
     System.err.println("Until JLine support gets fixed, run this process through a socket (see molecule-net-examples)")
     return
 
+    /*
+	
     import jline.ConsoleReader
     val consoleReader = new ConsoleReader()
 
@@ -178,5 +180,7 @@ object Tamagotchi extends ProcessType1x1[Char, String, Unit] {
         if (c == 'q') return
       } catch { case _ => () }
     }
+	
+	*/
   }
 }
