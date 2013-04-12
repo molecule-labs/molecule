@@ -1,6 +1,8 @@
 # Molecule
 
-A concurrent programming library implementing monadic and streaming I/O in Scala.
+A concurrent programming library combining monadic and streaming I/O in Scala. Invented at [Bell Labs](http://www.bell-labs.com/).
+
+By releasing Molecule as open source [Alcatel-Lucent](http://www.alcatel-lucent.com/) is supporting research in easing the industry's transition to network function virtualization on cloud computing platforms.
 
 - [Main Features](#main-features)
 - [Example](#example)
@@ -16,7 +18,7 @@ A concurrent programming library implementing monadic and streaming I/O in Scala
 - Exceptions and graceful termination handling.
 - Higher maintainability, reliability and flexibility compared applications written against event-driven interfaces in plain Java.
 
-A paper explaining the rationale and the design principles of Molecule is available [here](https://github.com/molecule-labs/molecule/publications/OOPSLA_2012/)
+A paper explaining the rationale and the design principles of Molecule is available [here](https://github.com/molecule-labs/molecule/tree/master/publications/OOPSLA_2012)
 
 ## Example
 
