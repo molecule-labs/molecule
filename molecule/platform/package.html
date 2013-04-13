@@ -1,0 +1,272 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+        <head>
+          <title>molecule.platform</title>
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link type="text/css" media="screen" rel="stylesheet" href="../../lib/template.css" />
+      <script type="text/javascript" src="../../lib/jquery.js"></script>
+      <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../lib/template.js"></script>
+      <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
+    
+        </head>
+        <body onload="sh_highlightDocument('../lib/', '.min.js');" class="value">
+      <div id="definition">
+        <img src="../../lib/package_big.png" />
+        <p id="owner"><a name="molecule" class="extype" href="../package.html">molecule</a></p>
+        <h1>platform</h1>
+      </div>
+
+      <h4 class="signature" id="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <span class="name">platform</span>
+      </span>
+      </h4>
+      
+      <div class="fullcommenttop" id="comment"><div class="comment cmt"><p>Platform execution resources: executors, user-level threads and schedulers.
+</p></div></div>
+    
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input accesskey="/" type="text" /></span><span class="post"></span></div>
+        
+        
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        <div class="types members" id="types">
+              <h3>Type Members</h3>
+              <ol><li visbl="pub" name="molecule.platform.Executor" data-isabs="true">
+      <a id="Executor:Executor"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Executor.html"><span class="name">Executor</span></a><span class="result"> extends Executor</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Standard molecule executor
+</p>
+    </li><li visbl="pub" name="molecule.platform.MoleculeThread" data-isabs="true">
+      <a id="MoleculeThread:MoleculeThread"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="MoleculeThread.html"><span class="name">MoleculeThread</span></a><span class="result"> extends Thread</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.platform.Platform" data-isabs="true">
+      <a id="Platform:Platform"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Platform.html"><span class="name">Platform</span></a><span class="result"> extends Executor</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Encapsulate access to underlying platform resources,
+timers, JVM threads, .</p>
+    </li><li visbl="pub" name="molecule.platform.PlatformFactory" data-isabs="true">
+      <a id="PlatformFactory:PlatformFactory[P]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="PlatformFactory.html"><span class="name">PlatformFactory</span></a><span class="tparams">[<span name="P">P &lt;: Platform</span>]</span><span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.platform.Scheduler" data-isabs="false">
+      <a id="Scheduler:Scheduler"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Scheduler.html"><span class="name">Scheduler</span></a><span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.platform.SchedulerFactory" data-isabs="false">
+      <a id="SchedulerFactory:SchedulerFactory"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="SchedulerFactory.html"><span class="name">SchedulerFactory</span></a><span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.platform.ThreadFactory" data-isabs="false">
+      <a id="ThreadFactory:ThreadFactory"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ThreadFactory.html"><span class="name">ThreadFactory</span></a><span class="result"> extends ThreadFactory</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Thread factory.</p>
+    </li><li visbl="pub" name="molecule.platform.UThread" data-isabs="true">
+      <a id="UThread:UThread"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="UThread.html"><span class="name">UThread</span></a><span class="result"> extends Executor</span>
+      </span>
+      </h4>
+      <p class="comment cmt">User-level thread
+</p>
+    </li><li visbl="pub" name="molecule.platform.UThreadFactory" data-isabs="true">
+      <a id="UThreadFactory:UThreadFactory"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="UThreadFactory.html"><span class="name">UThreadFactory</span></a><span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+    </li></ol>
+            </div>
+
+        
+
+        <div class="values members" id="values">
+              <h3>Value Members</h3>
+              <ol><li visbl="pub" name="molecule.platform.Executor" data-isabs="false">
+      <a id="Executor:Executor"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Executor$.html"><span class="name">Executor</span></a><span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.platform.Platform" data-isabs="false">
+      <a id="Platform:Platform"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Platform$.html"><span class="name">Platform</span></a><span class="result"> extends PlatformFactory[Platform]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.platform.UThread" data-isabs="false">
+      <a id="UThread:UThread"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="UThread$.html"><span class="name">UThread</span></a><span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.platform.executors" data-isabs="false">
+      <a id="executors:executors"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="executors/package.html"><span class="name">executors</span></a>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.platform.monitor" data-isabs="false">
+      <a id="monitor:monitor"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="monitor/package.html"><span class="name">monitor</span></a>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.platform.schedulers" data-isabs="false">
+      <a id="schedulers:schedulers"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="schedulers/package.html"><span class="name">schedulers</span></a>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.platform.uthreads" data-isabs="false">
+      <a id="uthreads:uthreads"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="uthreads/package.html"><span class="name">uthreads</span></a>
+      </span>
+      </h4>
+      
+    </li></ol>
+            </div>
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>

@@ -1,0 +1,217 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+        <head>
+          <title>molecule.parsers.ascii</title>
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link type="text/css" media="screen" rel="stylesheet" href="../../../lib/template.css" />
+      <script type="text/javascript" src="../../../lib/jquery.js"></script>
+      <script type="text/javascript" src="../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
+    
+        </head>
+        <body onload="sh_highlightDocument('../lib/', '.min.js');" class="value">
+      <div id="definition">
+        <img src="../../../lib/package_big.png" />
+        <p id="owner"><a name="molecule" class="extype" href="../../package.html">molecule</a>.<a name="molecule.parsers" class="extype" href="../package.html">parsers</a></p>
+        <h1>ascii</h1>
+      </div>
+
+      <h4 class="signature" id="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ascii</span>
+      </span>
+      </h4>
+      
+      <div class="fullcommenttop" id="comment"><div class="comment cmt"><p>Character buffer parsers</p><p>These parsers work for ASCII and ASCII compatible encodings, i.e.
+(1) the byte representation of a character corresponds with the ASCII value, or
+(2) the byte representation of a character is a single byte &gt; 128, or
+(3) the byte representation of a character is multiple bytes, all &gt; 128 (cfr UTF-8 for non-ASCII characters)
+As argument for these parsers though only pure ASCII characters should be used,
+but any type may appear in the ByteBuffer that is being parsed.</p></div></div>
+    
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input accesskey="/" type="text" /></span><span class="post"></span></div>
+        
+        
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        <div class="types members" id="types">
+              <h3>Type Members</h3>
+              <ol><li visbl="pub" name="molecule.parsers.ascii.StringBuilder" data-isabs="false">
+      <a id="StringBuilder:StringBuilder"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="StringBuilder.html"><span class="name">StringBuilder</span></a><span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      <p class="comment cmt">An immutable class that creates a String by prepending character buffers</p>
+    </li></ol>
+            </div>
+
+        
+
+        <div class="values members" id="values">
+              <h3>Value Members</h3>
+              <ol><li visbl="pub" name="molecule.parsers.ascii.StringBuilder" data-isabs="false">
+      <a id="StringBuilder:StringBuilder"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="StringBuilder$.html"><span class="name">StringBuilder</span></a><span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.parsers.ascii.package#anyChar" data-isabs="false">
+      <a id="anyChar:Parser[ByteBuffer, Char]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">anyChar</span><span class="result">: <a name="molecule.parsing.Parser" class="extype" href="../../parsing/Parser.html">Parser</a>[<span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>, <span name="scala.Char" class="extype">Char</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Parser that accepts any ASCII character
+</p><div class="fullcomment"><div class="comment cmt"><p>Parser that accepts any ASCII character
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="molecule.parsers.ascii.package" class="extype" href="package$.html">package</a></dd></dl></div>
+    </li><li visbl="pub" name="molecule.parsers.ascii.package#buffer" data-isabs="false">
+      <a id="buffer((Char, Char),(Char, Char)*):Parser[ByteBuffer, ByteBuffer]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">buffer</span><span class="params">(<span name="range">range: (<span name="scala.Char" class="extype">Char</span>, <span name="scala.Char" class="extype">Char</span>)</span>, <span name="ranges">ranges: (<span name="scala.Char" class="extype">Char</span>, <span name="scala.Char" class="extype">Char</span>)*</span>)</span><span class="result">: <a name="molecule.parsing.Parser" class="extype" href="../../parsing/Parser.html">Parser</a>[<span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>, <span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Parser from ByteBuffer to ByteBuffer.</p><div class="fullcomment"><div class="comment cmt"><p>Parser from ByteBuffer to ByteBuffer.
+This parser will build a ByteBuffer accepting all bytes that fall in the specified ranges.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="molecule.parsers.ascii.package" class="extype" href="package$.html">package</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li visbl="pub" name="molecule.parsers.ascii.package#buffer" data-isabs="false">
+      <a id="buffer(Char,Char*):Parser[ByteBuffer, ByteBuffer]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">buffer</span><span class="params">(<span name="char">char: <span name="scala.Char" class="extype">Char</span></span>, <span name="cs">cs: <span name="scala.Char" class="extype">Char</span>*</span>)</span><span class="result">: <a name="molecule.parsing.Parser" class="extype" href="../../parsing/Parser.html">Parser</a>[<span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>, <span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Parser from ByteBuffer to ByteBuffer.</p><div class="fullcomment"><div class="comment cmt"><p>Parser from ByteBuffer to ByteBuffer.
+This parser will build a ByteBuffer accepting all specified chars.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="molecule.parsers.ascii.package" class="extype" href="package$.html">package</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li visbl="pub" name="molecule.parsers.ascii.package#bufferUntil" data-isabs="false">
+      <a id="bufferUntil((Char, Char),(Char, Char)*):Parser[ByteBuffer, ByteBuffer]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">bufferUntil</span><span class="params">(<span name="range">range: (<span name="scala.Char" class="extype">Char</span>, <span name="scala.Char" class="extype">Char</span>)</span>, <span name="ranges">ranges: (<span name="scala.Char" class="extype">Char</span>, <span name="scala.Char" class="extype">Char</span>)*</span>)</span><span class="result">: <a name="molecule.parsing.Parser" class="extype" href="../../parsing/Parser.html">Parser</a>[<span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>, <span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Parser from ByteBuffer to ByteBuffer.</p><div class="fullcomment"><div class="comment cmt"><p>Parser from ByteBuffer to ByteBuffer.
+This parser will build a ByteBuffer until the received byte falls in one of the the specified ranges.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="molecule.parsers.ascii.package" class="extype" href="package$.html">package</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li visbl="pub" name="molecule.parsers.ascii.package#bufferUntil" data-isabs="false">
+      <a id="bufferUntil(Char,Char*):Parser[ByteBuffer, ByteBuffer]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">bufferUntil</span><span class="params">(<span name="c">c: <span name="scala.Char" class="extype">Char</span></span>, <span name="cs">cs: <span name="scala.Char" class="extype">Char</span>*</span>)</span><span class="result">: <a name="molecule.parsing.Parser" class="extype" href="../../parsing/Parser.html">Parser</a>[<span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>, <span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Parser from ByteBuffer to ByteBuffer.</p><div class="fullcomment"><div class="comment cmt"><p>Parser from ByteBuffer to ByteBuffer.
+This parser will build a ByteBuffer until byte c or any of bytes cs is found.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="molecule.parsers.ascii.package" class="extype" href="package$.html">package</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li visbl="pub" name="molecule.parsers.ascii.package#char" data-isabs="false">
+      <a id="char(Char):Parser[ByteBuffer, Char]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">char</span><span class="params">(<span name="c">c: <span name="scala.Char" class="extype">Char</span></span>)</span><span class="result">: <a name="molecule.parsing.Parser" class="extype" href="../../parsing/Parser.html">Parser</a>[<span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>, <span name="scala.Char" class="extype">Char</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Parser that succeeds if it matches a single ascii character
+</p><div class="fullcomment"><div class="comment cmt"><p>Parser that succeeds if it matches a single ascii character
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="molecule.parsers.ascii.package" class="extype" href="package$.html">package</a></dd></dl></div>
+    </li><li visbl="pub" name="molecule.parsers.ascii.package#line" data-isabs="false">
+      <a id="line(Int):Parser[ByteBuffer, String]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">line</span><span class="params">(<span name="maxLength">maxLength: <span name="scala.Int" class="extype">Int</span></span>)</span><span class="result">: <a name="molecule.parsing.Parser" class="extype" href="../../parsing/Parser.html">Parser</a>[<span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>, String]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Parse a line.</p><div class="fullcomment"><div class="comment cmt"><p>Parse a line.
+A line is a sequence of characters ending with either a carriage-return character ('\r') or a newline
+character ('\n'). In addition, a carriage-return character followed immediately by a newline character is * treated as a single end-of-line token.
+</p></div><dl class="paramcmts block"><dt class="param">maxLength</dt><dd class="cmt"><p>The maximum length of the line accepted by this parser.
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="molecule.parsers.ascii.package" class="extype" href="package$.html">package</a></dd></dl></div>
+    </li></ol>
+            </div>
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>

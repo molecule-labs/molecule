@@ -1,0 +1,197 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+        <head>
+          <title>molecule.stream.ochan</title>
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link type="text/css" media="screen" rel="stylesheet" href="../../../lib/template.css" />
+      <script type="text/javascript" src="../../../lib/jquery.js"></script>
+      <script type="text/javascript" src="../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
+    
+        </head>
+        <body onload="sh_highlightDocument('../lib/', '.min.js');" class="value">
+      <div id="definition">
+        <img src="../../../lib/package_big.png" />
+        <p id="owner"><a name="molecule" class="extype" href="../../package.html">molecule</a>.<a name="molecule.stream" class="extype" href="../package.html">stream</a></p>
+        <h1>ochan</h1>
+      </div>
+
+      <h4 class="signature" id="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ochan</span>
+      </span>
+      </h4>
+      
+      <div class="fullcommenttop" id="comment"></div>
+    
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input accesskey="/" type="text" /></span><span class="post"></span></div>
+        
+        
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        <div class="types members" id="types">
+              <h3>Type Members</h3>
+              <ol><li visbl="pub" name="molecule.stream.ochan.BackOChan" data-isabs="false">
+      <a id="BackOChan:BackOChan[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="BackOChan.html"><span class="name">BackOChan</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends OChan[A]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">First-class channel that reschedules the continuation of a system-level
+channel inside its user-level thread.</p>
+    </li><li visbl="pub" name="molecule.stream.ochan.BufferedOChan" data-isabs="false">
+      <a id="BufferedOChan:BufferedOChan[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="BufferedOChan.html"><span class="name">BufferedOChan</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="seg">seg: Seg[A]</span>, <span name="next">next: OChan[A]</span>, <span name="evidence$1">evidence$1: Message[A]</span>)</span><span class="result"> extends OChan[A] with Product with Serializable</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.stream.ochan.NilOChan" data-isabs="false">
+      <a id="NilOChan:NilOChan[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="NilOChan.html"><span class="name">NilOChan</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends OChan[A]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.stream.ochan.OChanFactory" data-isabs="false">
+      <a id="OChanFactory:OChanFactory[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="OChanFactory.html"><span class="name">OChanFactory</span></a><span class="tparams">[<span name="A">-A</span>]</span><span class="result"> extends () ⇒ OChan[A]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.stream.ochan.package#Transformer" data-isabs="false">
+      <a id="Transformer:(OChan[A]) ⇒ OChan[B]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Transformer</span><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>]</span><span class="result"> = (<a name="molecule.stream.OChan" class="extype" href="../OChan.html">OChan</a>[A]) ⇒ <a name="molecule.stream.OChan" class="extype" href="../OChan.html">OChan</a>[B]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="molecule.stream.ochan.package" class="extype" href="package$.html">package</a></dd></dl></div>
+    </li><li visbl="pub" name="molecule.stream.ochan.package#UThread" data-isabs="false">
+      <a id="UThread:UThread"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">UThread</span><span class="result"> = <a name="molecule.platform.UThread" class="extype" href="../../platform/UThread.html">UThread</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="molecule.stream.ochan.package" class="extype" href="package$.html">package</a></dd></dl></div>
+    </li></ol>
+            </div>
+
+        
+
+        <div class="values members" id="values">
+              <h3>Value Members</h3>
+              <ol><li visbl="pub" name="molecule.stream.ochan.BackOChan" data-isabs="false">
+      <a id="BackOChan:BackOChan"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="BackOChan$.html"><span class="name">BackOChan</span></a><span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.stream.ochan.NilOChan" data-isabs="false">
+      <a id="NilOChan:NilOChan"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="NilOChan$.html"><span class="name">NilOChan</span></a><span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.stream.ochan.OChanFactory" data-isabs="false">
+      <a id="OChanFactory:OChanFactory"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="OChanFactory$.html"><span class="name">OChanFactory</span></a><span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.stream.ochan.immutable" data-isabs="false">
+      <a id="immutable:immutable"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="immutable/package.html"><span class="name">immutable</span></a>
+      </span>
+      </h4>
+      
+    </li></ol>
+            </div>
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>

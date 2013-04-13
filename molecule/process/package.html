@@ -1,0 +1,946 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+        <head>
+          <title>molecule.process</title>
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link type="text/css" media="screen" rel="stylesheet" href="../../lib/template.css" />
+      <script type="text/javascript" src="../../lib/jquery.js"></script>
+      <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../lib/template.js"></script>
+      <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
+    
+        </head>
+        <body onload="sh_highlightDocument('../lib/', '.min.js');" class="value">
+      <div id="definition">
+        <img src="../../lib/package_big.png" />
+        <p id="owner"><a name="molecule" class="extype" href="../package.html">molecule</a></p>
+        <h1>process</h1>
+      </div>
+
+      <h4 class="signature" id="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <span class="name">process</span>
+      </span>
+      </h4>
+      
+      <div class="fullcommenttop" id="comment"><div class="comment cmt"><p>Types for process types and instances
+</p></div></div>
+    
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input accesskey="/" type="text" /></span><span class="post"></span></div>
+        
+        
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        <div class="types members" id="types">
+              <h3>Type Members</h3>
+              <ol><li visbl="pub" name="molecule.process.Connections" data-isabs="true">
+      <a id="Connections:Connections[R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Connections.html"><span class="name">Connections</span></a><span class="tparams">[<span name="R">R</span>]</span><span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Trait that represent the free connections of a process,
+which still need to be connected.</p>
+    </li><li visbl="pub" name="molecule.process.Connections0x0" data-isabs="false">
+      <a id="Connections0x0:Connections0x0[R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="Connections0x0.html"><span class="name">Connections0x0</span></a><span class="tparams">[<span name="R">R</span>]</span><span class="params">(<span name="rchan">rchan: RIChan[R]</span>)</span><span class="result"> extends Connections[R] with Product with Serializable</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Connections0x1" data-isabs="false">
+      <a id="Connections0x1:Connections0x1[I1, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="Connections0x1.html"><span class="name">Connections0x1</span></a><span class="tparams">[<span name="I1">I1</span>, <span name="R">R</span>]</span><span class="params">(<span name="ochan1">ochan1: IChan[I1]</span>, <span name="rchan">rchan: RIChan[R]</span>)</span><span class="result"> extends Connections[R] with Product with Serializable</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Connections0x2" data-isabs="false">
+      <a id="Connections0x2:Connections0x2[I1, I2, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="Connections0x2.html"><span class="name">Connections0x2</span></a><span class="tparams">[<span name="I1">I1</span>, <span name="I2">I2</span>, <span name="R">R</span>]</span><span class="params">(<span name="ochan1">ochan1: IChan[I1]</span>, <span name="ochan2">ochan2: IChan[I2]</span>, <span name="rchan">rchan: RIChan[R]</span>)</span><span class="result"> extends Connections[R] with Product with Serializable</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Connections0x3" data-isabs="false">
+      <a id="Connections0x3:Connections0x3[I1, I2, I3, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="Connections0x3.html"><span class="name">Connections0x3</span></a><span class="tparams">[<span name="I1">I1</span>, <span name="I2">I2</span>, <span name="I3">I3</span>, <span name="R">R</span>]</span><span class="params">(<span name="ochan1">ochan1: IChan[I1]</span>, <span name="ochan2">ochan2: IChan[I2]</span>, <span name="ochan3">ochan3: IChan[I3]</span>, <span name="rchan">rchan: RIChan[R]</span>)</span><span class="result"> extends Connections[R] with Product with Serializable</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Connections1x0" data-isabs="false">
+      <a id="Connections1x0:Connections1x0[O1, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="Connections1x0.html"><span class="name">Connections1x0</span></a><span class="tparams">[<span name="O1">O1</span>, <span name="R">R</span>]</span><span class="params">(<span name="ichan1">ichan1: OChan[O1]</span>, <span name="rchan">rchan: RIChan[R]</span>)</span><span class="result"> extends Connections[R] with Product with Serializable</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Connections1x1" data-isabs="false">
+      <a id="Connections1x1:Connections1x1[O1, I1, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="Connections1x1.html"><span class="name">Connections1x1</span></a><span class="tparams">[<span name="O1">O1</span>, <span name="I1">I1</span>, <span name="R">R</span>]</span><span class="params">(<span name="ichan1">ichan1: OChan[O1]</span>, <span name="ochan1">ochan1: IChan[I1]</span>, <span name="rchan">rchan: RIChan[R]</span>)</span><span class="result"> extends Connections[R] with Product with Serializable</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Connections1x2" data-isabs="false">
+      <a id="Connections1x2:Connections1x2[O1, I1, I2, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="Connections1x2.html"><span class="name">Connections1x2</span></a><span class="tparams">[<span name="O1">O1</span>, <span name="I1">I1</span>, <span name="I2">I2</span>, <span name="R">R</span>]</span><span class="params">(<span name="ichan1">ichan1: OChan[O1]</span>, <span name="ochan1">ochan1: IChan[I1]</span>, <span name="ochan2">ochan2: IChan[I2]</span>, <span name="rchan">rchan: RIChan[R]</span>)</span><span class="result"> extends Connections[R] with Product with Serializable</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Connections1x3" data-isabs="false">
+      <a id="Connections1x3:Connections1x3[O1, I1, I2, I3, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="Connections1x3.html"><span class="name">Connections1x3</span></a><span class="tparams">[<span name="O1">O1</span>, <span name="I1">I1</span>, <span name="I2">I2</span>, <span name="I3">I3</span>, <span name="R">R</span>]</span><span class="params">(<span name="ichan1">ichan1: OChan[O1]</span>, <span name="ochan1">ochan1: IChan[I1]</span>, <span name="ochan2">ochan2: IChan[I2]</span>, <span name="ochan3">ochan3: IChan[I3]</span>, <span name="rchan">rchan: RIChan[R]</span>)</span><span class="result"> extends Connections[R] with Product with Serializable</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Connections2x0" data-isabs="false">
+      <a id="Connections2x0:Connections2x0[O1, O2, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="Connections2x0.html"><span class="name">Connections2x0</span></a><span class="tparams">[<span name="O1">O1</span>, <span name="O2">O2</span>, <span name="R">R</span>]</span><span class="params">(<span name="ichan1">ichan1: OChan[O1]</span>, <span name="ichan2">ichan2: OChan[O2]</span>, <span name="rchan">rchan: RIChan[R]</span>)</span><span class="result"> extends Connections[R] with Product with Serializable</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Connections2x1" data-isabs="false">
+      <a id="Connections2x1:Connections2x1[O1, O2, I1, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="Connections2x1.html"><span class="name">Connections2x1</span></a><span class="tparams">[<span name="O1">O1</span>, <span name="O2">O2</span>, <span name="I1">I1</span>, <span name="R">R</span>]</span><span class="params">(<span name="ichan1">ichan1: OChan[O1]</span>, <span name="ichan2">ichan2: OChan[O2]</span>, <span name="ochan1">ochan1: IChan[I1]</span>, <span name="rchan">rchan: RIChan[R]</span>)</span><span class="result"> extends Connections[R] with Product with Serializable</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Connections2x2" data-isabs="false">
+      <a id="Connections2x2:Connections2x2[O1, O2, I1, I2, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="Connections2x2.html"><span class="name">Connections2x2</span></a><span class="tparams">[<span name="O1">O1</span>, <span name="O2">O2</span>, <span name="I1">I1</span>, <span name="I2">I2</span>, <span name="R">R</span>]</span><span class="params">(<span name="ichan1">ichan1: OChan[O1]</span>, <span name="ichan2">ichan2: OChan[O2]</span>, <span name="ochan1">ochan1: IChan[I1]</span>, <span name="ochan2">ochan2: IChan[I2]</span>, <span name="rchan">rchan: RIChan[R]</span>)</span><span class="result"> extends Connections[R] with Product with Serializable</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Connections2x3" data-isabs="false">
+      <a id="Connections2x3:Connections2x3[O1, O2, I1, I2, I3, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="Connections2x3.html"><span class="name">Connections2x3</span></a><span class="tparams">[<span name="O1">O1</span>, <span name="O2">O2</span>, <span name="I1">I1</span>, <span name="I2">I2</span>, <span name="I3">I3</span>, <span name="R">R</span>]</span><span class="params">(<span name="ichan1">ichan1: OChan[O1]</span>, <span name="ichan2">ichan2: OChan[O2]</span>, <span name="ochan1">ochan1: IChan[I1]</span>, <span name="ochan2">ochan2: IChan[I2]</span>, <span name="ochan3">ochan3: IChan[I3]</span>, <span name="rchan">rchan: RIChan[R]</span>)</span><span class="result"> extends Connections[R] with Product with Serializable</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Connections3x0" data-isabs="false">
+      <a id="Connections3x0:Connections3x0[O1, O2, O3, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="Connections3x0.html"><span class="name">Connections3x0</span></a><span class="tparams">[<span name="O1">O1</span>, <span name="O2">O2</span>, <span name="O3">O3</span>, <span name="R">R</span>]</span><span class="params">(<span name="ichan1">ichan1: OChan[O1]</span>, <span name="ichan2">ichan2: OChan[O2]</span>, <span name="ichan3">ichan3: OChan[O3]</span>, <span name="rchan">rchan: RIChan[R]</span>)</span><span class="result"> extends Connections[R] with Product with Serializable</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Connections3x1" data-isabs="false">
+      <a id="Connections3x1:Connections3x1[O1, O2, O3, I1, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="Connections3x1.html"><span class="name">Connections3x1</span></a><span class="tparams">[<span name="O1">O1</span>, <span name="O2">O2</span>, <span name="O3">O3</span>, <span name="I1">I1</span>, <span name="R">R</span>]</span><span class="params">(<span name="ichan1">ichan1: OChan[O1]</span>, <span name="ichan2">ichan2: OChan[O2]</span>, <span name="ichan3">ichan3: OChan[O3]</span>, <span name="ochan1">ochan1: IChan[I1]</span>, <span name="rchan">rchan: RIChan[R]</span>)</span><span class="result"> extends Connections[R] with Product with Serializable</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Connections3x2" data-isabs="false">
+      <a id="Connections3x2:Connections3x2[O1, O2, O3, I1, I2, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="Connections3x2.html"><span class="name">Connections3x2</span></a><span class="tparams">[<span name="O1">O1</span>, <span name="O2">O2</span>, <span name="O3">O3</span>, <span name="I1">I1</span>, <span name="I2">I2</span>, <span name="R">R</span>]</span><span class="params">(<span name="ichan1">ichan1: OChan[O1]</span>, <span name="ichan2">ichan2: OChan[O2]</span>, <span name="ichan3">ichan3: OChan[O3]</span>, <span name="ochan1">ochan1: IChan[I1]</span>, <span name="ochan2">ochan2: IChan[I2]</span>, <span name="rchan">rchan: RIChan[R]</span>)</span><span class="result"> extends Connections[R] with Product with Serializable</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Connections3x3" data-isabs="false">
+      <a id="Connections3x3:Connections3x3[O1, O2, O3, I1, I2, I3, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="Connections3x3.html"><span class="name">Connections3x3</span></a><span class="tparams">[<span name="O1">O1</span>, <span name="O2">O2</span>, <span name="O3">O3</span>, <span name="I1">I1</span>, <span name="I2">I2</span>, <span name="I3">I3</span>, <span name="R">R</span>]</span><span class="params">(<span name="ichan1">ichan1: OChan[O1]</span>, <span name="ichan2">ichan2: OChan[O2]</span>, <span name="ichan3">ichan3: OChan[O3]</span>, <span name="ochan1">ochan1: IChan[I1]</span>, <span name="ochan2">ochan2: IChan[I2]</span>, <span name="ochan3">ochan3: IChan[I3]</span>, <span name="rchan">rchan: RIChan[R]</span>)</span><span class="result"> extends Connections[R] with Product with Serializable</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.CoreProcess" data-isabs="true">
+      <a id="CoreProcess:CoreProcess[R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CoreProcess.html"><span class="name">CoreProcess</span></a><span class="tparams">[<span name="R">+R</span>]</span><span class="result"> extends Process[R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Process" data-isabs="true">
+      <a id="Process:Process[R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Process.html"><span class="name">Process</span></a><span class="tparams">[<span name="R">+R</span>]</span><span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Instance of a ProcessType that has been bound to input and
+output channels but not yet running.</p>
+    </li><li visbl="pub" name="molecule.process.Process0x0" data-isabs="true">
+      <a id="Process0x0:Process0x0[R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Process0x0.html"><span class="name">Process0x0</span></a><span class="tparams">[<span name="R">R</span>]</span><span class="result"> extends Process[R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Process0x1" data-isabs="true">
+      <a id="Process0x1:Process0x1[A, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Process0x1.html"><span class="name">Process0x1</span></a><span class="tparams">[<span name="A">A</span>, <span name="R">R</span>]</span><span class="result"> extends Process[R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Process0x2" data-isabs="true">
+      <a id="Process0x2:Process0x2[C, D, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Process0x2.html"><span class="name">Process0x2</span></a><span class="tparams">[<span name="C">C</span>, <span name="D">D</span>, <span name="R">R</span>]</span><span class="result"> extends Process[R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Process0x3" data-isabs="true">
+      <a id="Process0x3:Process0x3[D, E, F, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Process0x3.html"><span class="name">Process0x3</span></a><span class="tparams">[<span name="D">D</span>, <span name="E">E</span>, <span name="F">F</span>, <span name="R">R</span>]</span><span class="result"> extends Process[R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Process0x4" data-isabs="true">
+      <a id="Process0x4:Process0x4[E, F, G, H, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Process0x4.html"><span class="name">Process0x4</span></a><span class="tparams">[<span name="E">E</span>, <span name="F">F</span>, <span name="G">G</span>, <span name="H">H</span>, <span name="R">R</span>]</span><span class="result"> extends Process[R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Process1x0" data-isabs="true">
+      <a id="Process1x0:Process1x0[A, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Process1x0.html"><span class="name">Process1x0</span></a><span class="tparams">[<span name="A">A</span>, <span name="R">R</span>]</span><span class="result"> extends Process[R]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">A Process bound to channels that may be serialized and sent
+remotely (TBD)
+</p>
+    </li><li visbl="pub" name="molecule.process.Process1x1" data-isabs="true">
+      <a id="Process1x1:Process1x1[A, B, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Process1x1.html"><span class="name">Process1x1</span></a><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>, <span name="R">R</span>]</span><span class="result"> extends Process[R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Process1x2" data-isabs="true">
+      <a id="Process1x2:Process1x2[A, C, D, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Process1x2.html"><span class="name">Process1x2</span></a><span class="tparams">[<span name="A">A</span>, <span name="C">C</span>, <span name="D">D</span>, <span name="R">R</span>]</span><span class="result"> extends Process[R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Process1x3" data-isabs="true">
+      <a id="Process1x3:Process1x3[A, D, E, F, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Process1x3.html"><span class="name">Process1x3</span></a><span class="tparams">[<span name="A">A</span>, <span name="D">D</span>, <span name="E">E</span>, <span name="F">F</span>, <span name="R">R</span>]</span><span class="result"> extends Process[R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Process1x4" data-isabs="true">
+      <a id="Process1x4:Process1x4[A, E, F, G, H, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Process1x4.html"><span class="name">Process1x4</span></a><span class="tparams">[<span name="A">A</span>, <span name="E">E</span>, <span name="F">F</span>, <span name="G">G</span>, <span name="H">H</span>, <span name="R">R</span>]</span><span class="result"> extends Process[R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Process2x0" data-isabs="true">
+      <a id="Process2x0:Process2x0[A, B, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Process2x0.html"><span class="name">Process2x0</span></a><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>, <span name="R">R</span>]</span><span class="result"> extends Process[R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Process2x1" data-isabs="true">
+      <a id="Process2x1:Process2x1[A, B, C, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Process2x1.html"><span class="name">Process2x1</span></a><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>, <span name="C">C</span>, <span name="R">R</span>]</span><span class="result"> extends Process[R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Process2x2" data-isabs="true">
+      <a id="Process2x2:Process2x2[A, B, C, D, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Process2x2.html"><span class="name">Process2x2</span></a><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>, <span name="C">C</span>, <span name="D">D</span>, <span name="R">R</span>]</span><span class="result"> extends Process[R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Process2x3" data-isabs="true">
+      <a id="Process2x3:Process2x3[A, B, D, E, F, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Process2x3.html"><span class="name">Process2x3</span></a><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>, <span name="D">D</span>, <span name="E">E</span>, <span name="F">F</span>, <span name="R">R</span>]</span><span class="result"> extends Process[R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Process2x4" data-isabs="true">
+      <a id="Process2x4:Process2x4[A, B, E, F, G, H, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Process2x4.html"><span class="name">Process2x4</span></a><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>, <span name="E">E</span>, <span name="F">F</span>, <span name="G">G</span>, <span name="H">H</span>, <span name="R">R</span>]</span><span class="result"> extends Process[R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Process3x0" data-isabs="true">
+      <a id="Process3x0:Process3x0[A, B, C, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Process3x0.html"><span class="name">Process3x0</span></a><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>, <span name="C">C</span>, <span name="R">R</span>]</span><span class="result"> extends Process[R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Process3x1" data-isabs="true">
+      <a id="Process3x1:Process3x1[A, B, C, D, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Process3x1.html"><span class="name">Process3x1</span></a><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>, <span name="C">C</span>, <span name="D">D</span>, <span name="R">R</span>]</span><span class="result"> extends Process[R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Process3x2" data-isabs="true">
+      <a id="Process3x2:Process3x2[A, B, C, D, E, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Process3x2.html"><span class="name">Process3x2</span></a><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>, <span name="C">C</span>, <span name="D">D</span>, <span name="E">E</span>, <span name="R">R</span>]</span><span class="result"> extends Process[R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Process3x3" data-isabs="true">
+      <a id="Process3x3:Process3x3[A, B, C, D, E, F, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Process3x3.html"><span class="name">Process3x3</span></a><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>, <span name="C">C</span>, <span name="D">D</span>, <span name="E">E</span>, <span name="F">F</span>, <span name="R">R</span>]</span><span class="result"> extends Process[R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Process3x4" data-isabs="true">
+      <a id="Process3x4:Process3x4[A, B, C, E, F, G, H, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Process3x4.html"><span class="name">Process3x4</span></a><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>, <span name="C">C</span>, <span name="E">E</span>, <span name="F">F</span>, <span name="G">G</span>, <span name="H">H</span>, <span name="R">R</span>]</span><span class="result"> extends Process[R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Process4x0" data-isabs="true">
+      <a id="Process4x0:Process4x0[A, B, C, D, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Process4x0.html"><span class="name">Process4x0</span></a><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>, <span name="C">C</span>, <span name="D">D</span>, <span name="R">R</span>]</span><span class="result"> extends Process[R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Process4x1" data-isabs="true">
+      <a id="Process4x1:Process4x1[A, B, C, D, E, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Process4x1.html"><span class="name">Process4x1</span></a><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>, <span name="C">C</span>, <span name="D">D</span>, <span name="E">E</span>, <span name="R">R</span>]</span><span class="result"> extends Process[R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Process4x2" data-isabs="true">
+      <a id="Process4x2:Process4x2[A, B, C, D, E, F, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Process4x2.html"><span class="name">Process4x2</span></a><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>, <span name="C">C</span>, <span name="D">D</span>, <span name="E">E</span>, <span name="F">F</span>, <span name="R">R</span>]</span><span class="result"> extends Process[R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Process4x3" data-isabs="true">
+      <a id="Process4x3:Process4x3[A, B, C, D, E, F, G, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Process4x3.html"><span class="name">Process4x3</span></a><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>, <span name="C">C</span>, <span name="D">D</span>, <span name="E">E</span>, <span name="F">F</span>, <span name="G">G</span>, <span name="R">R</span>]</span><span class="result"> extends Process[R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.Process4x4" data-isabs="true">
+      <a id="Process4x4:Process4x4[A, B, C, D, E, F, G, H, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Process4x4.html"><span class="name">Process4x4</span></a><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>, <span name="C">C</span>, <span name="D">D</span>, <span name="E">E</span>, <span name="F">F</span>, <span name="G">G</span>, <span name="H">H</span>, <span name="R">R</span>]</span><span class="result"> extends Process[R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.ProcessFactories" data-isabs="true">
+      <a id="ProcessFactories:ProcessFactories"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ProcessFactories.html"><span class="name">ProcessFactories</span></a><span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.ProcessType" data-isabs="true">
+      <a id="ProcessType:ProcessType"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ProcessType.html"><span class="name">ProcessType</span></a><span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Base interface for process types.</p>
+    </li><li visbl="pub" name="molecule.process.ProcessType0x0" data-isabs="true">
+      <a id="ProcessType0x0:ProcessType0x0[R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ProcessType0x0.html"><span class="name">ProcessType0x0</span></a><span class="tparams">[<span name="R">R</span>]</span><span class="result"> extends ProcessType with () ⇒ Process0x0[R]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Process types
+</p>
+    </li><li visbl="pub" name="molecule.process.ProcessType0x1" data-isabs="true">
+      <a id="ProcessType0x1:ProcessType0x1[A, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ProcessType0x1.html"><span class="name">ProcessType0x1</span></a><span class="tparams">[<span name="A">A</span>, <span name="R">R</span>]</span><span class="result"> extends ProcessType with (OChan[A]) ⇒ Process0x1[A, R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.ProcessType0x2" data-isabs="true">
+      <a id="ProcessType0x2:ProcessType0x2[E, F, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ProcessType0x2.html"><span class="name">ProcessType0x2</span></a><span class="tparams">[<span name="E">E</span>, <span name="F">F</span>, <span name="R">R</span>]</span><span class="result"> extends ProcessType with (OChan[E], OChan[F]) ⇒ Process0x2[E, F, R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.ProcessType0x3" data-isabs="true">
+      <a id="ProcessType0x3:ProcessType0x3[E, F, G, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ProcessType0x3.html"><span class="name">ProcessType0x3</span></a><span class="tparams">[<span name="E">E</span>, <span name="F">F</span>, <span name="G">G</span>, <span name="R">R</span>]</span><span class="result"> extends ProcessType with (OChan[E], OChan[F], OChan[G]) ⇒ Process0x3[E, F, G, R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.ProcessType0x4" data-isabs="true">
+      <a id="ProcessType0x4:ProcessType0x4[E, F, G, H, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ProcessType0x4.html"><span class="name">ProcessType0x4</span></a><span class="tparams">[<span name="E">E</span>, <span name="F">F</span>, <span name="G">G</span>, <span name="H">H</span>, <span name="R">R</span>]</span><span class="result"> extends ProcessType</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.ProcessType1x0" data-isabs="true">
+      <a id="ProcessType1x0:ProcessType1x0[A, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ProcessType1x0.html"><span class="name">ProcessType1x0</span></a><span class="tparams">[<span name="A">A</span>, <span name="R">R</span>]</span><span class="result"> extends ProcessType with (IChan[A]) ⇒ Process1x0[A, R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.ProcessType1x1" data-isabs="true">
+      <a id="ProcessType1x1:ProcessType1x1[A, B, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ProcessType1x1.html"><span class="name">ProcessType1x1</span></a><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>, <span name="R">R</span>]</span><span class="result"> extends ProcessType with (IChan[A], OChan[B]) ⇒ Process1x1[A, B, R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.ProcessType1x2" data-isabs="true">
+      <a id="ProcessType1x2:ProcessType1x2[A, E, F, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ProcessType1x2.html"><span class="name">ProcessType1x2</span></a><span class="tparams">[<span name="A">A</span>, <span name="E">E</span>, <span name="F">F</span>, <span name="R">R</span>]</span><span class="result"> extends ProcessType with (IChan[A], OChan[E], OChan[F]) ⇒ Process1x2[A, E, F, R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.ProcessType1x3" data-isabs="true">
+      <a id="ProcessType1x3:ProcessType1x3[A, E, F, G, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ProcessType1x3.html"><span class="name">ProcessType1x3</span></a><span class="tparams">[<span name="A">A</span>, <span name="E">E</span>, <span name="F">F</span>, <span name="G">G</span>, <span name="R">R</span>]</span><span class="result"> extends ProcessType with (IChan[A], OChan[E], OChan[F], OChan[G]) ⇒ Process1x3[A, E, F, G, R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.ProcessType1x4" data-isabs="true">
+      <a id="ProcessType1x4:ProcessType1x4[A, E, F, G, H, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ProcessType1x4.html"><span class="name">ProcessType1x4</span></a><span class="tparams">[<span name="A">A</span>, <span name="E">E</span>, <span name="F">F</span>, <span name="G">G</span>, <span name="H">H</span>, <span name="R">R</span>]</span><span class="result"> extends ProcessType</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.ProcessType2x0" data-isabs="true">
+      <a id="ProcessType2x0:ProcessType2x0[A, B, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ProcessType2x0.html"><span class="name">ProcessType2x0</span></a><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>, <span name="R">R</span>]</span><span class="result"> extends ProcessType with (IChan[A], IChan[B]) ⇒ Process2x0[A, B, R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.ProcessType2x1" data-isabs="true">
+      <a id="ProcessType2x1:ProcessType2x1[A, B, E, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ProcessType2x1.html"><span class="name">ProcessType2x1</span></a><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>, <span name="E">E</span>, <span name="R">R</span>]</span><span class="result"> extends ProcessType with (IChan[A], IChan[B], OChan[E]) ⇒ Process2x1[A, B, E, R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.ProcessType2x2" data-isabs="true">
+      <a id="ProcessType2x2:ProcessType2x2[A, B, E, F, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ProcessType2x2.html"><span class="name">ProcessType2x2</span></a><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>, <span name="E">E</span>, <span name="F">F</span>, <span name="R">R</span>]</span><span class="result"> extends ProcessType with (IChan[A], IChan[B], OChan[E], OChan[F]) ⇒ Process2x2[A, B, E, F, R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.ProcessType2x3" data-isabs="true">
+      <a id="ProcessType2x3:ProcessType2x3[A, B, E, F, G, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ProcessType2x3.html"><span class="name">ProcessType2x3</span></a><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>, <span name="E">E</span>, <span name="F">F</span>, <span name="G">G</span>, <span name="R">R</span>]</span><span class="result"> extends ProcessType with (IChan[A], IChan[B], OChan[E], OChan[F], OChan[G]) ⇒ Process2x3[A, B, E, F, G, R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.ProcessType2x4" data-isabs="true">
+      <a id="ProcessType2x4:ProcessType2x4[A, B, E, F, G, H, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ProcessType2x4.html"><span class="name">ProcessType2x4</span></a><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>, <span name="E">E</span>, <span name="F">F</span>, <span name="G">G</span>, <span name="H">H</span>, <span name="R">R</span>]</span><span class="result"> extends ProcessType</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.ProcessType3x0" data-isabs="true">
+      <a id="ProcessType3x0:ProcessType3x0[A, B, C, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ProcessType3x0.html"><span class="name">ProcessType3x0</span></a><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>, <span name="C">C</span>, <span name="R">R</span>]</span><span class="result"> extends ProcessType with (IChan[A], IChan[B], IChan[C]) ⇒ Process3x0[A, B, C, R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.ProcessType3x1" data-isabs="true">
+      <a id="ProcessType3x1:ProcessType3x1[A, B, C, E, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ProcessType3x1.html"><span class="name">ProcessType3x1</span></a><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>, <span name="C">C</span>, <span name="E">E</span>, <span name="R">R</span>]</span><span class="result"> extends ProcessType with (IChan[A], IChan[B], IChan[C], OChan[E]) ⇒ Process3x1[A, B, C, E, R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.ProcessType3x2" data-isabs="true">
+      <a id="ProcessType3x2:ProcessType3x2[A, B, C, E, F, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ProcessType3x2.html"><span class="name">ProcessType3x2</span></a><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>, <span name="C">C</span>, <span name="E">E</span>, <span name="F">F</span>, <span name="R">R</span>]</span><span class="result"> extends ProcessType with (IChan[A], IChan[B], IChan[C], OChan[E], OChan[F]) ⇒ Process3x2[A, B, C, E, F, R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.ProcessType3x3" data-isabs="true">
+      <a id="ProcessType3x3:ProcessType3x3[A, B, C, E, F, G, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ProcessType3x3.html"><span class="name">ProcessType3x3</span></a><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>, <span name="C">C</span>, <span name="E">E</span>, <span name="F">F</span>, <span name="G">G</span>, <span name="R">R</span>]</span><span class="result"> extends ProcessType with (IChan[A], IChan[B], IChan[C], OChan[E], OChan[F], OChan[G]) ⇒ Process3x3[A, B, C, E, F, G, R]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.ProcessType3x4" data-isabs="true">
+      <a id="ProcessType3x4:ProcessType3x4[A, B, C, E, F, G, H, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ProcessType3x4.html"><span class="name">ProcessType3x4</span></a><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>, <span name="C">C</span>, <span name="E">E</span>, <span name="F">F</span>, <span name="G">G</span>, <span name="H">H</span>, <span name="R">R</span>]</span><span class="result"> extends ProcessType</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.ProcessType4x0" data-isabs="true">
+      <a id="ProcessType4x0:ProcessType4x0[A, B, C, D, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ProcessType4x0.html"><span class="name">ProcessType4x0</span></a><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>, <span name="C">C</span>, <span name="D">D</span>, <span name="R">R</span>]</span><span class="result"> extends ProcessType</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.ProcessType4x1" data-isabs="true">
+      <a id="ProcessType4x1:ProcessType4x1[A, B, C, D, E, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ProcessType4x1.html"><span class="name">ProcessType4x1</span></a><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>, <span name="C">C</span>, <span name="D">D</span>, <span name="E">E</span>, <span name="R">R</span>]</span><span class="result"> extends ProcessType</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.ProcessType4x2" data-isabs="true">
+      <a id="ProcessType4x2:ProcessType4x2[A, B, C, D, E, F, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ProcessType4x2.html"><span class="name">ProcessType4x2</span></a><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>, <span name="C">C</span>, <span name="D">D</span>, <span name="E">E</span>, <span name="F">F</span>, <span name="R">R</span>]</span><span class="result"> extends ProcessType</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.ProcessType4x3" data-isabs="true">
+      <a id="ProcessType4x3:ProcessType4x3[A, B, C, D, E, F, G, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ProcessType4x3.html"><span class="name">ProcessType4x3</span></a><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>, <span name="C">C</span>, <span name="D">D</span>, <span name="E">E</span>, <span name="F">F</span>, <span name="G">G</span>, <span name="R">R</span>]</span><span class="result"> extends ProcessType</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.process.ProcessType4x4" data-isabs="true">
+      <a id="ProcessType4x4:ProcessType4x4[A, B, C, D, E, F, G, H, R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ProcessType4x4.html"><span class="name">ProcessType4x4</span></a><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>, <span name="C">C</span>, <span name="D">D</span>, <span name="E">E</span>, <span name="F">F</span>, <span name="G">G</span>, <span name="H">H</span>, <span name="R">R</span>]</span><span class="result"> extends ProcessType</span>
+      </span>
+      </h4>
+      
+    </li></ol>
+            </div>
+
+        
+
+        <div class="values members" id="values">
+              <h3>Value Members</h3>
+              <ol><li visbl="pub" name="molecule.process.CoreProcess" data-isabs="false">
+      <a id="CoreProcess:CoreProcess"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="CoreProcess$.html"><span class="name">CoreProcess</span></a><span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+    </li></ol>
+            </div>
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>

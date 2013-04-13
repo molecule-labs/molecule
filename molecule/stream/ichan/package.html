@@ -1,0 +1,248 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+        <head>
+          <title>molecule.stream.ichan</title>
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link type="text/css" media="screen" rel="stylesheet" href="../../../lib/template.css" />
+      <script type="text/javascript" src="../../../lib/jquery.js"></script>
+      <script type="text/javascript" src="../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
+    
+        </head>
+        <body onload="sh_highlightDocument('../lib/', '.min.js');" class="value">
+      <div id="definition">
+        <img src="../../../lib/package_big.png" />
+        <p id="owner"><a name="molecule" class="extype" href="../../package.html">molecule</a>.<a name="molecule.stream" class="extype" href="../package.html">stream</a></p>
+        <h1>ichan</h1>
+      </div>
+
+      <h4 class="signature" id="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ichan</span>
+      </span>
+      </h4>
+      
+      <div class="fullcommenttop" id="comment"></div>
+    
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input accesskey="/" type="text" /></span><span class="post"></span></div>
+        
+        
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        <div class="types members" id="types">
+              <h3>Type Members</h3>
+              <ol><li visbl="pub" name="molecule.stream.ichan.BackIChan" data-isabs="false">
+      <a id="BackIChan:BackIChan[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="BackIChan.html"><span class="name">BackIChan</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends IChan[A]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">First-class channel that reschedules the continuation of
+a system-level channel inside its user-level thread.</p>
+    </li><li visbl="pub" name="molecule.stream.ichan.DelayedIChan" data-isabs="false">
+      <a id="DelayedIChan:DelayedIChan[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="DelayedIChan.html"><span class="name">DelayedIChan</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends IChan[A]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.stream.ichan.FrontIChan" data-isabs="false">
+      <a id="FrontIChan:FrontIChan[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="FrontIChan.html"><span class="name">FrontIChan</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends IChan[A]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">A front channel has two roles:
+- monitors the complexity of channel
+transformations and schedules the new channel operations
+on a thread pool if the complexity becomes too high.</p>
+    </li><li visbl="pub" name="molecule.stream.ichan.NilIChan" data-isabs="false">
+      <a id="NilIChan:NilIChan"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="NilIChan.html"><span class="name">NilIChan</span></a><span class="result"> extends IChan[Nothing] with TestableIChan[Nothing]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.stream.ichan.StatefulIChan" data-isabs="true">
+      <a id="StatefulIChan:StatefulIChan[S, B]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="StatefulIChan.html"><span class="name">StatefulIChan</span></a><span class="tparams">[<span name="S">+S</span>, <span name="B">+B</span>]</span><span class="result"> extends IChan[B]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">IChan that contains some state S</p>
+    </li><li visbl="pub" name="molecule.stream.ichan.TestableIChan" data-isabs="true">
+      <a id="TestableIChan:TestableIChan[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="TestableIChan.html"><span class="name">TestableIChan</span></a><span class="tparams">[<span name="A">+A</span>]</span><span class="result"> extends IChan[A]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">IChan that can be tested for the availability of data in memory.</p>
+    </li><li visbl="pub" name="molecule.stream.ichan.package#Transformer" data-isabs="false">
+      <a id="Transformer:(IChan[A]) ⇒ IChan[B]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Transformer</span><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>]</span><span class="result"> = (<a name="molecule.stream.IChan" class="extype" href="../IChan.html">IChan</a>[A]) ⇒ <a name="molecule.stream.IChan" class="extype" href="../IChan.html">IChan</a>[B]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="molecule.stream.ichan.package" class="extype" href="package$.html">package</a></dd></dl></div>
+    </li><li visbl="pub" name="molecule.stream.ichan.package#UThread" data-isabs="false">
+      <a id="UThread:UThread"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">UThread</span><span class="result"> = <a name="molecule.platform.UThread" class="extype" href="../../platform/UThread.html">UThread</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="molecule.stream.ichan.package" class="extype" href="package$.html">package</a></dd></dl></div>
+    </li></ol>
+            </div>
+
+        
+
+        <div class="values members" id="values">
+              <h3>Value Members</h3>
+              <ol><li visbl="pub" name="molecule.stream.ichan.BackIChan" data-isabs="false">
+      <a id="BackIChan:BackIChan"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="BackIChan$.html"><span class="name">BackIChan</span></a><span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.stream.ichan.CombineUtils" data-isabs="false">
+      <a id="CombineUtils:CombineUtils"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="CombineUtils$.html"><span class="name">CombineUtils</span></a><span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.stream.ichan.FrontIChan" data-isabs="false">
+      <a id="FrontIChan:FrontIChan"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="FrontIChan$.html"><span class="name">FrontIChan</span></a><span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.stream.ichan.NilIChan" data-isabs="false">
+      <a id="NilIChan:NilIChan"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="NilIChan$.html"><span class="name">NilIChan</span></a><span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.stream.ichan.immutable" data-isabs="false">
+      <a id="immutable:immutable"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="immutable/package.html"><span class="name">immutable</span></a>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.stream.ichan.mutable" data-isabs="false">
+      <a id="mutable:mutable"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="mutable/package.html"><span class="name">mutable</span></a>
+      </span>
+      </h4>
+      
+    </li></ol>
+            </div>
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>

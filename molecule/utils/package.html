@@ -1,0 +1,334 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+        <head>
+          <title>molecule.utils</title>
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link type="text/css" media="screen" rel="stylesheet" href="../../lib/template.css" />
+      <script type="text/javascript" src="../../lib/jquery.js"></script>
+      <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../lib/template.js"></script>
+      <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
+    
+        </head>
+        <body onload="sh_highlightDocument('../lib/', '.min.js');" class="value">
+      <div id="definition">
+        <img src="../../lib/package_big.png" />
+        <p id="owner"><a name="molecule" class="extype" href="../package.html">molecule</a></p>
+        <h1>utils</h1>
+      </div>
+
+      <h4 class="signature" id="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <span class="name">utils</span>
+      </span>
+      </h4>
+      
+      <div class="fullcommenttop" id="comment"><div class="comment cmt"><p>Misc utilities
+</p></div></div>
+    
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input accesskey="/" type="text" /></span><span class="post"></span></div>
+        
+        
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        <div class="types members" id="types">
+              <h3>Type Members</h3>
+              <ol><li visbl="pub" name="molecule.utils.ByteArrayListInputStream" data-isabs="false">
+      <a id="ByteArrayListInputStream:ByteArrayListInputStream"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ByteArrayListInputStream.html"><span class="name">ByteArrayListInputStream</span></a><span class="result"> extends InputStream</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Class use for compatibility with existing blocking java serialization
+frameworks e.</p>
+    </li><li visbl="pub" name="molecule.utils.ByteArrayListOutputStream" data-isabs="false">
+      <a id="ByteArrayListOutputStream:ByteArrayListOutputStream"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ByteArrayListOutputStream.html"><span class="name">ByteArrayListOutputStream</span></a><span class="result"> extends OutputStream</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Contrarily to the regular ByteArrayOutputStream this class
+accumulate byte arrays into a list buffer and assumes a
+thread-safe environment and immutability which permit
+to optimize the code by removing synchronization and defense
+copying.</p>
+    </li><li visbl="pub" name="molecule.utils.ByteBufferSegOutputStream" data-isabs="false">
+      <a id="ByteBufferSegOutputStream:ByteBufferSegOutputStream"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ByteBufferSegOutputStream.html"><span class="name">ByteBufferSegOutputStream</span></a><span class="result"> extends OutputStream</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Contrarily to the regular ByteArrayOutputStream this class
+accumulate byte buffers into a list segment and assumes a
+thread-safe environment and immutability which permit
+to optimize the code by removing synchronization and defense
+copying.</p>
+    </li><li visbl="pub" name="molecule.utils.CharBufferSegOutputStream" data-isabs="false">
+      <a id="CharBufferSegOutputStream:CharBufferSegOutputStream"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CharBufferSegOutputStream.html"><span class="name">CharBufferSegOutputStream</span></a><span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Contrarily to the regular CharArrayOutputStream this class
+accumulate byte buffers into a list segment and assumes a
+thread-safe environment and immutability which permit
+to optimize the code by removing synchronization and defense
+copying.</p>
+    </li><li visbl="pub" name="molecule.utils.ConcurrentLinkedBlockingQueueSC" data-isabs="false">
+      <a id="ConcurrentLinkedBlockingQueueSC:ConcurrentLinkedBlockingQueueSC[E]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ConcurrentLinkedBlockingQueueSC.html"><span class="name">ConcurrentLinkedBlockingQueueSC</span></a><span class="tparams">[<span name="E">E</span>]</span><span class="result"> extends AbstractQueue[E] with Serializable with BlockingQueue[E]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.utils.HashcodeCaching" data-isabs="true">
+      <a id="HashcodeCaching:HashcodeCaching"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="HashcodeCaching.html"><span class="name">HashcodeCaching</span></a><span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Suggested by John Sullivan on scala-user mailing list (4 mai 2011)
+</p>
+    </li><li visbl="pub" name="molecule.utils.Mutex" data-isabs="false">
+      <a id="Mutex:Mutex"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Mutex.html"><span class="name">Mutex</span></a><span class="result"> extends AbstractQueuedSynchronizer</span>
+      </span>
+      </h4>
+      <p class="comment cmt">A simple non-reentrant lock used for exclusion when managing
+queues and workers.</p>
+    </li><li visbl="pub" name="molecule.utils.Unsafe" data-isabs="false">
+      <a id="Unsafe:Unsafe"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Unsafe.html"><span class="name">Unsafe</span></a><span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.utils.__" data-isabs="false">
+      <a id="__:__[_]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="__.html"><span class="name">__</span></a><span class="tparams">[<span name="_">_</span>]</span><span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+    </li></ol>
+            </div>
+
+        
+
+        <div class="values members" id="values">
+              <h3>Value Members</h3>
+              <ol><li visbl="pub" name="molecule.utils.package#NOOP" data-isabs="false">
+      <a id="NOOP:(Any) ⇒ Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">NOOP</span><span class="result">: (<span name="scala.Any" class="extype">Any</span>) ⇒ <span name="scala.Unit" class="extype">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="molecule.utils.package" class="extype" href="package$.html">package</a></dd></dl></div>
+    </li><li visbl="pub" name="molecule.utils.package#NOOP0" data-isabs="false">
+      <a id="NOOP0:() ⇒ Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">NOOP0</span><span class="result">: () ⇒ <span name="scala.Unit" class="extype">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="molecule.utils.package" class="extype" href="package$.html">package</a></dd></dl></div>
+    </li><li visbl="pub" name="molecule.utils.package#NOOP2" data-isabs="false">
+      <a id="NOOP2:(Any, Any) ⇒ Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">NOOP2</span><span class="result">: (<span name="scala.Any" class="extype">Any</span>, <span name="scala.Any" class="extype">Any</span>) ⇒ <span name="scala.Unit" class="extype">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="molecule.utils.package" class="extype" href="package$.html">package</a></dd></dl></div>
+    </li><li visbl="pub" name="molecule.utils.Reflect" data-isabs="false">
+      <a id="Reflect:Reflect"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Reflect$.html"><span class="name">Reflect</span></a><span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.utils.Unsafe" data-isabs="false">
+      <a id="Unsafe:Unsafe"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Unsafe$.html"><span class="name">Unsafe</span></a><span class="result"> extends </span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.utils.Unsigned" data-isabs="false">
+      <a id="Unsigned:Unsigned"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Unsigned$.html"><span class="name">Unsigned</span></a><span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.utils.__" data-isabs="false">
+      <a id="__:__"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="__$.html"><span class="name">__</span></a><span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.utils.package#decode" data-isabs="false">
+      <a id="decode(String):(ByteBuffer) ⇒ CharBuffer"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">decode</span><span class="params">(<span name="charset">charset: String</span>)</span><span class="result">: (<span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>) ⇒ <span name="java.nio.CharBuffer" class="extype">CharBuffer</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="molecule.utils.package" class="extype" href="package$.html">package</a></dd></dl></div>
+    </li><li visbl="pub" name="molecule.utils.package#encode" data-isabs="false">
+      <a id="encode(String):(CharBuffer) ⇒ ByteBuffer"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">encode</span><span class="params">(<span name="charset">charset: String</span>)</span><span class="result">: (<span name="java.nio.CharBuffer" class="extype">CharBuffer</span>) ⇒ <span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="molecule.utils.package" class="extype" href="package$.html">package</a></dd></dl></div>
+    </li><li visbl="pub" name="molecule.utils.package#lineSep" data-isabs="false">
+      <a id="lineSep:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">lineSep</span><span class="result">: <span name="java.lang.String" class="extype">String</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Platform specific line separator
+</p><div class="fullcomment"><div class="comment cmt"><p>Platform specific line separator
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="molecule.utils.package" class="extype" href="package$.html">package</a></dd></dl></div>
+    </li><li visbl="pub" name="molecule.utils.package#random" data-isabs="false">
+      <a id="random():Random"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">random</span><span class="params">()</span><span class="result">: <span name="java.util.Random" class="extype">Random</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="molecule.utils.package" class="extype" href="package$.html">package</a></dd></dl></div>
+    </li></ol>
+            </div>
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>
