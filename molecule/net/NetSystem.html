@@ -1,0 +1,756 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+        <head>
+          <title>molecule.net.NetSystem</title>
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link type="text/css" media="screen" rel="stylesheet" href="../../lib/template.css" />
+      <script type="text/javascript" src="../../lib/jquery.js"></script>
+      <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../lib/template.js"></script>
+      <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
+    
+        </head>
+        <body onload="sh_highlightDocument('../lib/', '.min.js');" class="type">
+      <div id="definition">
+        <a title="Go to companion" href="NetSystem$.html"><img src="../../lib/class_to_object_big.png" /></a>
+        <p id="owner"><a name="molecule" class="extype" href="../package.html">molecule</a>.<a name="molecule.net" class="extype" href="package.html">net</a></p>
+        <h1><a title="Go to companion" href="NetSystem$.html">NetSystem</a></h1>
+      </div>
+
+      <h4 class="signature" id="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <span class="name">NetSystem</span><span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+      <div class="fullcommenttop" id="comment"><div class="comment cmt"><p>Nio Connector.</p><p>This class encapsulates and executes a NIO Selector thread. The number of connection
+that can be handled by a selector is limited to FD_SETSIZE, which is OS specific.
+See http://www.kegel.com/c10k.html#nb.select.</p><p>See also how to change registry settings on windows here:
+http://www.gridgainsystems.com/wiki/display/GG15UG/Troubleshooting#Troubleshooting-java.net.BindExceptionOnWindows</p><p>If you want to handle many connections, either increase the value or
+create several NetSystems (last solution scales much better in terms
+of performance).</p></div><dl class="attributes block"> <dt>Source</dt><dd><a target="_blank" href="https://github.com/molecule-labs/molecule/tree/develop/molecule-net/src/main/scala/molecule/net/NetSystem.scala">NetSystem.scala</a></dd></dl><div class="toggleContainer block">
+          <span class="toggle">Linear Supertypes</span>
+          <div class="superTypes hiddenContent">AnyRef, <span name="scala.Any" class="extype">Any</span></div>
+        </div></div>
+    
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input accesskey="/" type="text" /></span><span class="post"></span></div>
+        <div id="order">
+              <span class="filtertype">Ordering</span>
+              <ol><li class="alpha in"><span>Alphabetic</span></li><li class="inherit out"><span>By inheritance</span></li></ol>
+            </div>
+        <div id="ancestors">
+              <span class="filtertype">Inherited</span>
+              <ol><li class="hideall out"><span>Hide All</span></li>
+              <li class="showall in"><span>Show all</span></li></ol>
+              <ol id="linearization"><li name="molecule.net.NetSystem" class="in"><span>NetSystem</span></li><li name="scala.AnyRef" class="in"><span>AnyRef</span></li><li name="scala.Any" class="in"><span>Any</span></li></ol>
+            </div>
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        <div class="members" id="constructors">
+              <h3>Instance Constructors</h3>
+              <ol><li visbl="pub" name="molecule.net.NetSystem#this" data-isabs="false">
+      <a id="this:NetSystem"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name">NetSystem</span><span class="params">()</span>
+      </span>
+      </h4>
+      
+    </li></ol>
+            </div>
+
+        
+
+        <div class="values members" id="values">
+              <h3>Abstract Value Members</h3>
+              <ol><li visbl="pub" name="molecule.net.NetSystem#launchTcpClient" data-isabs="true">
+      <a id="launchTcpClient[R](TcpClientConfig,(IChan[ByteBuffer], OChan[ByteBuffer]) ⇒ Process[R])(Message[R]):RIChan[R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">launchTcpClient</span><span class="tparams">[<span name="R">R</span>]</span><span class="params">(<span name="config">config: <a name="molecule.net.TcpClientConfig" class="extype" href="TcpClientConfig.html">TcpClientConfig</a></span>, <span name="process">process: (<a name="molecule.stream.IChan" class="extype" href="../stream/IChan.html">IChan</a>[<span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>], <a name="molecule.stream.OChan" class="extype" href="../stream/OChan.html">OChan</a>[<span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>]) ⇒ <a name="molecule.process.Process" class="extype" href="../process/Process.html">Process</a>[R]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a name="molecule.Message" class="extype" href="../Message.html">Message</a>[R]</span>)</span><span class="result">: <a name="molecule.channel.RIChan" class="extype" href="../channel/RIChan.html">RIChan</a>[R]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Connect a TCP client process to a remote server.</p><div class="fullcomment"><div class="comment cmt"><p>Connect a TCP client process to a remote server.
+</p></div><dl class="paramcmts block"><dt class="tparam">R</dt><dd class="cmt"><p>the termination result of the client process.
+</p></dd><dt class="param">config</dt><dd class="cmt"><p>the client config</p></dd><dt class="param">process</dt><dd class="cmt"><p>a process that takes network ByteBuffer's as input and output.
+</p></dd><dt>returns</dt><dd class="cmt"><p>a tuple with the local address the client is bound to and
+        a RIChan returning the termination result of the client process.
+</p></dd></dl></div>
+    </li><li visbl="pub" name="molecule.net.NetSystem#launchTcpServer" data-isabs="true">
+      <a id="launchTcpServer(TcpServerConfig,(IChan[ByteBuffer], OChan[ByteBuffer]) ⇒ Process[Unit]):InetSocketAddress"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">launchTcpServer</span><span class="params">(<span name="config">config: <a name="molecule.net.TcpServerConfig" class="extype" href="TcpServerConfig.html">TcpServerConfig</a></span>, <span name="handler">handler: (<a name="molecule.stream.IChan" class="extype" href="../stream/IChan.html">IChan</a>[<span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>], <a name="molecule.stream.OChan" class="extype" href="../stream/OChan.html">OChan</a>[<span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>]) ⇒ <a name="molecule.process.Process" class="extype" href="../process/Process.html">Process</a>[<span name="scala.Unit" class="extype">Unit</span>]</span>)</span><span class="result">: <span name="java.net.InetSocketAddress" class="extype">InetSocketAddress</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Create a TCP server process that spawns a new servlet to handle each new
+client connection.</p><div class="fullcomment"><div class="comment cmt"><p>Create a TCP server process that spawns a new servlet to handle each new
+client connection.
+</p></div><dl class="paramcmts block"><dt class="param">config</dt><dd class="cmt"><p>a TCP server config</p></dd><dt class="param">handler</dt><dd class="cmt"><p>a process type from which new servlets are instantiated.
+</p></dd><dt>returns</dt><dd class="cmt"><p>the socket address the server has been bound to.
+</p></dd></dl></div>
+    </li><li visbl="pub" name="molecule.net.NetSystem#platform" data-isabs="true">
+      <a id="platform:Platform"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">platform</span><span class="result">: <a name="molecule.platform.Platform" class="extype" href="../platform/Platform.html">Platform</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Return the platform to which this connector is attached to.</p><div class="fullcomment"><div class="comment cmt"><p>Return the platform to which this connector is attached to.</p><p>All process instances created by launchTcpClient and launchTcpServer
+are launched over this platform.
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the underlying platform.
+</p></dd></dl></div>
+    </li><li visbl="pub" name="molecule.net.NetSystem#shutdown" data-isabs="true">
+      <a id="shutdown():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">shutdown</span><span class="params">()</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Shutdown.</p><div class="fullcomment"><div class="comment cmt"><p>Shutdown.</p><p>Close all threading resources allocated by the platform (e.g. the selector thread).
+</p></div></div>
+    </li><li visbl="pub" name="molecule.net.NetSystem#shutdownNow" data-isabs="true">
+      <a id="shutdownNow():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">shutdownNow</span><span class="params">()</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Shutdown and close all resources allocated by the platform (e.</p><div class="fullcomment"><div class="comment cmt"><p>Shutdown and close all resources allocated by the platform (e.g. the selector thread).
+</p></div></div>
+    </li><li visbl="pub" name="molecule.net.NetSystem#tcpAccept" data-isabs="true">
+      <a id="tcpAccept(TcpServerConfig,OChan[Socket[ByteBuffer]]):InetSocketAddress"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">tcpAccept</span><span class="params">(<span name="config">config: <a name="molecule.net.TcpServerConfig" class="extype" href="TcpServerConfig.html">TcpServerConfig</a></span>, <span name="ochan">ochan: <a name="molecule.channel.OChan" class="extype" href="../channel/OChan.html">OChan</a>[<a name="molecule.net.Socket" class="extype" href="Socket.html">Socket</a>[<span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>]]</span>)</span><span class="result">: <span name="java.net.InetSocketAddress" class="extype">InetSocketAddress</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Create a TCP server channel.</p><div class="fullcomment"><div class="comment cmt"><p>Create a TCP server channel.
+</p></div><dl class="paramcmts block"><dt class="param">config</dt><dd class="cmt"><p>a TCP server configuration</p></dd><dt>returns</dt><dd class="cmt"><p>the local socket address the server has been bound to.
+</p></dd></dl></div>
+    </li><li visbl="pub" name="molecule.net.NetSystem#tcpConnect" data-isabs="true">
+      <a id="tcpConnect(TcpClientConfig):RIChan[Socket[ByteBuffer]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">tcpConnect</span><span class="params">(<span name="config">config: <a name="molecule.net.TcpClientConfig" class="extype" href="TcpClientConfig.html">TcpClientConfig</a></span>)</span><span class="result">: <a name="molecule.channel.RIChan" class="extype" href="../channel/RIChan.html">RIChan</a>[<a name="molecule.net.Socket" class="extype" href="Socket.html">Socket</a>[<span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>]]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Create a TCP connection to a remote server.</p><div class="fullcomment"><div class="comment cmt"><p>Create a TCP connection to a remote server.
+</p></div><dl class="paramcmts block"><dt class="param">config</dt><dd class="cmt"><p>the client configuration.
+</p></dd><dt>returns</dt><dd class="cmt"><p>a tuple with the local address the client is bound to and
+        a RIChan returning the client socket once it is connected.
+</p></dd></dl></div>
+    </li><li visbl="pub" name="molecule.net.NetSystem#udpBind" data-isabs="true">
+      <a id="udpBind(SocketAddress,SocketAddress,DatagramSocketOption*):Socket[DatagramPacket]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">udpBind</span><span class="params">(<span name="local">local: <span name="java.net.SocketAddress" class="extype">SocketAddress</span></span>, <span name="remote">remote: <span name="java.net.SocketAddress" class="extype">SocketAddress</span></span>, <span name="opts">opts: <a name="molecule.net.SocketOption.DatagramSocketOption" class="extype" href="SocketOption$$DatagramSocketOption.html">DatagramSocketOption</a>*</span>)</span><span class="result">: <a name="molecule.net.Socket" class="extype" href="Socket.html">Socket</a>[<span name="java.net.DatagramPacket" class="extype">DatagramPacket</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Create a &quot;connected&quot; UDP socket restricted to a remote peer.</p><div class="fullcomment"><div class="comment cmt"><p>Create a &quot;connected&quot; UDP socket restricted to a remote peer.
+</p></div><dl class="paramcmts block"><dt class="param">remote</dt><dd class="cmt"><p>the peer address</p></dd><dt class="param">opts</dt><dd class="cmt"><p>a list of datagram socket options
+</p></dd><dt>returns</dt><dd class="cmt"><p>the datagram socket.
+</p></dd></dl></div>
+    </li><li visbl="pub" name="molecule.net.NetSystem#udpBind" data-isabs="true">
+      <a id="udpBind(SocketAddress,DatagramSocketOption*):Socket[DatagramPacket]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">udpBind</span><span class="params">(<span name="address">address: <span name="java.net.SocketAddress" class="extype">SocketAddress</span></span>, <span name="opts">opts: <a name="molecule.net.SocketOption.DatagramSocketOption" class="extype" href="SocketOption$$DatagramSocketOption.html">DatagramSocketOption</a>*</span>)</span><span class="result">: <a name="molecule.net.Socket" class="extype" href="Socket.html">Socket</a>[<span name="java.net.DatagramPacket" class="extype">DatagramPacket</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Create a UDP datagram socket.</p><div class="fullcomment"><div class="comment cmt"><p>Create a UDP datagram socket.
+</p></div><dl class="paramcmts block"><dt class="param">address</dt><dd class="cmt"><p>the local address this socket is bound to</p></dd><dt class="param">opts</dt><dd class="cmt"><p>a list of datagram socket options
+</p></dd><dt>returns</dt><dd class="cmt"><p>the datagram socket.
+</p></dd></dl></div>
+    </li></ol>
+            </div>
+
+        <div class="values members" id="values">
+              <h3>Concrete Value Members</h3>
+              <ol><li visbl="pub" name="scala.AnyRef#!=" data-isabs="false">
+      <a id="!=(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name" title="gt4s: $bang$eq">!=</span><span class="params">(<span name="arg0">arg0: AnyRef</span>)</span><span class="result">: <span name="scala.Boolean" class="extype">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li visbl="pub" name="scala.Any#!=" data-isabs="false">
+      <a id="!=(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name" title="gt4s: $bang$eq">!=</span><span class="params">(<span name="arg0">arg0: <span name="scala.Any" class="extype">Any</span></span>)</span><span class="result">: <span name="scala.Boolean" class="extype">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li visbl="pub" name="scala.AnyRef###" data-isabs="false">
+      <a id="##():Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name" title="gt4s: $hash$hash">##</span><span class="params">()</span><span class="result">: <span name="scala.Int" class="extype">Int</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li visbl="pub" name="scala.AnyRef#==" data-isabs="false">
+      <a id="==(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name" title="gt4s: $eq$eq">==</span><span class="params">(<span name="arg0">arg0: AnyRef</span>)</span><span class="result">: <span name="scala.Boolean" class="extype">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li visbl="pub" name="scala.Any#==" data-isabs="false">
+      <a id="==(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name" title="gt4s: $eq$eq">==</span><span class="params">(<span name="arg0">arg0: <span name="scala.Any" class="extype">Any</span></span>)</span><span class="result">: <span name="scala.Boolean" class="extype">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li visbl="pub" name="scala.Any#asInstanceOf" data-isabs="false">
+      <a id="asInstanceOf[T0]:T0"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: T0</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li visbl="prt" name="scala.AnyRef#clone" data-isabs="false">
+      <a id="clone():AnyRef"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">clone</span><span class="params">()</span><span class="result">: AnyRef</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a name="java.lang" class="extype" href="../../java/lang/package.html">lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li visbl="pub" name="scala.AnyRef#eq" data-isabs="false">
+      <a id="eq(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: AnyRef</span>)</span><span class="result">: <span name="scala.Boolean" class="extype">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li visbl="pub" name="scala.AnyRef#equals" data-isabs="false">
+      <a id="equals(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span name="scala.Any" class="extype">Any</span></span>)</span><span class="result">: <span name="scala.Boolean" class="extype">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li visbl="prt" name="scala.AnyRef#finalize" data-isabs="false">
+      <a id="finalize():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">finalize</span><span class="params">()</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a name="java.lang" class="extype" href="../../java/lang/package.html">lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li visbl="pub" name="scala.AnyRef#getClass" data-isabs="false">
+      <a id="getClass():java.lang.Class[_]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getClass</span><span class="params">()</span><span class="result">: java.lang.Class[_]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li visbl="pub" name="scala.AnyRef#hashCode" data-isabs="false">
+      <a id="hashCode():Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span name="scala.Int" class="extype">Int</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li visbl="pub" name="scala.Any#isInstanceOf" data-isabs="false">
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span name="scala.Boolean" class="extype">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li visbl="pub" name="molecule.net.NetSystem#launchTcpClient" data-isabs="false">
+      <a id="launchTcpClient[R](InetSocketAddress,InetSocketAddress,(IChan[ByteBuffer], OChan[ByteBuffer]) ⇒ Process[R],SocketOption*)(Message[R]):RIChan[R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">launchTcpClient</span><span class="tparams">[<span name="R">R</span>]</span><span class="params">(<span name="bindAddr">bindAddr: <span name="java.net.InetSocketAddress" class="extype">InetSocketAddress</span></span>, <span name="addr">addr: <span name="java.net.InetSocketAddress" class="extype">InetSocketAddress</span></span>, <span name="process">process: (<a name="molecule.stream.IChan" class="extype" href="../stream/IChan.html">IChan</a>[<span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>], <a name="molecule.stream.OChan" class="extype" href="../stream/OChan.html">OChan</a>[<span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>]) ⇒ <a name="molecule.process.Process" class="extype" href="../process/Process.html">Process</a>[R]</span>, <span name="opts">opts: <a name="molecule.net.SocketOption" class="extype" href="SocketOption.html">SocketOption</a>*</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a name="molecule.Message" class="extype" href="../Message.html">Message</a>[R]</span>)</span><span class="result">: <a name="molecule.channel.RIChan" class="extype" href="../channel/RIChan.html">RIChan</a>[R]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Connect a TCP client process to a remote server.</p><div class="fullcomment"><div class="comment cmt"><p>Connect a TCP client process to a remote server.
+</p></div><dl class="paramcmts block"><dt class="tparam">R</dt><dd class="cmt"><p>the termination result of the client process.
+</p></dd><dt class="param">bindAddr</dt><dd class="cmt"><p>the local address the client must be bound to</p></dd><dt class="param">addr</dt><dd class="cmt"><p>the remote server address</p></dd><dt class="param">process</dt><dd class="cmt"><p>a process that takes network ByteBuffer's as input and output.</p></dd><dt class="param">opts</dt><dd class="cmt"><p>socket options that must be applied to the client socket once it is connected
+</p></dd><dt>returns</dt><dd class="cmt"><p>a RIChan returning the termination result of the client process.
+</p></dd></dl></div>
+    </li><li visbl="pub" name="molecule.net.NetSystem#launchTcpClient" data-isabs="false">
+      <a id="launchTcpClient[R](InetSocketAddress,(IChan[ByteBuffer], OChan[ByteBuffer]) ⇒ Process[R],SocketOption*)(Message[R]):RIChan[R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">launchTcpClient</span><span class="tparams">[<span name="R">R</span>]</span><span class="params">(<span name="addr">addr: <span name="java.net.InetSocketAddress" class="extype">InetSocketAddress</span></span>, <span name="process">process: (<a name="molecule.stream.IChan" class="extype" href="../stream/IChan.html">IChan</a>[<span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>], <a name="molecule.stream.OChan" class="extype" href="../stream/OChan.html">OChan</a>[<span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>]) ⇒ <a name="molecule.process.Process" class="extype" href="../process/Process.html">Process</a>[R]</span>, <span name="opts">opts: <a name="molecule.net.SocketOption" class="extype" href="SocketOption.html">SocketOption</a>*</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a name="molecule.Message" class="extype" href="../Message.html">Message</a>[R]</span>)</span><span class="result">: <a name="molecule.channel.RIChan" class="extype" href="../channel/RIChan.html">RIChan</a>[R]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Connect a TCP client process to a remote server.</p><div class="fullcomment"><div class="comment cmt"><p>Connect a TCP client process to a remote server.
+</p></div><dl class="paramcmts block"><dt class="tparam">R</dt><dd class="cmt"><p>the termination result of the client process.
+</p></dd><dt class="param">addr</dt><dd class="cmt"><p>the remote server address</p></dd><dt class="param">process</dt><dd class="cmt"><p>a process that takes network ByteBuffer's as input and output.</p></dd><dt class="param">opts</dt><dd class="cmt"><p>socket options that must be applied to the client socket once it is connected
+</p></dd><dt>returns</dt><dd class="cmt"><p>a RIChan returning the termination result of the client process.
+</p></dd></dl></div>
+    </li><li visbl="pub" name="molecule.net.NetSystem#launchTcpClient" data-isabs="false">
+      <a id="launchTcpClient[R](String,Int,(IChan[ByteBuffer], OChan[ByteBuffer]) ⇒ Process[R],SocketOption*)(Message[R]):RIChan[R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">launchTcpClient</span><span class="tparams">[<span name="R">R</span>]</span><span class="params">(<span name="hostName">hostName: String</span>, <span name="port">port: <span name="scala.Int" class="extype">Int</span></span>, <span name="process">process: (<a name="molecule.stream.IChan" class="extype" href="../stream/IChan.html">IChan</a>[<span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>], <a name="molecule.stream.OChan" class="extype" href="../stream/OChan.html">OChan</a>[<span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>]) ⇒ <a name="molecule.process.Process" class="extype" href="../process/Process.html">Process</a>[R]</span>, <span name="opts">opts: <a name="molecule.net.SocketOption" class="extype" href="SocketOption.html">SocketOption</a>*</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a name="molecule.Message" class="extype" href="../Message.html">Message</a>[R]</span>)</span><span class="result">: <a name="molecule.channel.RIChan" class="extype" href="../channel/RIChan.html">RIChan</a>[R]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Connect a TCP client process to a remote server.</p><div class="fullcomment"><div class="comment cmt"><p>Connect a TCP client process to a remote server.
+</p></div><dl class="paramcmts block"><dt class="tparam">R</dt><dd class="cmt"><p>the termination result of the client process.
+</p></dd><dt class="param">hostName</dt><dd class="cmt"><p>the remote server host name</p></dd><dt class="param">port</dt><dd class="cmt"><p>the remote server port</p></dd><dt class="param">process</dt><dd class="cmt"><p>a process that takes network ByteBuffer's as input and output.
+</p></dd><dt>returns</dt><dd class="cmt"><p>a RIChan returning the termination result of the client process.
+</p></dd></dl></div>
+    </li><li visbl="pub" name="molecule.net.NetSystem#launchTcpServer" data-isabs="false">
+      <a id="launchTcpServer(InetSocketAddress,(IChan[ByteBuffer], OChan[ByteBuffer]) ⇒ Process[Unit],List[ServerSocketOption],SocketOption*):InetSocketAddress"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">launchTcpServer</span><span class="params">(<span name="addr">addr: <span name="java.net.InetSocketAddress" class="extype">InetSocketAddress</span></span>, <span name="handler">handler: (<a name="molecule.stream.IChan" class="extype" href="../stream/IChan.html">IChan</a>[<span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>], <a name="molecule.stream.OChan" class="extype" href="../stream/OChan.html">OChan</a>[<span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>]) ⇒ <a name="molecule.process.Process" class="extype" href="../process/Process.html">Process</a>[<span name="scala.Unit" class="extype">Unit</span>]</span>, <span name="sopts">sopts: List[<a name="molecule.net.SocketOption.ServerSocketOption" class="extype" href="SocketOption$$ServerSocketOption.html">ServerSocketOption</a>]</span>, <span name="opts">opts: <a name="molecule.net.SocketOption" class="extype" href="SocketOption.html">SocketOption</a>*</span>)</span><span class="result">: <span name="java.net.InetSocketAddress" class="extype">InetSocketAddress</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Create a TCP server process that spawns a new servlet to handle each new
+client connection.</p><div class="fullcomment"><div class="comment cmt"><p>Create a TCP server process that spawns a new servlet to handle each new
+client connection.
+</p></div><dl class="paramcmts block"><dt class="param">addr</dt><dd class="cmt"><p>the local server address on which the server accepts connections</p></dd><dt class="param">handler</dt><dd class="cmt"><p>a process type from which new servlets are instantiated.
+</p></dd><dt class="param">sopts</dt><dd class="cmt"><p>a list of server socket options applied to the server socket.</p></dd><dt class="param">opts</dt><dd class="cmt"><p>a list of socket options applied to each client socket accepted.</p></dd><dt>returns</dt><dd class="cmt"><p>the socket address the server has been bound to.
+</p></dd></dl></div>
+    </li><li visbl="pub" name="molecule.net.NetSystem#launchTcpServer" data-isabs="false">
+      <a id="launchTcpServer(InetSocketAddress,(IChan[ByteBuffer], OChan[ByteBuffer]) ⇒ Process[Unit],SocketOption*):InetSocketAddress"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">launchTcpServer</span><span class="params">(<span name="addr">addr: <span name="java.net.InetSocketAddress" class="extype">InetSocketAddress</span></span>, <span name="handler">handler: (<a name="molecule.stream.IChan" class="extype" href="../stream/IChan.html">IChan</a>[<span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>], <a name="molecule.stream.OChan" class="extype" href="../stream/OChan.html">OChan</a>[<span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>]) ⇒ <a name="molecule.process.Process" class="extype" href="../process/Process.html">Process</a>[<span name="scala.Unit" class="extype">Unit</span>]</span>, <span name="opts">opts: <a name="molecule.net.SocketOption" class="extype" href="SocketOption.html">SocketOption</a>*</span>)</span><span class="result">: <span name="java.net.InetSocketAddress" class="extype">InetSocketAddress</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Create a TCP server process that spawns a new servlet to handle each new
+client connection.</p><div class="fullcomment"><div class="comment cmt"><p>Create a TCP server process that spawns a new servlet to handle each new
+client connection.
+</p></div><dl class="paramcmts block"><dt class="param">addr</dt><dd class="cmt"><p>the local server address on which the server accepts connections</p></dd><dt class="param">handler</dt><dd class="cmt"><p>a process type from which new servlets are instantiated.</p></dd><dt class="param">opts</dt><dd class="cmt"><p>a list of socket options applied to each client socket accepted.
+</p></dd><dt>returns</dt><dd class="cmt"><p>the socket address the server has been bound to.
+</p></dd></dl></div>
+    </li><li visbl="pub" name="molecule.net.NetSystem#launchTcpServer" data-isabs="false">
+      <a id="launchTcpServer(String,Int,(IChan[ByteBuffer], OChan[ByteBuffer]) ⇒ Process[Unit],List[ServerSocketOption],SocketOption*):InetSocketAddress"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">launchTcpServer</span><span class="params">(<span name="hostName">hostName: String</span>, <span name="port">port: <span name="scala.Int" class="extype">Int</span></span>, <span name="handler">handler: (<a name="molecule.stream.IChan" class="extype" href="../stream/IChan.html">IChan</a>[<span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>], <a name="molecule.stream.OChan" class="extype" href="../stream/OChan.html">OChan</a>[<span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>]) ⇒ <a name="molecule.process.Process" class="extype" href="../process/Process.html">Process</a>[<span name="scala.Unit" class="extype">Unit</span>]</span>, <span name="sopts">sopts: List[<a name="molecule.net.SocketOption.ServerSocketOption" class="extype" href="SocketOption$$ServerSocketOption.html">ServerSocketOption</a>]</span>, <span name="opts">opts: <a name="molecule.net.SocketOption" class="extype" href="SocketOption.html">SocketOption</a>*</span>)</span><span class="result">: <span name="java.net.InetSocketAddress" class="extype">InetSocketAddress</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Create a TCP server process that spawns a new servlet to handle each new
+client connection.</p><div class="fullcomment"><div class="comment cmt"><p>Create a TCP server process that spawns a new servlet to handle each new
+client connection.
+</p></div><dl class="paramcmts block"><dt class="param">hostName</dt><dd class="cmt"><p>the local server interface</p></dd><dt class="param">port</dt><dd class="cmt"><p>the local server port</p></dd><dt class="param">handler</dt><dd class="cmt"><p>a process type from which new servlets are instantiated.
+</p></dd><dt class="param">sopts</dt><dd class="cmt"><p>a list of server socket options applied to the server socket.</p></dd><dt class="param">opts</dt><dd class="cmt"><p>a list of socket options applied to each client socket accepted.</p></dd><dt>returns</dt><dd class="cmt"><p>the socket address the server has been bound to.
+</p></dd></dl></div>
+    </li><li visbl="pub" name="molecule.net.NetSystem#launchTcpServer" data-isabs="false">
+      <a id="launchTcpServer(String,Int,(IChan[ByteBuffer], OChan[ByteBuffer]) ⇒ Process[Unit],SocketOption*):InetSocketAddress"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">launchTcpServer</span><span class="params">(<span name="hostName">hostName: String</span>, <span name="port">port: <span name="scala.Int" class="extype">Int</span></span>, <span name="handler">handler: (<a name="molecule.stream.IChan" class="extype" href="../stream/IChan.html">IChan</a>[<span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>], <a name="molecule.stream.OChan" class="extype" href="../stream/OChan.html">OChan</a>[<span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>]) ⇒ <a name="molecule.process.Process" class="extype" href="../process/Process.html">Process</a>[<span name="scala.Unit" class="extype">Unit</span>]</span>, <span name="opts">opts: <a name="molecule.net.SocketOption" class="extype" href="SocketOption.html">SocketOption</a>*</span>)</span><span class="result">: <span name="java.net.InetSocketAddress" class="extype">InetSocketAddress</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Create a TCP server process that spawns a new servlet to handle each new
+client connection.</p><div class="fullcomment"><div class="comment cmt"><p>Create a TCP server process that spawns a new servlet to handle each new
+client connection.
+</p></div><dl class="paramcmts block"><dt class="param">hostName</dt><dd class="cmt"><p>the local server interface</p></dd><dt class="param">port</dt><dd class="cmt"><p>the local server port</p></dd><dt class="param">handler</dt><dd class="cmt"><p>a process type from which new servlets are instantiated.
+</p></dd><dt class="param">opts</dt><dd class="cmt"><p>a list of socket options applied to each client socket accepted.</p></dd><dt>returns</dt><dd class="cmt"><p>the socket address the server has been bound to.
+</p></dd></dl></div>
+    </li><li visbl="pub" name="molecule.net.NetSystem#launchTcpServer" data-isabs="false">
+      <a id="launchTcpServer((IChan[ByteBuffer], OChan[ByteBuffer]) ⇒ Process[Unit],SocketOption*):InetSocketAddress"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">launchTcpServer</span><span class="params">(<span name="handler">handler: (<a name="molecule.stream.IChan" class="extype" href="../stream/IChan.html">IChan</a>[<span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>], <a name="molecule.stream.OChan" class="extype" href="../stream/OChan.html">OChan</a>[<span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>]) ⇒ <a name="molecule.process.Process" class="extype" href="../process/Process.html">Process</a>[<span name="scala.Unit" class="extype">Unit</span>]</span>, <span name="opts">opts: <a name="molecule.net.SocketOption" class="extype" href="SocketOption.html">SocketOption</a>*</span>)</span><span class="result">: <span name="java.net.InetSocketAddress" class="extype">InetSocketAddress</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Create a TCP server process that spawns a new servlet to handle each new
+client connection.</p><div class="fullcomment"><div class="comment cmt"><p>Create a TCP server process that spawns a new servlet to handle each new
+client connection.
+</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>a process type from which new servlets are instantiated.
+</p></dd><dt class="param">opts</dt><dd class="cmt"><p>a list of socket options applied to each client socket accepted.</p></dd><dt>returns</dt><dd class="cmt"><p>the socket address the server has been bound to.
+</p></dd></dl></div>
+    </li><li visbl="pub" name="scala.AnyRef#ne" data-isabs="false">
+      <a id="ne(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: AnyRef</span>)</span><span class="result">: <span name="scala.Boolean" class="extype">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li visbl="pub" name="scala.AnyRef#notify" data-isabs="false">
+      <a id="notify():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notify</span><span class="params">()</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li visbl="pub" name="scala.AnyRef#notifyAll" data-isabs="false">
+      <a id="notifyAll():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li visbl="pub" name="scala.AnyRef#synchronized" data-isabs="false">
+      <a id="synchronized[T0](⇒ T0):T0"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ T0</span>)</span><span class="result">: T0</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li visbl="pub" name="molecule.net.NetSystem#tcpAccept" data-isabs="false">
+      <a id="tcpAccept(TcpServerConfig):(InetSocketAddress, IChan[Socket[ByteBuffer]])"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">tcpAccept</span><span class="params">(<span name="config">config: <a name="molecule.net.TcpServerConfig" class="extype" href="TcpServerConfig.html">TcpServerConfig</a></span>)</span><span class="result">: (<span name="java.net.InetSocketAddress" class="extype">InetSocketAddress</span>, <a name="molecule.channel.IChan" class="extype" href="../channel/IChan.html">IChan</a>[<a name="molecule.net.Socket" class="extype" href="Socket.html">Socket</a>[<span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>]])</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Create a TCP server channel.</p><div class="fullcomment"><div class="comment cmt"><p>Create a TCP server channel.
+</p></div><dl class="paramcmts block"><dt class="param">config</dt><dd class="cmt"><p>a TCP server configuration
+</p></dd><dt>returns</dt><dd class="cmt"><p>a tuple with the local socket address the server has been
+        bound to, and a stream of client sockets filled in progressively each time
+		 a new client connection is accepted.
+</p></dd></dl></div>
+    </li><li visbl="pub" name="molecule.net.NetSystem#tcpAccept" data-isabs="false">
+      <a id="tcpAccept(String,Int,List[ServerSocketOption],SocketOption*):IChan[Socket[ByteBuffer]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">tcpAccept</span><span class="params">(<span name="hostName">hostName: String</span>, <span name="port">port: <span name="scala.Int" class="extype">Int</span></span>, <span name="sopts">sopts: List[<a name="molecule.net.SocketOption.ServerSocketOption" class="extype" href="SocketOption$$ServerSocketOption.html">ServerSocketOption</a>]</span>, <span name="opts">opts: <a name="molecule.net.SocketOption" class="extype" href="SocketOption.html">SocketOption</a>*</span>)</span><span class="result">: <a name="molecule.channel.IChan" class="extype" href="../channel/IChan.html">IChan</a>[<a name="molecule.net.Socket" class="extype" href="Socket.html">Socket</a>[<span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>]]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Create a TCP server channel.</p><div class="fullcomment"><div class="comment cmt"><p>Create a TCP server channel.
+</p></div><dl class="paramcmts block"><dt class="param">hostName</dt><dd class="cmt"><p>the local server interface</p></dd><dt class="param">port</dt><dd class="cmt"><p>the local server port</p></dd><dt class="param">sopts</dt><dd class="cmt"><p>a list of server socket options applied to the server socket.</p></dd><dt class="param">opts</dt><dd class="cmt"><p>a list of socket options applied to each client socket accepted.
+</p></dd><dt>returns</dt><dd class="cmt"><p>a stream of client sockets filled in progressively each time
+		 a new client connection is accepted.
+</p></dd></dl></div>
+    </li><li visbl="pub" name="molecule.net.NetSystem#tcpAccept" data-isabs="false">
+      <a id="tcpAccept(String,Int,SocketOption*):IChan[Socket[ByteBuffer]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">tcpAccept</span><span class="params">(<span name="hostName">hostName: String</span>, <span name="port">port: <span name="scala.Int" class="extype">Int</span></span>, <span name="opts">opts: <a name="molecule.net.SocketOption" class="extype" href="SocketOption.html">SocketOption</a>*</span>)</span><span class="result">: <a name="molecule.channel.IChan" class="extype" href="../channel/IChan.html">IChan</a>[<a name="molecule.net.Socket" class="extype" href="Socket.html">Socket</a>[<span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>]]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Create a TCP server channel.</p><div class="fullcomment"><div class="comment cmt"><p>Create a TCP server channel.
+</p></div><dl class="paramcmts block"><dt class="param">hostName</dt><dd class="cmt"><p>the local server interface</p></dd><dt class="param">port</dt><dd class="cmt"><p>the local server port</p></dd><dt class="param">opts</dt><dd class="cmt"><p>a list of socket options applied to each client socket accepted.
+</p></dd><dt>returns</dt><dd class="cmt"><p>a stream of client sockets filled in progressively each time
+		 a new client connection is accepted.
+</p></dd></dl></div>
+    </li><li visbl="pub" name="molecule.net.NetSystem#tcpAccept" data-isabs="false">
+      <a id="tcpAccept():(InetSocketAddress, IChan[Socket[ByteBuffer]])"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">tcpAccept</span><span class="params">()</span><span class="result">: (<span name="java.net.InetSocketAddress" class="extype">InetSocketAddress</span>, <a name="molecule.channel.IChan" class="extype" href="../channel/IChan.html">IChan</a>[<a name="molecule.net.Socket" class="extype" href="Socket.html">Socket</a>[<span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>]])</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Create a TCP server channel.</p><div class="fullcomment"><div class="comment cmt"><p>Create a TCP server channel.
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a tuple with the local socket address the server has been automatically
+        bound to, and a stream of client sockets filled in progressively each time
+		 a new client connection is accepted.
+</p></dd></dl></div>
+    </li><li visbl="pub" name="molecule.net.NetSystem#tcpConnect" data-isabs="false">
+      <a id="tcpConnect(InetSocketAddress,SocketOption*):RIChan[Socket[ByteBuffer]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">tcpConnect</span><span class="params">(<span name="addr">addr: <span name="java.net.InetSocketAddress" class="extype">InetSocketAddress</span></span>, <span name="opts">opts: <a name="molecule.net.SocketOption" class="extype" href="SocketOption.html">SocketOption</a>*</span>)</span><span class="result">: <a name="molecule.channel.RIChan" class="extype" href="../channel/RIChan.html">RIChan</a>[<a name="molecule.net.Socket" class="extype" href="Socket.html">Socket</a>[<span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>]]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Create a TCP connection to a remote server.</p><div class="fullcomment"><div class="comment cmt"><p>Create a TCP connection to a remote server.
+</p></div><dl class="paramcmts block"><dt class="param">addr</dt><dd class="cmt"><p>the remote server address</p></dd><dt class="param">opts</dt><dd class="cmt"><p>a list of socket options.
+</p></dd><dt>returns</dt><dd class="cmt"><p>a RIChan returning the client socket once it is connected.
+</p></dd></dl></div>
+    </li><li visbl="pub" name="molecule.net.NetSystem#tcpConnect" data-isabs="false">
+      <a id="tcpConnect(String,Int,SocketOption*):RIChan[Socket[ByteBuffer]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">tcpConnect</span><span class="params">(<span name="hostName">hostName: String</span>, <span name="port">port: <span name="scala.Int" class="extype">Int</span></span>, <span name="opts">opts: <a name="molecule.net.SocketOption" class="extype" href="SocketOption.html">SocketOption</a>*</span>)</span><span class="result">: <a name="molecule.channel.RIChan" class="extype" href="../channel/RIChan.html">RIChan</a>[<a name="molecule.net.Socket" class="extype" href="Socket.html">Socket</a>[<span name="java.nio.ByteBuffer" class="extype">ByteBuffer</span>]]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Create a TCP connection to a remote server.</p><div class="fullcomment"><div class="comment cmt"><p>Create a TCP connection to a remote server.
+</p></div><dl class="paramcmts block"><dt class="param">hostName</dt><dd class="cmt"><p>the remote server host name</p></dd><dt class="param">port</dt><dd class="cmt"><p>the remote server port</p></dd><dt class="param">opts</dt><dd class="cmt"><p>a list of socket options.
+</p></dd><dt>returns</dt><dd class="cmt"><p>a RIChan returning the client socket once it is connected.
+</p></dd></dl></div>
+    </li><li visbl="pub" name="scala.AnyRef#toString" data-isabs="false">
+      <a id="toString():String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toString</span><span class="params">()</span><span class="result">: <span name="java.lang.String" class="extype">String</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li visbl="pub" name="molecule.net.NetSystem#udpBind" data-isabs="false">
+      <a id="udpBind(String,Int,DatagramSocketOption*):Socket[DatagramPacket]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">udpBind</span><span class="params">(<span name="hostName">hostName: String</span>, <span name="port">port: <span name="scala.Int" class="extype">Int</span></span>, <span name="opts">opts: <a name="molecule.net.SocketOption.DatagramSocketOption" class="extype" href="SocketOption$$DatagramSocketOption.html">DatagramSocketOption</a>*</span>)</span><span class="result">: <a name="molecule.net.Socket" class="extype" href="Socket.html">Socket</a>[<span name="java.net.DatagramPacket" class="extype">DatagramPacket</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Create a UDP datagram socket.</p><div class="fullcomment"><div class="comment cmt"><p>Create a UDP datagram socket.
+</p></div><dl class="paramcmts block"><dt class="param">hostName</dt><dd class="cmt"><p>the local name of the interface</p></dd><dt class="param">port</dt><dd class="cmt"><p>the local port this socket is bound to</p></dd><dt class="param">opts</dt><dd class="cmt"><p>a list of datagram socket options
+</p></dd><dt>returns</dt><dd class="cmt"><p>the datagram socket.
+</p></dd></dl></div>
+    </li><li visbl="pub" name="scala.AnyRef#wait" data-isabs="false">
+      <a id="wait():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">()</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li visbl="pub" name="scala.AnyRef#wait" data-isabs="false">
+      <a id="wait(Long,Int):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span name="scala.Long" class="extype">Long</span></span>, <span name="arg1">arg1: <span name="scala.Int" class="extype">Int</span></span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li visbl="pub" name="scala.AnyRef#wait" data-isabs="false">
+      <a id="wait(Long):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span name="scala.Long" class="extype">Long</span></span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li></ol>
+            </div>
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        <div name="scala.AnyRef" class="parent">
+              <h3>Inherited from AnyRef</h3>
+            </div><div name="scala.Any" class="parent">
+              <h3>Inherited from <span name="scala.Any" class="extype">Any</span></h3>
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>

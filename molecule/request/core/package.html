@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+        <head>
+          <title>molecule.request.core</title>
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link type="text/css" media="screen" rel="stylesheet" href="../../../lib/template.css" />
+      <script type="text/javascript" src="../../../lib/jquery.js"></script>
+      <script type="text/javascript" src="../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
+    
+        </head>
+        <body onload="sh_highlightDocument('../lib/', '.min.js');" class="value">
+      <div id="definition">
+        <img src="../../../lib/package_big.png" />
+        <p id="owner"><a name="molecule" class="extype" href="../../package.html">molecule</a>.<a name="molecule.request" class="extype" href="../package.html">request</a></p>
+        <h1>core</h1>
+      </div>
+
+      <h4 class="signature" id="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <span class="name">core</span>
+      </span>
+      </h4>
+      
+      <div class="fullcommenttop" id="comment"><div class="comment cmt"><p>Implicit definitions for using request-response protocols
+in a reactive style.
+</p></div></div>
+    
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input accesskey="/" type="text" /></span><span class="post"></span></div>
+        
+        
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        <div class="types members" id="types">
+              <h3>Type Members</h3>
+              <ol><li visbl="pub" name="molecule.request.core.package.NativeRequestChannel" data-isabs="false">
+      <a id="NativeRequestChannel:NativeRequestChannel[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="package$$NativeRequestChannel.html"><span class="name">NativeRequestChannel</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Enrich channels supporting request-response protocols for easily sending request messages
+using a native thread.</p>
+    </li><li visbl="pub" name="molecule.request.core.package.RequestChannel" data-isabs="false">
+      <a id="RequestChannel:RequestChannel[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="package$$RequestChannel.html"><span class="name">RequestChannel</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Enrich output channels supporting request-response protocols for easily sending request messages
+</p>
+    </li><li visbl="pub" name="molecule.request.core.RequestSignal" data-isabs="false">
+      <a id="RequestSignal:RequestSignal"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="RequestSignal.html"><span class="name">RequestSignal</span></a><span class="params">(<span name="ochan">ochan: molecule.stream.OChan[_]</span>, <span name="signal">signal: Signal</span>)</span><span class="result"> extends Signal with Product with Serializable</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="molecule.request.core.package.RichResponseChannel" data-isabs="false">
+      <a id="RichResponseChannel:RichResponseChannel[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="package$$RichResponseChannel.html"><span class="name">RichResponseChannel</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Enrich response channels.</p>
+    </li></ol>
+            </div>
+
+        
+
+        <div class="values members" id="values">
+              <h3>Value Members</h3>
+              <ol><li visbl="pub" name="molecule.request.core.package#enrichNativeRequestChannel" data-isabs="false">
+      <a id="enrichNativeRequestChannel[A](NativeProducer[A]):NativeRequestChannel[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">enrichNativeRequestChannel</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="ochan">ochan: <a name="molecule.channel.NativeProducer" class="extype" href="../../channel/NativeProducer.html">NativeProducer</a>[A]</span>)</span><span class="result">: <a name="molecule.request.core.package.NativeRequestChannel" class="extype" href="package$$NativeRequestChannel.html">NativeRequestChannel</a>[A]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Enrich channels supporting multiple protocols for easily sending request messages
+in a native manner
+</p><div class="fullcomment"><div class="comment cmt"><p>Enrich channels supporting multiple protocols for easily sending request messages
+in a native manner
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="molecule.request.core.package" class="extype" href="package$.html">package</a></dd></dl></div>
+    </li><li visbl="pub" name="molecule.request.core.package#enrichRequestChannel" data-isabs="false">
+      <a id="enrichRequestChannel[A](OChan[A]):RequestChannel[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">enrichRequestChannel</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="ochan">ochan: <a name="molecule.stream.OChan" class="extype" href="../../stream/OChan.html">OChan</a>[A]</span>)</span><span class="result">: <a name="molecule.request.core.package.RequestChannel" class="extype" href="package$$RequestChannel.html">RequestChannel</a>[A]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Enrich output channels supporting multiple protocols for easily sending request messages
+</p><div class="fullcomment"><div class="comment cmt"><p>Enrich output channels supporting multiple protocols for easily sending request messages
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="molecule.request.core.package" class="extype" href="package$.html">package</a></dd></dl></div>
+    </li><li visbl="pub" name="molecule.request.core.package#enrichResponseChannel" data-isabs="false">
+      <a id="enrichResponseChannel[A](ResponseChannel[A]):RichResponseChannel[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">enrichResponseChannel</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="rchan">rchan: ResponseChannel[A]</span>)</span><span class="result">: <a name="molecule.request.core.package.RichResponseChannel" class="extype" href="package$$RichResponseChannel.html">RichResponseChannel</a>[A]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Enrich output channels supporting multiple protocols for easily sending request messages
+</p><div class="fullcomment"><div class="comment cmt"><p>Enrich output channels supporting multiple protocols for easily sending request messages
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="molecule.request.core.package" class="extype" href="package$.html">package</a></dd></dl></div>
+    </li></ol>
+            </div>
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>
