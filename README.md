@@ -2,7 +2,7 @@
 
 A concurrent programming library combining monadic and streaming I/O in Scala.
 
-By releasing Molecule as open source [Alcatel-Lucent](http://www.alcatel-lucent.com/) is supporting research in easing the industry's transition to network function virtualization on cloud computing platforms.
+By releasing Molecule as open source [Alcatel-Lucent](http://www.alcatel-lucent.com/)/[Bell Labs](http://www.bell-labs.com) is supporting research in easing the industry's transition to network function virtualization on cloud computing platforms.
 
 - [Main Features](#main-features)
 - [Example](#example)
