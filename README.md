@@ -18,7 +18,9 @@ By releasing Molecule as open source [Alcatel-Lucent](http://www.alcatel-lucent.
 - Exceptions and graceful termination handling.
 - Higher maintainability, reliability and flexibility compared applications written against event-driven interfaces in plain Java.
 
-A paper explaining the rationale and the design principles of Molecule is available [here](https://github.com/molecule-labs/molecule/tree/master/publications/OOPSLA_2012)
+A paper explaining the rationale and the design principles of Molecule is available [here](https://github.com/molecule-labs/molecule/tree/docs/publications/OOPSLA_2012)
+
+The latest API documentation is available online [here](http://molecule-labs.github.io/molecule).
 
 ## Example
 
