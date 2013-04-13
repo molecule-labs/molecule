@@ -81,7 +81,7 @@ The abstract class is parameterized by the type `Ii` and `Oj` of the input and o
 
 It prompts for a name on its output, reads the name on its input, says hello on its output and then returns `()`.
 
-We can the create a `HelloYou` process attached to the command line by "applying" its process type to the standard `Console.stdinLine` and `Console.stdoutLine` channels, which are defined in the [channel](http://molecule-labs.github.io/molecule/#molecule.channel.Console$) package: 
+We can then create a `HelloYou` process attached to the command line by "applying" its process type to the standard `Console.stdinLine` and `Console.stdoutLine` channels, which are defined in the [channel](http://molecule-labs.github.io/molecule/#molecule.channel.Console$) package: 
 
 ```scala
   def main(args: Array[String]): Unit = {
@@ -167,7 +167,7 @@ val ns = NetSystem(Platform("hello-you"))
 ns.launchTcpServer("localhost", 8888, HelloYouTelnet)
 ```
 
-The `launchTcpServer` method of a [`NetSystem`](http://molecule-labs.github.io/molecule/#molecule.net.NetSystem), launches a new instance of the adapted `HelloYou` process type each time it accepts a new TCP connection on the specified socket address. Each process will be connected to the byte buffer input and output streams of the socket connected to the client. This socket, configured in non-blocking mode, will be automatically closed once both channels are closed. This occurs automatically as soon as the process terminates thanks to the automatic resource management implemented by monadic processes. The nice thing about this server is that it can handle efficiently more than one thousands Telnet sessions in one megabyte of memory without blocking any native thread. Also, now that this adapter is available, we can expose any interactive process over Telnet as long as this process interacts line by line over string channels. 
+The `launchTcpServer` method of a [`NetSystem`](http://molecule-labs.github.io/molecule/#molecule.net.NetSystem), launches a new instance of the adapted `HelloYou` process type each time it accepts a new TCP connection on the specified socket address. Each process will be connected to the byte buffer input and output streams of the socket connected to the client. This socket, configured in non-blocking mode, will be automatically closed once both channels are closed. This occurs as soon as the process terminates thanks to the automatic resource management implemented by monadic processes. The nice thing about this server is that it can handle efficiently more than one thousands Telnet sessions in one megabyte of memory without blocking any native thread. Also, now that we created this adapter, we can reuse it to expose any interactive process over Telnet as long as this process interacts line by line over string channels. 
 
 **Note:** _Similar examples can be found in [`molecule-io-example`](https://github.com/molecule-labs/molecule/blob/master/molecule-io-examples/src/main/scala/molecule/examples/io/EchoYou.scala) and [`molecule-net-examples`](https://github.com/molecule-labs/molecule/blob/master/molecule-net-examples/src/main/scala/molecule/examples/net/echoyou/EchoYouTelnet.scala). See section ["Running The Examples"](#running-the-examples) for instructions on how to run these examples._
 
