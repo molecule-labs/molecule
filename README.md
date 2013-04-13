@@ -25,11 +25,11 @@ Both the [paper](https://github.com/molecule-labs/molecule/tree/docs/publication
 
 _Note: many other examples are available for study in the `molecule-*-examples` directories._
 
-This example will walk you through the implemention of a simple process type. First, we show how instances of this process type can interract with the command line. Then, we show how to bind instances to Telnet sessions by implementing the minimal support for the Telnet protocol over binary streams using Molecule's NIO interfaces and incremental parser combinators. 
+This example will walk you through the implementation of a simple process type. First, we show how instances of this process type can interact with the command line. Then, we show how to bind instances to Telnet sessions by implementing the minimal support for the Telnet protocol over binary streams using Molecule's NIO interfaces and incremental parser combinators. 
 
 ### Interacting On The Command Line
 
-Here is how a process that interracts on the command line is defined and then launched.
+Here is how a process that interacts on the command line is defined and then launched.
 
 ```scala
 import molecule._
@@ -133,7 +133,7 @@ object TelnetLineAdapter {
 }
 ```
 
-In case of Telnet, the binary stream carries either some binary data or a Telnet command that starts with the `IAC` byte. The `splitAt` parser splits each `ByteBuffer` that it receives at the position where the `IAC` command occurs or fails if the first byte of the received `ByteBuffer` matches `IAC`. Using the `telnetMsg` parser, we can now create a process type adapter that adapts process types that interract over string channels into process types that interract over raw byte buffer channels:
+In case of Telnet, the binary stream carries either some binary data or a Telnet command that starts with the `IAC` byte. The `splitAt` parser splits each `ByteBuffer` that it receives at the position where the `IAC` command occurs or fails if the first byte of the received `ByteBuffer` matches `IAC`. Using the `telnetMsg` parser, we can now create a process type adapter that adapts process types that interact over string channels into process types that interact over raw byte buffer channels:
 
 ```scala
 abstract class TelnetLineAdapter[R: Message](ptype: ProcessType1x1[String, String, R]) extends ProcessType1x1[ByteBuffer, ByteBuffer, R] {
