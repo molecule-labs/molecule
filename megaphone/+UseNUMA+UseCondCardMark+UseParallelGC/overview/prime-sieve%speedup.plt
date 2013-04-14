@@ -1,14 +1,14 @@
-set title "prime-sieve - 24*amd64, 1.7.0_04-ea-b06, [+UseNUMA, +UseCondCardMark, +UseParallelGC]"
+set title "prime-sieve - 24*amd64, 1.7.0_04-ea-b06"
 set xlabel "Threads"
 set ylabel "Speedup"
 set xtics 1
 set log y
 #set key out
 
-#set term png
-#set output "prime-sieve.png"
+set term png
+set output "prime-sieve%speedup.png"
 #set term postscript eps enhanced
-#set output "prime-sieve.eps"
+#set output "prime-sieve%speedup.eps"
 
 plot '../prime-sieve/molecule-io_actor-like_SST=1-CCT=1.dat' using 1:4:($4*$3)/100 with errorlines title "molecule-io:actor-like:SST=1-CCT=1",\
 '../prime-sieve/molecule-io_actor-like_SST=50-CCT=50.dat' using 1:4:($4*$3)/100 with errorlines title "molecule-io:actor-like:SST=50-CCT=50",\

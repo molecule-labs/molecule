@@ -1,13 +1,13 @@
-set title "chameneos-redux - 24*amd64, 1.7.0_04-ea-b06, [+UseNUMA, +UseCondCardMark, +UseParallelGC]"
+set title "chameneos-redux - 24*amd64, 1.7.0_04-ea-b06"
 set xlabel "Threads"
 set ylabel "Speedup"
 set xtics 1
 #set key out
 
-#set term png
-#set output "chameneos-redux.png"
+set term png
+set output "chameneos-redux%speedup.png"
 #set term postscript eps enhanced
-#set output "chameneos-redux.eps"
+#set output "chameneos-redux%speedup.eps"
 
 plot '../chameneos-redux/molecule-core_wcfj_SST=0.dat' using 1:5:($5*$3)/100 with errorlines title "molecule-core:wcfj:SST=0",\
 '../chameneos-redux/molecule-io_actor-like_SST=0.dat' using 1:5:($5*$3)/100 with errorlines title "molecule-io:actor-like:SST=0",\
