@@ -1,3 +1,0 @@
-ACM, 2012. This is the authors version of the work. It is posted here by permission of the ACM for
-your personal use. Nor for redistribution. The definitive version was published in SIGPLAN Not. 47,
-10 (October 2012), 315-334. http://doi.acm.org/10.1145/2398857.2384640 .

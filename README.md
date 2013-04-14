@@ -1,8 +1,8 @@
 # Molecule
 
-A concurrent programming library combining monadic and streaming I/O in Scala. Invented at [Bell Labs](http://www.bell-labs.com/).
+A concurrent programming library combining monadic and streaming I/O in Scala.
 
-By releasing Molecule as open source [Alcatel-Lucent](http://www.alcatel-lucent.com/) is supporting research in easing the industry's transition to network function virtualization on cloud computing platforms.
+By releasing Molecule as open source [Alcatel-Lucent](http://www.alcatel-lucent.com/)/[Bell Labs](http://www.bell-labs.com) is supporting research in easing the industry's transition to network function virtualization on cloud computing platforms.
 
 - [Main Features](#main-features)
 - [Example](#example)
@@ -13,22 +13,23 @@ By releasing Molecule as open source [Alcatel-Lucent](http://www.alcatel-lucent.
 ## Main Features
 
 - User-level threading model with low-overhead context switches on unmodified JVM's.
+- Type-safe communication channels.
 - High-performance and convenient stream processing primitives that batch data transparently.
-- High-performance protocol design on top of TCP or UDP sockets using incremental combinator parsers (ala [AttoParsec](http://hackage.haskell.org/packages/archive/attoparsec/0.8.0.2/doc/html/Data-Attoparsec.html)).
+- Incremental combinator parsers that work over non-blocking sockets (ala [AttoParsec](http://hackage.haskell.org/packages/archive/attoparsec/0.8.0.2/doc/html/Data-Attoparsec.html)).
 - Exceptions and graceful termination handling.
-- Higher maintainability, reliability and flexibility compared applications written against event-driven interfaces in plain Java.
+- Higher maintainability, reliability and flexibility compared to applications written against callback interfaces in plain Java.
 
-A paper explaining the rationale and the design principles of Molecule is available [here](https://github.com/molecule-labs/molecule/tree/master/publications/OOPSLA_2012)
+Both the [paper](https://github.com/molecule-labs/molecule/tree/docs/publications/OOPSLA_2012) explaining the rationale and the design principles of Molecule, and the [latest API documentation](http://molecule-labs.github.io/molecule) are available online.
 
 ## Example
 
 _Note: many other examples are available for study in the `molecule-*-examples` directories._
 
-This example will walk you through the implemention an process that says hello to the end user using the command line and then expose it as a Telnet server using Molecule's NIO interfaces and its incremental parser combinators. 
+This example will walk you through the implementation of a simple process type. First, we show how instances of this process type can interact with the command line. Then, we show how to bind instances to Telnet sessions by implementing the minimal support for the Telnet protocol over binary streams using Molecule's NIO interfaces and incremental parser combinators. 
 
 ### Interacting On The Command Line
 
-Here is how a process that interracts on the command line is defined and then launched.
+Here is how a process that interacts on the command line is defined and then launched.
 
 ```scala
 import molecule._
@@ -49,28 +50,26 @@ object HelloYou extends ProcessType1x1[String, String, Unit] {
     // Create an execution platform
     val platform = Platform("hello-you")
 
-    // Launch an instance of the HelloYou component on the platform
-    // and block the main thread with `get_!` until it terminated.
+    // Launch an instance of HelloYou on the platform
+    // and block the main thread with `get_!` until it is terminated.
     platform.launch(HelloYou(Console.stdinLine, Console.stdoutLine)).get_!()
   }
 }
 ```
 
-Before defining a new process type, we must import two packages. The first one imports molecule's main package. The second imports the abstract monadic process type `ProcessTypeixj` with various useful monadic combinators defined as value members in the package object `molecule/io/package.scala`. The behavior of a process type is specified by defining the `main` method of an abstract class patterned after function types in Scala:
+Before defining a new process type, we must import two packages. The first one imports molecule's main package. The second imports the abstract monadic process type with various useful monadic combinators defined as value members in the [`io`](http://molecule-labs.github.io/molecule/#molecule.io.package) package object. Process types are patterned after function types in Scala:
 
 ```scala
 abstract class ProcessTypeixj[I1, ... , Ii, O1, ..., Oj, R] {
 
-  final def apply(i1: IChan[I1], ..., oj: IChan[B]):Process[R] = ...
+  final def apply(i1: IChan[I1], ..., oj: IChan[Oj]):Process[R] = ...
 
   protected def main(i1:Input[I1], ..., oj:Output[Oj]):IO[R]
 
 }
 ```
 
-The abstract class is parameterized by the type `Ii` and `Oj` of the input and output channel interfaces passed as argument to the `main` method, followed by the result type `R`. The result 'R' can be retrieved by its parent process once it terminates. Since it inherits form the 'ProcessType1x1[String, String, Unit]' class, the process type `HelloYou` is a factory of process instances `Process` that use one input of type `String`, one input of type `String` and terminates with a result of type `Unit`. 
-
-The behavior of processes of this type is defined by the for-comprehension in its main method. 
+The abstract class is parameterized by the type `Ii` and `Oj` of the input and output channel interfaces of a process followed by its result type `R`. The `apply` method is used as a factory method to create lightweight processes. Since `HelloYou` inherits form [`ProcessType1x1[String, String, Unit]`](http://molecule-labs.github.io/molecule/#molecule.io.ProcessType1x1), the process type `HelloYou` is a factory of process instances that use one input of type `String`, one output of type `String` and terminates with a result of type `Unit`. All the processes it creates will share the same behavior, which is defined by the implementation of its `main` method: 
 
 ```scala
   def main(in: Input[String], out: Output[String]) = for {
@@ -82,19 +81,7 @@ The behavior of processes of this type is defined by the for-comprehension in it
 
 It prompts for a name on its output, reads the name on its input, says hello on its output and then returns `()`.
 
-Since process types implement an 'apply' method in their base class, we can use them as a factories to create lightweight process instances of type `Process`. Here, a new instance of `HelloYou` is created by passing it channel interfaces of type `IChan[String]` and `OChan[String]`. It is the Platform class that will invoke this function to create a _running_ instance of a process. The interface of a `Platform` is the following:
-
-```scala
-abstract class Platform {
-
-  final def launch[R: Message](process: Process[R]): RIChan[R] = {
-
-}
-```
-
-Where `RIChan` is the type of a channel that outputs a single message, which is very similar to a `Future` in `java.util.concurrent`.
-
-The process type we just defined can then be tested on the command line by applying it to the standard `Console.stdinLine` and `Console.stdoutLine` channels, which are defined in the 'channel' package. The `stdinLine` input channel, of type IChan[String], streams each lines typed on the standard input. The `stdoutLine` output channel, of type `OChan[String]`, does the reverse and prints each string it receives in consecutive lines on the standard output. Therefore, to launch an instance of the `HellYou` process on the command line, one just needs apply its factory method to `stdinLine` and `stdoutLine` and then pass the result, which is a `Process` to the `launch` method of a platform, which will execute the process:
+We can then create a `HelloYou` process attached to the command line by "applying" its process type to the standard `Console.stdinLine` and `Console.stdoutLine` channels, which are defined in the [channel](http://molecule-labs.github.io/molecule/#molecule.channel.Console$) package: 
 
 ```scala
   def main(args: Array[String]): Unit = {
@@ -104,13 +91,23 @@ The process type we just defined can then be tested on the command line by apply
   }
 ```
 
-Since the process instance is executed asynchronously, the native thread must block until the process has terminated otherwise the application would exit immediately, before someone has the time to type its name. A native thread can wait for the termination of a process using the `get_!` method `future` on the result channel. Here, the it will return `()`.
+The `stdinLine` input channel, of type `IChan[String]`, streams each lines typed on the standard input. The `stdoutLine` output channel, of type `OChan[String]`, does the reverse and prints each string it receives on consecutive lines on the standard output. 
+
+A [`Platform`](http://molecule-labs.github.io/molecule/#molecule.platform.Platform) creates the user-level threads that execute processes over a handful number of native threads. This number is configurable and matches by default the number of cores available on the underlying hardware (see `Platform` [factory methods](http://molecule-labs.github.io/molecule/#molecule.platform.Platform$)). The launch method is declared like this:
+
+```scala
+abstract class Platform {
+
+  final def launch[R: Message](process: Process[R]): RIChan[R] = {
+
+}
+```
+
+ The type [`RIChan`](http://molecule-labs.github.io/molecule/#molecule.channel.RIChan) is the type of channels that deliver a single message, a bit like a `Future` in `java.util.concurrent`. Since the process instance is executed asynchronously, the native thread must block until the process has terminated, otherwise the application would exit immediately before someone has the time to type its name. This is done using the `get_!` method of the result channel, which blocks the main thread until the process returns its result `()`.
 
 ### Exposing Processes Over Telnet
 
-The following guides you into creating you own Telnet servlet container using Molecule's NIO layer. The container instantiates one lightweight processes instance each time a Telnet client connects to it. The Telnet protocol is not as simple as it seems. For simplicity, we will filter out only simple IAC commands, those that start with the `IAC` byte followed by 1 byte identifying the operation, and another byte as its option.
-
-The object below declares a parser that parses telnet content from a `ByteBuffer` stream, which contains either some binary data or a telnet command. Readers not familiar with parser combinators are invited to look at this excellent introduction by Daniel Spiewak, which can be found [ here](http://www.codecommit.com/blog/scala/the-magic-behind-parser-combinators).
+We will now create a "Telnet servlet container" that instantiates a new process each time a Telnet client connects to it. For simplicity, we will just filter out [initial Telnet negotiation commands](http://tools.ietf.org/html/rfc854) - those that start with the `IAC` byte followed by 1 byte identifying the operation and a second byte indicating the option. To do so, we create an incremental binary parser that we will use to parse Telnet messages from `ByteBuffer` streams read on non-blocking TCP sockets:
 
 ```scala
 import molecule.parsers.bytebuffer._
@@ -136,11 +133,13 @@ object TelnetLineAdapter {
 }
 ```
 
-The `splitAt` parser split each `ByteBuffer` that it receives at the position where the `IAC` command occurs or fails if the first byte of the received `ByteBuffer` matches the condition. Using the `telnetMsg` parser, we can now create a process type adapter that uses `ByteBuffer` as input and output to filter out byte buffers that start with an `IAC` command using the `collect` streaming primitive. The resulting stream of `ByteBuffer`s is then converted to a stream of `CharBuffer`s and then parsed line by line to the adapted process, like this:
+_Note: readers not familiar with parser combinators are invited to look at [this](http://www.codecommit.com/blog/scala/the-magic-behind-parser-combinators) excellent introduction by Daniel Spiewak._
 
+In case of Telnet, the binary stream carries either some binary Data or a Telnet Command that starts with the `IAC` byte. The `splitAt` parser splits each `ByteBuffer` that it receives at the position where the `IAC` command occurs or fails if the first byte of the received `ByteBuffer` matches `IAC`. Using the `telnetMsg` parser, we can now create a process type adapter that adapts process types that interact over string channels into process types that interact over raw byte buffer channels:
 
 ```scala
-abstract class TelnetLineAdapter[R: Message](ptype: ProcessType1x1[String, String, R]) extends ProcessType1x1[ByteBuffer, ByteBuffer, R] {
+abstract class TelnetLineAdapter[R: Message](ptype: ProcessType1x1[String, String, R]) 
+extends ProcessType1x1[ByteBuffer, ByteBuffer, R] {
   import molecule.parsers.charbuffer
   import java.nio.CharBuffer
 
@@ -156,8 +155,9 @@ abstract class TelnetLineAdapter[R: Message](ptype: ProcessType1x1[String, Strin
 }
 ```
 
-Now, we are ready to expose the `HelloYou` process to Telnet connections using Molecule NIO, like this:
+Telnet commands are filtered out from the byte buffer input stream using the `collect` streaming primitive. The resulting stream is then converted into a stream of strings through ASCII decoded `CharBuffer`s, which are then parsed into lines of maximum 2048 characters. Lines sent on the output are wrapped into character buffers and then encoded into ASCII byte buffers (output channels being contravariant, transformations must be read from right to left).
 
+Now, we are ready to expose `HelloYou` processes over individual Telnet connections using Molecule's NIO layer, like this:
 
 ```scala
 import molecule.nio._
@@ -167,9 +167,9 @@ val ns = NetSystem(Platform("hello-you"))
 ns.launchTcpServer("localhost", 8888, HelloYouTelnet)
 ```
 
-The `launchTcpServer` method of a `NetSystem`, launches a new instance of the adapted `HelloYou` process type each time it accepts a new TCP connection on the specified socket address. Each instance is connected to the input and output streams of a socket, which happen to carry `ByteBuffer`. The underlying socket, configured in non-blocking mode, will be automatically closed once both channels are closed, that is when the instance of the `HelloYou` process terminates.
+The `launchTcpServer` method of a [`NetSystem`](http://molecule-labs.github.io/molecule/#molecule.net.NetSystem), launches a new instance of the adapted `HelloYou` process type each time it accepts a new TCP connection on the specified socket address. Each process will be connected to the byte buffer input and output streams of the socket connected to the client. This socket, configured in non-blocking mode, will be automatically closed once both channels are closed. This occurs as soon as the process terminates thanks to the automatic resource management implemented by monadic processes. The nice thing about this server is that it can handle efficiently more than one thousands Telnet sessions in one megabyte of memory without blocking any native thread. Also, now that we created this adapter, we can reuse it to expose any interactive process over Telnet as long as this process interacts line by line over string channels. 
 
-The nice thing about this server is that it can handle efficiently several thousands of Telnet sessions in just one megabyte of memory, and it can expose any process type as long as it adapted to take streams of `ByteBuffer` as input and output. As an exercise, one could try to port this example in plain Java using JBoss Netty's library to compare it to this novel approach.
+**Note:** _Similar examples can be found in [`molecule-io-example`](https://github.com/molecule-labs/molecule/blob/master/molecule-io-examples/src/main/scala/molecule/examples/io/EchoYou.scala) and [`molecule-net-examples`](https://github.com/molecule-labs/molecule/blob/master/molecule-net-examples/src/main/scala/molecule/examples/net/echoyou/EchoYouTelnet.scala). See section ["Running The Examples"](#running-the-examples) for instructions on how to run these examples._
 
 ## Installing
 
