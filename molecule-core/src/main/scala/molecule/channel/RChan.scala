@@ -23,39 +23,53 @@ package channel
 import java.util.concurrent.{ Future, Executor, TimeUnit }
 
 /**
- * "Result", "reply" or "response" input channel interface. As opposed to a generic
- * IChan, this channel interface produces a only single message.
+ * "Result", "reply" or "response" input channel interface.
  *
- * Like regular input-channels, the channel delivers its result only once
- * and cannot be read concurrently. A result channel that is read a second time
- * will deliver the EOS signal. However, a result channel can cache a
- * result for multiple (sequential) reads using the `cache` method. It can also be
- * converted into a standard java Future using the `future` method, which will
- * also cache the result (this method is provided via an implicit conversion).
+ * Result channels are system-level input channels that deliver only
+ * a single message followed by the EOS. They obey channel semantics in that
+ * they cannot be read concurrently and they deliver messages only
+ * once - a result channel that is read a second time will deliver the
+ * EOS signal.
  *
  * The computations associated to a result channel, and hence
- * transformations like `map` or `flatMap`, are fired only if the result
- * is consumed. In case transformations feature side-effects that must
- * be executed even if the result is not consumed, these can be forced by
- * calling the `fire` method. The `fire` method returns a new result channel
- * that consumes the result and then buffers it internally in case someone
- * needs it later.
+ * transformations like `map` or `flatMap`, are only fired lazyliy when
+ * a process attempts to read the result from the channel. Transformations
+ * featuring side-effects can be executed even if no one is
+ * interested in the result by calling the `fire()` method. This method
+ * returns a new result channel that consumes the result after the
+ * transformations have been applied and then stores it internally
+ * in an intermediate buffer such that it can still be consumed later.
  *
- * In all cases, the thread that executes the continuations or functions passed to
- * the methods of an instance of this class are carried by default inside the
- * thread that produces the result. In many case, to improve reactivity, it is
- * better to free asap the thread that consumes side-effects and offload computations
- * to another thread or thread-pool using the `dispatchTo` method. This method takes
- * a standard `juc.Executor` argument. Note that one can also use a Platform
- * encapsulating a thread-pool or even a sequential user-level thread (created using
- * `platform.scheduler.mkUThread()`), which implement the `juc.Executor` interface.
+ * In all situations, the continuations or the transformation functions
+ * applied to a result channel are carried by default inside the
+ * thread that produces the result. To improve reactiveness and/or isolate
+ * concurrent computations from each other, it is prefereable to free as
+ * soon as possible the thread that produces results and offload the
+ * computation of transformations to the thread that consumes the result.
+ * The `dispatchTo` method, if it is called immediately after a future
+ * is created, will dipatch any subsequent continuation or transformation
+ * to the standard `juc.Executor` that it is passed as parameter. For example,
+ * this could be either a [[molecule.platform.Platform]] or a
+ * [[molecule.platform.UThread]], which both inherit from the `Executor`
+ * interface. In the first case, continuations will be carried inside a new
+ * user-level thread created by the target platform. In the second case,
+ * the continuations will be pinned down to an existing user-level thread.
+ *
+ * Note that in case a message is pure, the result of a result channel
+ * can be cached for multiple (sequential) reads using the
+ * `cache()` method. Alternatively, for
+ * interoperability with Java, a result can also be wrapped
+ * inside a standard `juc.Future` by invoking the `future()` method
+ * on result channels (this method is provided via an implicit conversion
+ * to `RIChanWithFuture` in the companion object).
  *
  * @tparam A the type of the message returned by the channel
  */
 abstract class RIChan[+A] extends IChan[A] { outer =>
 
   /**
-   * Read a result asynchronously using continuations for success and failure cases.
+   * Read a result asynchronously using continuations for success and
+   * failure cases.
    *
    * @param success continuation invoked in case of success.
    * @param failure continuation invoked in case of failure.
@@ -98,11 +112,11 @@ abstract class RIChan[+A] extends IChan[A] { outer =>
     read(success, failure)
 
   /**
-   * Fallback to an alternative future if this future raises a signal
+   * Fallback to an alternative result channel if this channel raises a signal
    * instead of returning a result.
    *
-   * @param recover the partial function invoked if a user-level exception occurs.
-   * @return a managed action.
+   * @param recover the partial function invoked if a signal is raised.
+   * @return a new result channel.
    */
   def orCatch[B >: A](recover: PartialFunction[Signal, RIChan[B]]): RIChan[B] = new RIChan[B] {
     def read(success: B => Unit, failure: Signal => Unit): Unit =
@@ -115,13 +129,14 @@ abstract class RIChan[+A] extends IChan[A] { outer =>
   }
 
   /**
-   * Read the result of a result channel within the specified timeout. If the result
-   * is no available within the specified timeout, this channel will be automatically
-   * poisoned.
+   * Read the result of a result channel within the specified timeout. If the
+   * result is no available within the specified timeout, this channel will
+   * be automatically poisoned.
    *
    * @param delay    the time from now to delay execution.
    * @param unit     the time unit of the delay parameter.
-   * @return some result if the result becomes available before the timeout, else none.
+   * @return some result if the result becomes available before the timeout,
+   *         else none.
    */
   def readWithin(delay: Long, unit: TimeUnit)(implicit ma: Message[A]): RIChan[Option[A]] =
     (this or Timer.timeout(delay, unit)) flatMap {
@@ -183,9 +198,9 @@ abstract class RIChan[+A] extends IChan[A] { outer =>
    *
    * The new result channel created succeeds with the first successful result
    * returned by either this channel or the other channel. It fails only
-   * if both channels fail. Whenever one of the result channel succeed, a new result
-   * channel is returned with the result such that one can attempt to retrieve
-   * the other result a second time.
+   * if both channels fail. Whenever one of the result channels succeeds,
+   * the other result channel is returned with the result such that one
+   * can attempt to retrieve the other result a second time later.
    *
    * @param other the other result channel.
    * @return either the result of this channel or the result of the other one.
@@ -253,8 +268,8 @@ abstract class RIChan[+A] extends IChan[A] { outer =>
    *
    * The new result channel created succeeds with the first successful result
    * returned by either this channel or the other channel. It fails only
-   * if both channels fail. Once a result becomes available, the other result
-   * is automatically poisoned once it becomes available.
+   * if both channels fail. The other result channel will be automatically
+   * poisoned once a result becomes available.
    *
    * @param other the other result channel.
    * @return either the result of this channel or the result of the other one.
@@ -438,7 +453,7 @@ abstract class RIChan[+A] extends IChan[A] { outer =>
   def get_!(): A = {
 
     var tmp: Either[Signal, A] = null
-    // Normally submission must be sequential (i.e. never more than one element) 
+    // Normally submission must be sequential (i.e. never more than one element)
     // but just in case we use a queue ...
     val q = new scala.collection.mutable.Queue[Runnable]
 
@@ -465,18 +480,19 @@ abstract class RIChan[+A] extends IChan[A] { outer =>
 }
 
 /**
- * Companion object for RIChan.
+ * Factory methods for RIChan and extra DSL support like `callcc` and `parl`
+ * (see `ChameneosRedux` example in `molecule-core-examples`).
  */
 object RIChan {
 
   /**
-   * Create a result channel that produces the result of a (blocking) task executed
-   * asynchronously.
+   * Create a result channel that returns the result of an asynchronous task that
+   * is scheduled only when some process attempts to consume the result.
    *
-   * The thread that executes the task can be released immediately once the result
-   * becomes available, independently from the transformations applied to the result
-   * channel, by calling `bind` on the resulting channel before any other method is
-   * invoked.
+   * Note: the executor that executes the task can be released immediately once
+   * the result becomes available, independently from the transformations
+   * applied to the result, by calling `dispathTo` immediately after this
+   * channel is created.
    *
    * @tparam A the type of the message created by the task.
    * @param executor the executor that executes the task and produces a result.
@@ -507,12 +523,13 @@ object RIChan {
   }
 
   /**
-   * Create a result channel that submits a task to an executor immediately.
+   * Create a result channel that returns the result of an asynchronous task
+   * that is scheduled immediately for execution.
    *
-   * The thread that executes the task can be released immediately once the result
-   * becomes available, independently from the transformations applied to the result
-   * channel, by calling `bind` on the resulting channel before any other method is
-   * invoked.
+   * Note: the executor that executes the task can be released immediately once
+   * the result becomes available, independently from the transformations
+   * applied to the result, by calling `dispathTo` immediately after this
+   * channel is created.
    *
    * @tparam A the type of the message created by the task.
    * @param executor the executor that executes the task and produces a result.
@@ -578,12 +595,13 @@ object RIChan {
   import scala.collection.generic.CanBuildFrom
 
   /**
-   * Execute a list of interleaved actions and return their results as a list.
-   * If one action fails all the other actions are terminated and a single signal
-   * corresponding to the exception is raised.
+   * Consume the results of a list of result channels in parallel and return
+   * them as a list. If one result channel fails, all the other results are
+   * poisoned and a single signal corresponding to the exception is raised.
    *
-   * @param ios a list of actions.
-   * @return the list of results. Results occur in the same as the order as the actions that produced them.
+   * @param ris a list of result channels.
+   * @return the list of results. Results occur in the same as the order as
+   * the channels that produced them.
    */
   def parl[A, That <: Traversable[A]](ris: Iterable[RIChan[A]])(implicit ma: Message[A], bf: CanBuildFrom[Nothing, A, That]): RIChan[That] =
     if (ris.isEmpty) {
@@ -710,7 +728,7 @@ object RIChan {
       new RIChanImpl(ichan)
 
   /**
-   * Class that enrich a RIChan with a `future` methods.
+   * Class that enriches a RIChan with a `future` methods.
    *
    * (The implicit conversion is located in the main Molecule object
    * imported by end-users.)
@@ -725,9 +743,9 @@ object RIChan {
      * from a result channel using its `get_!` method. This is only present
      * for interoperability.
      *
-     * Future[A] is invariant, because of that, this method could not been
-     * implemented as a class member of RIChan, which is co-variant. That's
-     * why we use the enrichment pattern.
+     * Note: this method can not be implemented as a class member of
+     * [[molecule.channel.RIChan]] because Future is invariant in
+     * its type parameter.
      *
      * @return a RIChan with a Future.
      */

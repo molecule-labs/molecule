@@ -25,9 +25,6 @@ import java.util.{ concurrent => juc }
 /**
  * Trait for non-blocking system-level output channels.
  *
- *  This interface assumes that `write` and `close`
- * methods are invoked sequentially.
- *
  * @tparam A The type of messages.
  */
 trait OChan[-A] {

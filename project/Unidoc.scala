@@ -7,7 +7,7 @@ import sbt.Keys._
 import sbt.Project.Initialize
 
 object Unidoc {
-  
+
   lazy val JavaDoc = config("genjavadoc") extend Compile
 
   lazy val javadocSettings = inConfig(JavaDoc)(Defaults.configSettings) ++ Seq(
@@ -33,11 +33,13 @@ object Unidoc {
     unidocDirectory <<= Collect.collectDirectory(_ / "unidoc"),
     unidocExclude := Seq.empty,
     unidocAllSources <<= (thisProjectRef, buildStructure, unidocExclude) flatMap allSources(Compile),
-    unidocSources <<= unidocAllSources map { _.flatten },
+    unidocSources <<= unidocAllSources.map(_.flatten).map(
+                      _.filterNot (_.getPath.contains("jsr166"))),
     unidocAllClasspaths <<= (thisProjectRef, buildStructure, unidocExclude) flatMap allClasspaths,
     unidocClasspath <<= unidocAllClasspaths map { _.flatten.map(_.data).distinct },
     junidocAllSources <<= (thisProjectRef, buildStructure, unidocExclude) flatMap allSources(JavaDoc),
-    junidocSources <<= junidocAllSources map { _.flatten },
+    junidocSources <<= junidocAllSources.map(_.flatten).map(
+                      _.filterNot (_.getPath.contains("jsr166"))),
     unidoc <<= unidocTask
   )
 

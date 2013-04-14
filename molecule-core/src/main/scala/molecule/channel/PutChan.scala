@@ -27,8 +27,9 @@ package channel
  * methods are invoked sequentially.
  *
  * This trait is useful to wrap legacy blocking output interfaces and can easily
- * be wrapped in a non-blocking `OChan` using `OChan.wrap` method
- * (see `IChan.stdout`, which wraps standard output).
+ * be wrapped in a non-blocking `OChan` using the `wrap` method in the companion
+ * object (see the implementation of [[molecule.channel.Console]]
+ * for examples).
  *
  * @tparam A The type of messages.
  */
@@ -146,7 +147,7 @@ object PutChan {
             try {
               val signal = sigOpt.get
               next.close(signal)
-              k(OChan(signal)) // This can cause a RejectedExecutionException if the core pool is shutdown ahead 
+              k(OChan(signal)) // This can cause a RejectedExecutionException if the core pool is shutdown ahead
             } catch { case _ => () }
           } else
             k(wrap(executor, next))

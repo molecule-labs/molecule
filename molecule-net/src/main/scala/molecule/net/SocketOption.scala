@@ -27,6 +27,8 @@ import java.net.MulticastSocket
 
 /**
  * Socket options.
+ *
+ * See companion object for available options.
  */
 trait SocketOption {
   /**

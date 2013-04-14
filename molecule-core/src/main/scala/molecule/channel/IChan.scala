@@ -25,9 +25,6 @@ import java.util.{ concurrent => juc }
 /**
  * Trait for non-blocking system-level input channels.
  *
- * This interface assumes that `read` and `poison`
- * methods are invoked sequentially.
- *
  * @tparam A The type of messages.
  */
 trait IChan[+A] {

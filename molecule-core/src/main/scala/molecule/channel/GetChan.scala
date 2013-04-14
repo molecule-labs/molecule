@@ -24,18 +24,18 @@ package channel
  * Trait for blocking system-level input channels
  * with blocking and message-at-a-time semantics.
  *
- * This interface assumes that `put_!` and `close`
- * methods are invoked sequentially.
+ * This interface assumes that `get_!` and `poison` methods are invoked
+ * sequentially.
  *
  * This trait is useful to wrap legacy blocking input interfaces and can easily
- * be wrapped in a non-blocking `IChan` using `IChan.wrap` method
- * (see `IChan.stdin`, which wraps standard input).
+ * be wrapped in a non-blocking `IChan` using the `wrap` method in the
+ * companion object (see the implementation of [[molecule.channel.Console]]
+ * for examples).
  *
  * Note that the pattern captured by this trait is safer than the observer
- * pattern in cooperative multi-tasking settings because objects inheriting
- * this class can maintain state in an immutable manner. In the case of the
- * observer, each variables would have to be marked volatile since different
- * threads might access the observer sequentially.
+ * pattern in multi-threaded settings because objects inheriting
+ * this class can maintain state in an immutable manner by returning their
+ * next state together with the next message.
  *
  * @tparam A The type of messages.
  */
