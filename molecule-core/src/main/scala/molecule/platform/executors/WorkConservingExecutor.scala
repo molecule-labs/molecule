@@ -26,14 +26,9 @@ package executors
  *
  * This executor is a trampoline executor that does
  * its best to find something to do before a) scheduling a task to thread pool
- * or b) returning to its thread pool where it might get suspended. Here is how it
- * proceeds:
- * a) it "pushes" the next task it cannot execute itself because it has already scheduled one
- *    to its parent, which is the executors that woke him up. If the parent has already a next
- *    task, the parent schedules the task on the thread pool.
- * b) it "steals" the next task from its parent, if it has nothing to do. The the parent has no
- *    next task the parent will forward the call to its parent, and so on. If not task was found,
- *    the executor returns back to its thread pool.
+ * or b) returning to its thread pool where it might get suspended, by pushing
+ * or stealing tasks to/from its immediate neighbors
+ * (see implementation for details).
  *
  * @author Sebastien Bocq
  */
@@ -75,7 +70,7 @@ final class WorkConservingExecutor(pool: Executor, group: ThreadGroup) extends E
 
     // The following performs worse than the simpler version above in the prime-sieve benchmark
     // and not much better in the other benchmarks
-    //    private final def steal0():Runnable = {	  
+    //    private final def steal0():Runnable = {
     //      val current = nextTask.get()
     //      if ((current ne null) && (current ne this) && (nextTask.compareAndSet(current, null)))
     //        return current
@@ -163,7 +158,7 @@ final class WorkConservingExecutor(pool: Executor, group: ThreadGroup) extends E
             loop(next)
           } else {
             // die %(
-            // Shorten the parent chain to permit garbage collection in case we are the parent of another task, 
+            // Shorten the parent chain to permit garbage collection in case we are the parent of another task,
             // which is the parent of another task, and so on.
             parent = null
           }

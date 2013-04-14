@@ -21,7 +21,9 @@ package molecule.platform
 package executors
 
 /**
- * Executor used by the Flow Parallel Scheduler
+ * Executor used by the Flow Parallel Scheduler described in the paper.
+ * It is kept here for reference as it has now been superseeded by
+ * the WorkConservingExecutor.
  *
  * @author Sebastien Bocq
  */

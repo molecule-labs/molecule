@@ -19,6 +19,23 @@
 
 package molecule
 
+/**
+ * Type class defining how messages sent over channels are poisoned.
+ *
+ * Instances of this class implement the `poison` method to define how
+ * messages must be poisoned. By default, every message is "pure" and the method
+ * does nothing (see [[molecule.PureMessage]]). In case a message type
+ * carries higher order channels, or other resources that must be closed
+ * cleanly if the message is discarded, the default
+ * behavior can be overriden by implementing an implicit instance of this class
+ * in the companion object of the message type
+ * (c.f. Scala's type class resolution mechanism).
+ * The `poison` method will be invoked for example when a message is
+ * filtered out from a channel by a `filter` transformation or when
+ * a message is sent over a channel that has already been poisoned (in
+ * which can it cannot be delivered).
+ *
+ */
 abstract class Message[-A] { outer =>
   def poison(a: A, signal: Signal)
 

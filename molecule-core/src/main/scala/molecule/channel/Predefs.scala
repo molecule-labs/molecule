@@ -27,7 +27,7 @@ trait Predefs {
   class RichValToIChan[A](a: A) {
 
     /**
-     * Wrap this value in a RIChan that returns this value
+     * Wrap this value in a result channel that returns this value.
      */
     def asI(implicit m: Message[A]): channel.RIChan[A] = channel.RIChan.success(a)
   }
@@ -60,12 +60,12 @@ trait Predefs {
   import java.util.{ concurrent => juc }
 
   /**
-   * Class that enriches a juc.Executor with additional methods.
+   * Class that enriches a `juc.Executor` with additional methods.
    */
   class RichExecutor(executor: juc.Executor) {
 
     /**
-     * Execute a think of code captured by a by-name argument.
+     * Execute a thunk of code captured by a by-name argument.
      *
      * @param thunk the thunk of code to execute.
      * @return unit
@@ -75,18 +75,19 @@ trait Predefs {
   }
 
   /**
-   * Enrich a juc.Executor with additional methods.
+   * Enrich a `juc.Executor` with additional methods.
    */
   implicit def enrichExecutor[A](executor: juc.Executor): RichExecutor =
     new RichExecutor(executor)
 
   /**
-   * Bridge a system-level input interface to a system-level output interface.
+   * Bridge a system-level input interface and a system-level output interface.
    * All the segments coming on the input are forwarded to the output in a
-   * tight immutable loop in the threads of the sender and the receiver without further level
-   * of indirection. If the input terminates first, the
+   * tight immutable loop in the threads of the sender and the receiver
+   * without further level of indirection. If the input terminates first, the
    * output is closed with the termination signal of the input. If the output
-   * terminates first, the input is poisoned with the termination signal of the output.
+   * terminates first, the input is poisoned with the termination signal
+   * of the output.
    *
    * @param ichan the input.
    * @param ochan the output.

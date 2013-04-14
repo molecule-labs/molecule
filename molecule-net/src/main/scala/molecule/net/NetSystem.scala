@@ -25,9 +25,8 @@ import platform.Platform
 import SocketOption.{ ServerSocketOption, DatagramSocketOption }
 
 /**
- * Nio Connector.
- *
- * This class encapsulates and executes a NIO Selector thread. The number of connection
+ * This class encapsulates a selector thread that dispatches tasks on sockets
+ * in a non-blocking manner. The number of connection
  * that can be handled by a selector is limited to FD_SETSIZE, which is OS specific.
  * See http://www.kegel.com/c10k.html#nb.select.
  *
@@ -35,7 +34,7 @@ import SocketOption.{ ServerSocketOption, DatagramSocketOption }
  * http://www.gridgainsystems.com/wiki/display/GG15UG/Troubleshooting#Troubleshooting-java.net.BindExceptionOnWindows
  *
  * If you want to handle many connections, either increase the value or
- * create several NetSystems (last solution scales much better in terms
+ * create several `NetSystem`s (last solution scales much better in terms
  * of performance).
  *
  */
@@ -216,7 +215,7 @@ abstract class NetSystem {
    *         bound to, and a result channel that terminates when the server
    *         socket is closed.
    */
-  //def launchTcpServer(handler:NetworkHandler[Unit]):(InetSocketAddress, RIChan[Unit]) = 
+  //def launchTcpServer(handler:NetworkHandler[Unit]):(InetSocketAddress, RIChan[Unit]) =
   //	launchTcpServer(TcpServerConfig(), handler)
 
   /**
