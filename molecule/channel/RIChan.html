@@ -29,26 +29,37 @@
       </span>
       </h4>
       
-      <div class="fullcommenttop" id="comment"><div class="comment cmt"><p>&quot;Result&quot;, &quot;reply&quot; or &quot;response&quot; input channel interface. As opposed to a generic
-IChan, this channel interface produces a only single message.</p><p>Like regular input-channels, the channel delivers its result only once
-and cannot be read concurrently. A result channel that is read a second time
-will deliver the EOS signal. However, a result channel can cache a
-result for multiple (sequential) reads using the <code>cache</code> method. It can also be
-converted into a standard java Future using the <code>future</code> method, which will
-also cache the result (this method is provided via an implicit conversion).</p><p>The computations associated to a result channel, and hence
-transformations like <code>map</code> or <code>flatMap</code>, are fired only if the result
-is consumed. In case transformations feature side-effects that must
-be executed even if the result is not consumed, these can be forced by
-calling the <code>fire</code> method. The <code>fire</code> method returns a new result channel
-that consumes the result and then buffers it internally in case someone
-needs it later.</p><p>In all cases, the thread that executes the continuations or functions passed to
-the methods of an instance of this class are carried by default inside the
-thread that produces the result. In many case, to improve reactivity, it is
-better to free asap the thread that consumes side-effects and offload computations
-to another thread or thread-pool using the <code>dispatchTo</code> method. This method takes
-a standard <code>juc.Executor</code> argument. Note that one can also use a Platform
-encapsulating a thread-pool or even a sequential user-level thread (created using
-<code>platform.scheduler.mkUThread()</code>), which implement the <code>juc.Executor</code> interface.
+      <div class="fullcommenttop" id="comment"><div class="comment cmt"><p>&quot;Result&quot;, &quot;reply&quot; or &quot;response&quot; input channel interface.</p><p>Result channels are system-level input channels that deliver only
+a single message followed by the EOS. They obey channel semantics in that
+they cannot be read concurrently and they deliver messages only
+once - a result channel that is read a second time will deliver the
+EOS signal.</p><p>The computations associated to a result channel, and hence
+transformations like <code>map</code> or <code>flatMap</code>, are only fired lazyliy when
+a process attempts to read the result from the channel. Transformations
+featuring side-effects can be executed even if no one is
+interested in the result by calling the <code>fire()</code> method. This method
+returns a new result channel that consumes the result after the
+transformations have been applied and then stores it internally
+in an intermediate buffer such that it can still be consumed later.</p><p>In all situations, the continuations or the transformation functions
+applied to a result channel are carried by default inside the
+thread that produces the result. To improve reactiveness and/or isolate
+concurrent computations from each other, it is prefereable to free as
+soon as possible the thread that produces results and offload the
+computation of transformations to the thread that consumes the result.
+The <code>dispatchTo</code> method, if it is called immediately after a future
+is created, will dipatch any subsequent continuation or transformation
+to the standard <code>juc.Executor</code> that it is passed as parameter. For example,
+this could be either a <a name="molecule.platform.Platform" class="extype" href="../platform/Platform.html">Platform</a> or a
+<a name="molecule.platform.UThread" class="extype" href="../platform/UThread.html">UThread</a>, which both inherit from the <code>Executor</code>
+interface. In the first case, continuations will be carried inside a new
+user-level thread created by the target platform. In the second case,
+the continuations will be pinned down to an existing user-level thread.</p><p>Note that in case a message is pure, the result of a result channel
+can be cached for multiple (sequential) reads using the
+<code>cache()</code> method. Alternatively, for
+interoperability with Java, a result can also be wrapped
+inside a standard <code>juc.Future</code> by invoking the <code>future()</code> method
+on result channels (this method is provided via an implicit conversion
+to <code>RIChanWithFuture</code> in the companion object).
 </p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the type of the message returned by the channel
 </p></dd></dl><dl class="attributes block"> <dt>Self Type</dt><dd><a name="molecule.channel.RIChan" class="extype" href="">RIChan</a>[A]</dd><dt>Source</dt><dd><a target="_blank" href="https://github.com/molecule-labs/molecule/tree/develop/molecule-core/src/main/scala/molecule/channel/RChan.scala">RChan.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
@@ -122,7 +133,9 @@ encapsulating a thread-pool or even a sequential user-level thread (created usin
         <span class="name">read</span><span class="params">(<span name="success">success: (A) ⇒ <span name="scala.Unit" class="extype">Unit</span></span>, <span name="failure">failure: (<a name="molecule.Signal" class="extype" href="../Signal.html">Signal</a>) ⇒ <span name="scala.Unit" class="extype">Unit</span></span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Read a result asynchronously using continuations for success and failure cases.</p><div class="fullcomment"><div class="comment cmt"><p>Read a result asynchronously using continuations for success and failure cases.
+      <p class="shortcomment cmt">Read a result asynchronously using continuations for success and
+failure cases.</p><div class="fullcomment"><div class="comment cmt"><p>Read a result asynchronously using continuations for success and
+failure cases.
 </p></div><dl class="paramcmts block"><dt class="param">success</dt><dd class="cmt"><p>continuation invoked in case of success.</p></dd><dt class="param">failure</dt><dd class="cmt"><p>continuation invoked in case of failure.</p></dd><dt>returns</dt><dd class="cmt"><p>unit
 </p></dd></dl></div>
     </li></ol>
@@ -481,8 +494,8 @@ and failure cases.
 another channel.</p><div class="fullcomment"><div class="comment cmt"><p>Choose the first result between the result of this channel and the one of
 another channel.</p><p>The new result channel created succeeds with the first successful result
 returned by either this channel or the other channel. It fails only
-if both channels fail. Once a result becomes available, the other result
-is automatically poisoned once it becomes available.
+if both channels fail. The other result channel will be automatically
+poisoned once a result becomes available.
 </p></div><dl class="paramcmts block"><dt class="param">other</dt><dd class="cmt"><p>the other result channel.</p></dd><dt>returns</dt><dd class="cmt"><p>either the result of this channel or the result of the other one.
 </p></dd></dl></div>
     </li><li visbl="pub" name="molecule.channel.RIChan#orCatch" data-isabs="false">
@@ -496,10 +509,10 @@ is automatically poisoned once it becomes available.
         <span class="name">orCatch</span><span class="tparams">[<span name="B">B &gt;: A</span>]</span><span class="params">(<span name="recover">recover: <span name="scala.PartialFunction" class="extype">PartialFunction</span>[<a name="molecule.Signal" class="extype" href="../Signal.html">Signal</a>, <a name="molecule.channel.RIChan" class="extype" href="">RIChan</a>[B]]</span>)</span><span class="result">: <a name="molecule.channel.RIChan" class="extype" href="">RIChan</a>[B]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Fallback to an alternative future if this future raises a signal
-instead of returning a result.</p><div class="fullcomment"><div class="comment cmt"><p>Fallback to an alternative future if this future raises a signal
+      <p class="shortcomment cmt">Fallback to an alternative result channel if this channel raises a signal
+instead of returning a result.</p><div class="fullcomment"><div class="comment cmt"><p>Fallback to an alternative result channel if this channel raises a signal
 instead of returning a result.
-</p></div><dl class="paramcmts block"><dt class="param">recover</dt><dd class="cmt"><p>the partial function invoked if a user-level exception occurs.</p></dd><dt>returns</dt><dd class="cmt"><p>a managed action.
+</p></div><dl class="paramcmts block"><dt class="param">recover</dt><dd class="cmt"><p>the partial function invoked if a signal is raised.</p></dd><dt>returns</dt><dd class="cmt"><p>a new result channel.
 </p></dd></dl></div>
     </li><li visbl="pub" name="molecule.channel.RIChan#read" data-isabs="false">
       <a id="read((Seg[A], IChan[A]) ⇒ Unit):Unit"></a>
@@ -527,10 +540,11 @@ instead of returning a result.
         <span class="name">readWithin</span><span class="params">(<span name="delay">delay: <span name="scala.Long" class="extype">Long</span></span>, <span name="unit">unit: <span name="java.util.concurrent.TimeUnit" class="extype">TimeUnit</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ma">ma: <a name="molecule.Message" class="extype" href="../Message.html">Message</a>[A]</span>)</span><span class="result">: <a name="molecule.channel.RIChan" class="extype" href="">RIChan</a>[<span name="scala.Option" class="extype">Option</span>[A]]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Read the result of a result channel within the specified timeout.</p><div class="fullcomment"><div class="comment cmt"><p>Read the result of a result channel within the specified timeout. If the result
-is no available within the specified timeout, this channel will be automatically
-poisoned.
-</p></div><dl class="paramcmts block"><dt class="param">delay</dt><dd class="cmt"><p>the time from now to delay execution.</p></dd><dt class="param">unit</dt><dd class="cmt"><p>the time unit of the delay parameter.</p></dd><dt>returns</dt><dd class="cmt"><p>some result if the result becomes available before the timeout, else none.
+      <p class="shortcomment cmt">Read the result of a result channel within the specified timeout.</p><div class="fullcomment"><div class="comment cmt"><p>Read the result of a result channel within the specified timeout. If the
+result is no available within the specified timeout, this channel will
+be automatically poisoned.
+</p></div><dl class="paramcmts block"><dt class="param">delay</dt><dd class="cmt"><p>the time from now to delay execution.</p></dd><dt class="param">unit</dt><dd class="cmt"><p>the time unit of the delay parameter.</p></dd><dt>returns</dt><dd class="cmt"><p>some result if the result becomes available before the timeout,
+        else none.
 </p></dd></dl></div>
     </li><li visbl="pub" name="molecule.channel.RIChan#select" data-isabs="false">
       <a id="select[B](RIChan[B])(Message[A],Message[B]):RIChan[Either[(A, RIChan[B]), (B, RIChan[A])]]"></a>
@@ -547,9 +561,9 @@ poisoned.
 another channel.</p><div class="fullcomment"><div class="comment cmt"><p>Choose the first result between the result of this channel and the one of
 another channel.</p><p>The new result channel created succeeds with the first successful result
 returned by either this channel or the other channel. It fails only
-if both channels fail. Whenever one of the result channel succeed, a new result
-channel is returned with the result such that one can attempt to retrieve
-the other result a second time.
+if both channels fail. Whenever one of the result channels succeeds,
+the other result channel is returned with the result such that one
+can attempt to retrieve the other result a second time later.
 </p></div><dl class="paramcmts block"><dt class="param">other</dt><dd class="cmt"><p>the other result channel.</p></dd><dt>returns</dt><dd class="cmt"><p>either the result of this channel or the result of the other one.
 </p></dd></dl></div>
     </li><li visbl="pub" name="scala.AnyRef#synchronized" data-isabs="false">

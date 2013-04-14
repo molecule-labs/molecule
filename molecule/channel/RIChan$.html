@@ -29,7 +29,8 @@
       </span>
       </h4>
       
-      <div class="fullcommenttop" id="comment"><div class="comment cmt"><p>Companion object for RIChan.
+      <div class="fullcommenttop" id="comment"><div class="comment cmt"><p>Factory methods for RIChan and extra DSL support like <code>callcc</code> and <code>parl</code>
+(see <code>ChameneosRedux</code> example in <code>molecule-core-examples</code>).
 </p></div><dl class="attributes block"> <dt>Source</dt><dd><a target="_blank" href="https://github.com/molecule-labs/molecule/tree/develop/molecule-core/src/main/scala/molecule/channel/RChan.scala">RChan.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent">AnyRef, <span name="scala.Any" class="extype">Any</span></div>
@@ -71,7 +72,7 @@
         <a href="RIChan$$RIChanWithFuture.html"><span class="name">RIChanWithFuture</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends AnyRef</span>
       </span>
       </h4>
-      <p class="comment cmt">Class that enrich a RIChan with a <code>future</code> methods.</p>
+      <p class="comment cmt">Class that enriches a RIChan with a <code>future</code> methods.</p>
     </li></ol>
             </div>
 
@@ -162,10 +163,12 @@
         <span class="name">async</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="executor">executor: <span name="java.util.concurrent.Executor" class="extype">Executor</span></span>)</span><span class="params">(<span name="task">task: ⇒ A</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a name="molecule.Message" class="extype" href="../Message.html">Message</a>[A]</span>)</span><span class="result">: <a name="molecule.channel.RIChan" class="extype" href="RIChan.html">RIChan</a>[A]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Create a result channel that submits a task to an executor immediately.</p><div class="fullcomment"><div class="comment cmt"><p>Create a result channel that submits a task to an executor immediately.</p><p>The thread that executes the task can be released immediately once the result
-becomes available, independently from the transformations applied to the result
-channel, by calling <code>bind</code> on the resulting channel before any other method is
-invoked.
+      <p class="shortcomment cmt">Create a result channel that returns the result of an asynchronous task
+that is scheduled immediately for execution.</p><div class="fullcomment"><div class="comment cmt"><p>Create a result channel that returns the result of an asynchronous task
+that is scheduled immediately for execution.</p><p>Note: the executor that executes the task can be released immediately once
+the result becomes available, independently from the transformations
+applied to the result, by calling <code>dispathTo</code> immediately after this
+channel is created.
 </p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the type of the message created by the task.</p></dd><dt class="param">executor</dt><dd class="cmt"><p>the executor that executes the task and produces a result.</p></dd><dt class="param">task</dt><dd class="cmt"><p>the task that is executed asynchronously by the executor.</p></dd><dt>returns</dt><dd class="cmt"><p>a result channel that produces the result of the task
 </p></dd></dl></div>
     </li><li visbl="pub" name="molecule.channel.RIChan#callcc" data-isabs="false">
@@ -309,12 +312,12 @@ invoked.
         <span class="name">lazyAsync</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="executor">executor: <span name="java.util.concurrent.Executor" class="extype">Executor</span></span>)</span><span class="params">(<span name="task">task: ⇒ A</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a name="molecule.Message" class="extype" href="../Message.html">Message</a>[A]</span>)</span><span class="result">: <a name="molecule.channel.RIChan" class="extype" href="RIChan.html">RIChan</a>[A]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Create a result channel that produces the result of a (blocking) task executed
-asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Create a result channel that produces the result of a (blocking) task executed
-asynchronously.</p><p>The thread that executes the task can be released immediately once the result
-becomes available, independently from the transformations applied to the result
-channel, by calling <code>bind</code> on the resulting channel before any other method is
-invoked.
+      <p class="shortcomment cmt">Create a result channel that returns the result of an asynchronous task that
+is scheduled only when some process attempts to consume the result.</p><div class="fullcomment"><div class="comment cmt"><p>Create a result channel that returns the result of an asynchronous task that
+is scheduled only when some process attempts to consume the result.</p><p>Note: the executor that executes the task can be released immediately once
+the result becomes available, independently from the transformations
+applied to the result, by calling <code>dispathTo</code> immediately after this
+channel is created.
 </p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the type of the message created by the task.</p></dd><dt class="param">executor</dt><dd class="cmt"><p>the executor that executes the task and produces a result.</p></dd><dt class="param">task</dt><dd class="cmt"><p>the task that is executed asynchronously by the executor.</p></dd><dt>returns</dt><dd class="cmt"><p>a result channel that produces the result of the task
 </p></dd></dl></div>
     </li><li visbl="pub" name="scala.AnyRef#ne" data-isabs="false">
@@ -364,10 +367,12 @@ invoked.
         <span class="name">parl</span><span class="tparams">[<span name="A">A</span>, <span name="That">That &lt;: Traversable[A]</span>]</span><span class="params">(<span name="ris">ris: Iterable[<a name="molecule.channel.RIChan" class="extype" href="RIChan.html">RIChan</a>[A]]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ma">ma: <a name="molecule.Message" class="extype" href="../Message.html">Message</a>[A]</span>, <span name="bf">bf: <span name="scala.collection.generic.CanBuildFrom" class="extype">CanBuildFrom</span>[<span name="scala.Nothing" class="extype">Nothing</span>, A, That]</span>)</span><span class="result">: <a name="molecule.channel.RIChan" class="extype" href="RIChan.html">RIChan</a>[That]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Execute a list of interleaved actions and return their results as a list.</p><div class="fullcomment"><div class="comment cmt"><p>Execute a list of interleaved actions and return their results as a list.
-If one action fails all the other actions are terminated and a single signal
-corresponding to the exception is raised.
-</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the list of results. Results occur in the same as the order as the actions that produced them.
+      <p class="shortcomment cmt">Consume the results of a list of result channels in parallel and return
+them as a list.</p><div class="fullcomment"><div class="comment cmt"><p>Consume the results of a list of result channels in parallel and return
+them as a list. If one result channel fails, all the other results are
+poisoned and a single signal corresponding to the exception is raised.
+</p></div><dl class="paramcmts block"><dt class="param">ris</dt><dd class="cmt"><p>a list of result channels.</p></dd><dt>returns</dt><dd class="cmt"><p>the list of results. Results occur in the same as the order as
+the channels that produced them.
 </p></dd></dl></div>
     </li><li visbl="pub" name="molecule.channel.RIChan#success" data-isabs="false">
       <a id="success[A](A)(Message[A]):RIChan[A]"></a>

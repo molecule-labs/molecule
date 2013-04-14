@@ -29,7 +29,18 @@
       </span>
       </h4>
       
-      <div class="fullcommenttop" id="comment"><dl class="attributes block"> <dt>Self Type</dt><dd><a name="molecule.Message" class="extype" href="">Message</a>[A]</dd><dt>Source</dt><dd><a target="_blank" href="https://github.com/molecule-labs/molecule/tree/develop/molecule-core/src/main/scala/molecule/Message.scala">Message.scala</a></dd></dl><div class="toggleContainer block">
+      <div class="fullcommenttop" id="comment"><div class="comment cmt"><p>Type class defining how messages sent over channels are poisoned.</p><p>Instances of this class implement the <code>poison</code> method to define how
+messages must be poisoned. By default, every message is &quot;pure&quot; and the method
+does nothing (see <a name="molecule.PureMessage" class="extype" href="PureMessage.html">PureMessage</a>). In case a message type
+carries higher order channels, or other resources that must be closed
+cleanly if the message is discarded, the default
+behavior can be overriden by implementing an implicit instance of this class
+in the companion object of the message type
+(c.f. Scala's type class resolution mechanism).
+The <code>poison</code> method will be invoked for example when a message is
+filtered out from a channel by a <code>filter</code> transformation or when
+a message is sent over a channel that has already been poisoned (in
+which can it cannot be delivered).</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a name="molecule.Message" class="extype" href="">Message</a>[A]</dd><dt>Source</dt><dd><a target="_blank" href="https://github.com/molecule-labs/molecule/tree/develop/molecule-core/src/main/scala/molecule/Message.scala">Message.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent">AnyRef, <span name="scala.Any" class="extype">Any</span></div>
         </div><div class="toggleContainer block">

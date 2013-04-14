@@ -30,14 +30,14 @@
       </h4>
       
       <div class="fullcommenttop" id="comment"><div class="comment cmt"><p>Trait for blocking system-level input channels
-with blocking and message-at-a-time semantics.</p><p>This interface assumes that <code>put_!</code> and <code>close</code>
-methods are invoked sequentially.</p><p>This trait is useful to wrap legacy blocking input interfaces and can easily
-be wrapped in a non-blocking <code>IChan</code> using <code>IChan.wrap</code> method
-(see <code>IChan.stdin</code>, which wraps standard input).</p><p>Note that the pattern captured by this trait is safer than the observer
-pattern in cooperative multi-tasking settings because objects inheriting
-this class can maintain state in an immutable manner. In the case of the
-observer, each variables would have to be marked volatile since different
-threads might access the observer sequentially.
+with blocking and message-at-a-time semantics.</p><p>This interface assumes that <code>get_!</code> and <code>poison</code> methods are invoked
+sequentially.</p><p>This trait is useful to wrap legacy blocking input interfaces and can easily
+be wrapped in a non-blocking <code>IChan</code> using the <code>wrap</code> method in the
+companion object (see the implementation of molecule.channel.Console
+for examples).</p><p>Note that the pattern captured by this trait is safer than the observer
+pattern in multi-threaded settings because objects inheriting
+this class can maintain state in an immutable manner by returning their
+next state together with the next message.
 </p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>The type of messages.
 </p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a target="_blank" href="https://github.com/molecule-labs/molecule/tree/develop/molecule-core/src/main/scala/molecule/channel/GetChan.scala">GetChan.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>

@@ -31,14 +31,9 @@
       
       <div class="fullcommenttop" id="comment"><div class="comment cmt"><p>Optimistic work-conserving executor.</p><p>This executor is a trampoline executor that does
 its best to find something to do before a) scheduling a task to thread pool
-or b) returning to its thread pool where it might get suspended. Here is how it
-proceeds:
-a) it &quot;pushes&quot; the next task it cannot execute itself because it has already scheduled one
-   to its parent, which is the executors that woke him up. If the parent has already a next
-   task, the parent schedules the task on the thread pool.
-b) it &quot;steals&quot; the next task from its parent, if it has nothing to do. The the parent has no
-   next task the parent will forward the call to its parent, and so on. If not task was found,
-   the executor returns back to its thread pool.
+or b) returning to its thread pool where it might get suspended, by pushing
+or stealing tasks to/from its immediate neighbors
+(see implementation for details).
 </p></div><dl class="attributes block"> <dt>Source</dt><dd><a target="_blank" href="https://github.com/molecule-labs/molecule/tree/develop/molecule-core/src/main/scala/molecule/platform/executors/WorkConservingExecutor.scala">WorkConservingExecutor.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a name="molecule.platform.Executor" class="extype" href="../Executor.html">Executor</a>, <span name="java.util.concurrent.Executor" class="extype">Executor</span>, AnyRef, <span name="scala.Any" class="extype">Any</span></div>

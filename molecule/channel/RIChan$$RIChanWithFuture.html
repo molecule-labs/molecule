@@ -29,7 +29,7 @@
       </span>
       </h4>
       
-      <div class="fullcommenttop" id="comment"><div class="comment cmt"><p>Class that enrich a RIChan with a <code>future</code> methods.</p><p>(The implicit conversion is located in the main Molecule object
+      <div class="fullcommenttop" id="comment"><div class="comment cmt"><p>Class that enriches a RIChan with a <code>future</code> methods.</p><p>(The implicit conversion is located in the main Molecule object
 imported by end-users.)
 </p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the type of the message returned by the channel
 </p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a target="_blank" href="https://github.com/molecule-labs/molecule/tree/develop/molecule-core/src/main/scala/molecule/channel/RChan.scala">RChan.scala</a></dd></dl><div class="toggleContainer block">
@@ -221,9 +221,9 @@ imported by end-users.)
       <p class="shortcomment cmt">Convert a result channel to a standard Future.</p><div class="fullcomment"><div class="comment cmt"><p>Convert a result channel to a standard Future. Note that a result
 can be already retrieved synchronously (i.e. in a blocking manner)
 from a result channel using its <code>get_!</code> method. This is only present
-for interoperability.</p><p>Future[A] is invariant, because of that, this method could not been
-implemented as a class member of RIChan, which is co-variant. That's
-why we use the enrichment pattern.
+for interoperability.</p><p>Note: this method can not be implemented as a class member of
+<a name="molecule.channel.RIChan" class="extype" href="RIChan.html">RIChan</a> because Future is invariant in
+its type parameter.
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a RIChan with a Future.
 </p></dd></dl></div>
     </li><li visbl="pub" name="scala.AnyRef#getClass" data-isabs="false">

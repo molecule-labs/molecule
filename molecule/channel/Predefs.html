@@ -73,7 +73,7 @@
         <a href="Predefs$RichExecutor.html"><span class="name">RichExecutor</span></a><span class="result"> extends AnyRef</span>
       </span>
       </h4>
-      <p class="comment cmt">Class that enriches a juc.</p>
+      <p class="comment cmt">Class that enriches a <code>juc.Executor</code> with additional methods.</p>
     </li><li visbl="pub" name="molecule.channel.Predefs.RichTraversableToIChan" data-isabs="false">
       <a id="RichTraversableToIChan:RichTraversableToIChan[A]"></a>
       <h4 class="signature">
@@ -202,12 +202,13 @@
         <span class="name">bridge</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="ichan">ichan: <a name="molecule.channel.IChan" class="extype" href="IChan.html">IChan</a>[A]</span>, <span name="ochan">ochan: <a name="molecule.channel.OChan" class="extype" href="OChan.html">OChan</a>[A]</span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Bridge a system-level input interface to a system-level output interface.</p><div class="fullcomment"><div class="comment cmt"><p>Bridge a system-level input interface to a system-level output interface.
+      <p class="shortcomment cmt">Bridge a system-level input interface and a system-level output interface.</p><div class="fullcomment"><div class="comment cmt"><p>Bridge a system-level input interface and a system-level output interface.
 All the segments coming on the input are forwarded to the output in a
-tight immutable loop in the threads of the sender and the receiver without further level
-of indirection. If the input terminates first, the
+tight immutable loop in the threads of the sender and the receiver
+without further level of indirection. If the input terminates first, the
 output is closed with the termination signal of the input. If the output
-terminates first, the input is poisoned with the termination signal of the output.
+terminates first, the input is poisoned with the termination signal
+of the output.
 </p></div><dl class="paramcmts block"><dt class="param">ichan</dt><dd class="cmt"><p>the input.</p></dd><dt class="param">ochan</dt><dd class="cmt"><p>the output.</p></dd><dt>returns</dt><dd class="cmt"><p>Unit
 </p></dd></dl></div>
     </li><li visbl="prt" name="scala.AnyRef#clone" data-isabs="false">
@@ -236,8 +237,7 @@ terminates first, the input is poisoned with the termination signal of the outpu
         <span class="name">enrichExecutor</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="executor">executor: <span name="java.util.concurrent.Executor" class="extype">Executor</span></span>)</span><span class="result">: <a name="molecule.channel.Predefs.RichExecutor" class="extype" href="Predefs$RichExecutor.html">RichExecutor</a></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Enrich a juc.</p><div class="fullcomment"><div class="comment cmt"><p>Enrich a juc.Executor with additional methods.
-</p></div></div>
+      <p class="shortcomment cmt">Enrich a <code>juc.Executor</code> with additional methods.</p>
     </li><li visbl="pub" name="molecule.channel.Predefs#enrichTraversableToIChan" data-isabs="false">
       <a id="enrichTraversableToIChan[A](Traversable[A]):RichTraversableToIChan[A]"></a>
       <h4 class="signature">

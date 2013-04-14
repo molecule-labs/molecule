@@ -31,8 +31,9 @@
       
       <div class="fullcommenttop" id="comment"><div class="comment cmt"><p>Trait for blocking system-level output channels.</p><p>This interface assumes that <code>put_!</code> and <code>close</code>
 methods are invoked sequentially.</p><p>This trait is useful to wrap legacy blocking output interfaces and can easily
-be wrapped in a non-blocking <code>OChan</code> using <code>OChan.wrap</code> method
-(see <code>IChan.stdout</code>, which wraps standard output).
+be wrapped in a non-blocking <code>OChan</code> using the <code>wrap</code> method in the companion
+object (see the implementation of molecule.channel.Console
+for examples).
 </p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>The type of messages.
 </p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a target="_blank" href="https://github.com/molecule-labs/molecule/tree/develop/molecule-core/src/main/scala/molecule/channel/PutChan.scala">PutChan.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
