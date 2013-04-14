@@ -1,0 +1,30 @@
+#Host:        megaphone (24*amd64)
+#OS:          Linux
+#JVM:         Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 1.7.0_04-ea-b06
+#JVM options: [-XX:+UseNUMA,-XX:+UseCondCardMark,-Xss1M,-XX:MaxPermSize=128m,-XX:+UseParallelGC,-XX:+DoEscapeAnalysis,-Xms1024m,-Xmx1024m]
+#
+#date:        09/04/2013 19::16::17
+#benchmark:   chameneos-redux
+#test:        molecule-core
+#config:      (nbMeetings=234375, nbChameneos=300,1)
+
+#|            threads |            time[s] |            cvar[%] | throughput[meetings/s] |            speedup |
+                   1                 .875               11.814           267857.143                1.000
+                   2                 .942                5.762           248805.732                 .929
+                   3                 .965               33.893           242875.648                 .907
+                   4                1.086                4.791           215814.917                 .806
+                   5                1.131                2.345           207228.117                 .774
+                   6                1.167                4.565           200835.476                 .750
+                   8                1.240                1.889           189012.097                 .706
+                  10                1.202                2.139           194987.521                 .728
+                  12                1.284               16.152           182535.047                 .681
+                  14                1.221                6.833           191953.317                 .717
+                  16                1.241                1.594           188859.790                 .705
+                  18                1.276               16.912           183679.467                 .686
+                  20                1.246                6.026           188101.926                 .702
+                  22                1.291               19.743           181545.314                 .678
+                  24                1.266                5.335           185130.332                 .691
+                  28                1.290               17.633           181686.047                 .678
+                  32                1.222                3.835           191796.236                 .716
+
+#end time:09/04/2013 19::18::16

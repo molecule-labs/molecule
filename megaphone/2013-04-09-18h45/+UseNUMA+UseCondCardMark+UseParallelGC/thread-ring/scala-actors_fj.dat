@@ -1,0 +1,22 @@
+#Host:        megaphone (24*amd64)
+#OS:          Linux
+#JVM:         Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 1.7.0_04-ea-b06
+#JVM options: [-XX:+UseNUMA,-XX:+UseCondCardMark,-Xss1M,-XX:MaxPermSize=128m,-XX:+UseParallelGC,-XX:+DoEscapeAnalysis,-Xms1024m,-Xmx1024m]
+#
+#date:        10/04/2013 00::48::16
+#benchmark:   thread-ring
+#test:        scala-actors
+#config:      size=503, N=220507
+
+#|            threads |            time[s] |            cvar[%] |  throughput[msg/s] |
+                   1                 .603               15.031           365683.250
+                   2                 .672                8.176           328135.417
+                   3                 .757                5.491           291290.621
+                   4                 .711                6.862           310136.428
+                   8                 .838                5.671           263134.845
+                  12                 .893                2.498           246928.331
+                  16                 .879                1.227           250861.206
+                  20                 .852                1.322           258811.033
+                  24                 .907                3.305           243116.869
+
+#end time:10/04/2013 00::49::01

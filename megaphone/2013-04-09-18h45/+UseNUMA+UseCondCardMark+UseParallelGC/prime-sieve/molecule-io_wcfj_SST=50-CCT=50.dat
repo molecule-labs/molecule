@@ -1,0 +1,25 @@
+#Host:        megaphone (24*amd64)
+#OS:          Linux
+#JVM:         Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 1.7.0_04-ea-b06
+#JVM options: [-XX:+UseNUMA,-XX:+UseCondCardMark,-Xss1M,-XX:MaxPermSize=128m,-XX:+UseParallelGC,-XX:+DoEscapeAnalysis,-Xms1024m,-Xmx1024m]
+#
+#date:        09/04/2013 22::15::09
+#benchmark:   prime-sieve
+#test:        molecule-io
+#config:      (N=150000,(50,50))
+
+#|            threads |            time[s] |            cvar[%] |            speedup |
+                   1                5.354                7.706                1.000
+                   2                2.722                6.161                1.967
+                   4                1.487                3.987                3.601
+                   6                 .988                2.381                5.419
+                   8                 .742                3.186                7.216
+                  10                 .631                2.263                8.485
+                  12                 .539                1.771                9.933
+                  16                 .437                3.476               12.252
+                  20                 .376                3.634               14.239
+                  24                 .463                9.259               11.564
+                  26                 .457                4.476               11.716
+                  28                 .443                6.810               12.086
+
+#end time:09/04/2013 22::16::33
