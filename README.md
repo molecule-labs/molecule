@@ -197,3 +197,9 @@ Using [sbt](http://www.scala-sbt.org/release/docs/Getting-Started/Setup):
 ## Running the Examples
 
 Right now, the easiest way is to checkout the sources and run them from your favorite IDE with the Scala plugin installed.
+
+## License
+
+Copyright 2013 Alcatel-Lucent
+
+Licensed under the [Apache License, Version 2.0](./license)
