@@ -202,4 +202,4 @@ Right now, the easiest way is to checkout the sources and run them from your fav
 
 Copyright 2013 Alcatel-Lucent
 
-Licensed under the [Apache License, Version 2.0](./license)
+Licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
