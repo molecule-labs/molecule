@@ -34,7 +34,7 @@ object NetTerm extends ProcessType1x1[ByteBuffer, ByteBuffer, Unit] {
 
   def main(netin: Input[ByteBuffer], netout: Output[ByteBuffer]) = {
     ioLog("\r\n  Press Ctrl-D (linux) or Ctrl-Z (windows) to abort session") >>
-      (open(Console.stdoutByteBuffer(decode("ISO-8859-1"))) ~ open(Console.stdinByteBuffer)) >>\ {
+      (use(Console.stdoutByteBuffer(decode("ISO-8859-1"))) ~ use(Console.stdinByteBuffer)) >>\ {
         case (stdout ~ stdin) => connect(stdin, netin, stdout, netout)
       }
   }

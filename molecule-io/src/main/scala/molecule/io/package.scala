@@ -217,7 +217,7 @@ package object io {
    */
   def readWithin[A](in: Input[A], time: Int, unit: TimeUnit): IO[Option[A]] = managed {
     val timer = channel.Timer.timeout(time, unit)
-    open(timer) >>\ { t =>
+    use(timer) >>\ { t =>
       (t <+%> in).read().map(_.fold(Function.const(None), Some(_)))
     }
   }
@@ -287,22 +287,30 @@ package object io {
     IO.launch(process, rc)
 
   /**
-   * Open a process-level input channel.
+   * Use an input channel within in the context of the process.
+   * The returned process-level input is attached as a resource
+   * to the process context, and will get poisoned automatically
+   * when the process terminates, unless the input is explicitly
+   * released before (see API of Input[A]).
    *
    * @param ichan a first-class input channel.
    * @return an action that returns the process-level channel.
    */
-  def open[A: Message](ichan: IChan[A]): IO[Input[A]] =
-    IO.open(System.identityHashCode(ichan), ichan)
+  def use[A: Message](ichan: IChan[A]): IO[Input[A]] =
+    IO.use(System.identityHashCode(ichan), ichan)
 
   /**
-   * Open a process-level output channel.
+   * Use an output channel within in the context of the process.
+   * The returned process-level output is attached as a resource
+   * to the process context, and will get closed automatically
+   * when the process terminates, unless the input is explicitly
+   * released before (see API of Output[A]).
    *
    * @param ochan a first-class output channel.
    * @return an action that returns the process-level channel.
    */
-  def open[A >: Nothing: Message](ochan: OChan[A]): IO[Output[A]] =
-    IO.open(System.identityHashCode(ochan), ochan)
+  def use[A >: Nothing: Message](ochan: OChan[A]): IO[Output[A]] =
+    IO.use(System.identityHashCode(ochan), ochan)
 
   /**
    * Attach a resource to the resource control of this process such
@@ -333,7 +341,7 @@ package object io {
    * @param rchan the result channel.
    */
   def join[R: Message](rchan: RIChan[R]): IO[R] =
-    open(rchan) >>\ { _.read() }
+    use(rchan) >>\ { _.read() }
 
   //def join[R:Message](ior:IO[RIChan[R]]):IO[R] =
   //  ior >>\ {join(_)}
@@ -432,7 +440,7 @@ package object io {
    * @return a unit action that returns after the sleep period.
    */
   def sleep(timeout: Long, unit: TimeUnit = TimeUnit.MILLISECONDS): IO[Unit] =
-    open(channel.Timer.timeout(timeout, unit)) >>\ { _.read() } >> IO()
+    use(channel.Timer.timeout(timeout, unit)) >>\ { _.read() } >> IO()
 
   /**
    * Call with current continuation.

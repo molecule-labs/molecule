@@ -99,7 +99,7 @@ object LoopTest {
 	def main(_in:Input[ByteBuffer], out:Output[ByteBuffer]) = { 
 	  val in    = _in.debug("i", debug("read", _))
 	  for {
-     src       <- open(IChan.source(Range(0, NB_BUFFERS), 1 /**yield every 1*/))
+     src       <- use(IChan.source(Range(0, NB_BUFFERS), 1 /**yield every 1*/))
      _         <-
          (
            src.foreach {i =>

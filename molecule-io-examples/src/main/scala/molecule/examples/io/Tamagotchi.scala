@@ -57,7 +57,7 @@ object Tamagotchi extends ProcessType1x1[Char, String, Unit] {
       if (timeout == 0) out.writeLn("") >> IO(false)
       else
         out.write(timeout + "...") >>
-          open(Timer.timeout(1, TimeUnit.SECONDS)) >>\ { timer =>
+          use(Timer.timeout(1, TimeUnit.SECONDS)) >>\ { timer =>
             (in.dropWhile(_ != key) <+> timer).read() >>\ {
               _.fold(_ => out.writeLn("") >> IO(true), _ => pressKeyWithin(key, timeout - 1))
             }
@@ -90,7 +90,7 @@ object Tamagotchi extends ProcessType1x1[Char, String, Unit] {
       out.writeLn("Ahhh, I need some sleep...") >>
         // Sleep 5 seconds. Since the first rising edge of the periodic timer 
         // occurs immediately, we need 6 ticks to sleep 5 seconds.
-        open(Timer.every(1, TimeUnit.SECONDS).take(6)) >>\ { timer =>
+        use(Timer.every(1, TimeUnit.SECONDS).take(6)) >>\ { timer =>
           timer.take(5).foreach { _ => out.write("Zzz...") } >>
             timer.take(1).read() >> out.writeLn("")
         } >>

@@ -30,7 +30,7 @@ object SimpleTimeout extends ProcessType0x0[Unit] with App {
 
   def main(): IO[Unit] = for {
     _ <- ioLog("I terminate after 3 seconds")
-    countDown <- open(Timer.every(1, TimeUnit.SECONDS)) map (_ take (4) map (3 - _))
+    countDown <- use(Timer.every(1, TimeUnit.SECONDS)) map (_ take (4) map (3 - _))
     _ <- countDown take (3) foreach (i => ioLog(i + " seconds left..."))
     _ <- countDown take (1) foreach (_ => ioLog("Terminated!"))
   } yield ()

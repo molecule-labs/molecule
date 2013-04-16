@@ -86,8 +86,8 @@ object TestContraMap {
 
     pf.execIO_! {
       for {
-        in <- open(seg ++: ichan1)
-        out <- open(Console.stdoutLine)
+        in <- use(seg ++: ichan1)
+        out <- use(Console.stdoutLine)
         par <- in.map { _._1 }.parse(sentenseParser).fold("") { (p, s) => p + s + "\n" }
         _ <- ioLog(par)
         _ <- IO {
@@ -101,8 +101,8 @@ object TestContraMap {
 
     pf.execIO_! {
       for {
-        in <- open(seg ++: ichan1)
-        out <- open(Console.stdoutLine)
+        in <- use(seg ++: ichan1)
+        out <- use(Console.stdoutLine)
         par <- in.parse(pairParser).fold("") { (p, s) => p + s + "\n" }
         _ <- ioLog(par)
         _ <- IO {
@@ -114,8 +114,8 @@ object TestContraMap {
 
     pf.execIO_! {
       for {
-        in <- open(ichan1)
-        out <- open(Console.stdoutLine)
+        in <- use(ichan1)
+        out <- use(Console.stdoutLine)
         s1 <- in.read(pairParser)
         _ <- ioLog(s1)
         _ <- IO {

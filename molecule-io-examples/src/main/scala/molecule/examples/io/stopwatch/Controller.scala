@@ -48,7 +48,7 @@ object Controller extends ProcessType1x1[Event, DisplayTime, Unit] {
 
       def waitForStart: IO[Unit] = events.read() >>\ {
         case Start =>
-          open(displayTimeFeed) >>\ running
+          use(displayTimeFeed) >>\ running
         case _ => waitForStart
       }
 

@@ -48,7 +48,7 @@ object SimpleLoopTest {
   object ClientHandler extends ProcessType1x1[ByteBuffer, ByteBuffer, Unit] { 
 	 
 	def main(in:Input[ByteBuffer], out:Output[ByteBuffer]) = for {
-     src       <- open(IChan.source(Range(0, COUNT), 1 /**yield every 1*/))
+     src       <- use(IChan.source(Range(0, COUNT), 1 /**yield every 1*/))
      _         <-
          (
            src.foreach {i =>

@@ -71,10 +71,10 @@ object ChameneosReduxPaper {
 
   def requestTo[Rq <: ReplyChannel[Rp], Rp: Message](out: Output[Rq])(mkReq: ReplyCh[Rp] => Rq): IO[Rp] = {
     val (i, o) = Chan.mk[Rp]
-    out.write(mkReq(o)) >> open(i) >>\ { _.read() }
+    out.write(mkReq(o)) >> use(i) >>\ { _.read() }
   }
   def replyTo[A: Message](ch: ReplyChannel[A])(a: A): IO[Unit] =
-    open(ch.replyCh) >>\ { out =>
+    use(ch.replyCh) >>\ { out =>
       out.write(a) >> out.close()
     }
 

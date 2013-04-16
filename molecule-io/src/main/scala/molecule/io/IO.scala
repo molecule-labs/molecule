@@ -381,23 +381,31 @@ object IO {
     ff >>\ { f => launch(f, rc) }
 
   /**
-   * Open a process-level input channel.
+   * Use an input channel within in the context of the process.
+   * The returned process-level input is attached as a resource
+   * to the process context, and will get poisoned automatically
+   * when the process terminates, unless the input is explicitly
+   * released before (see API of Input[A]).
    *
    * @param id an identifier
    * @param ichan a first-class input channel.
    * @return an action that returns the process-level channel.
    */
-  private[io] def open[A: Message](id: Int, ichan: IChan[A]): IO[Input[A]] =
+  private[io] def use[A: Message](id: Int, ichan: IChan[A]): IO[Input[A]] =
     new IO[Input[A]]((t, k) => k(Input(t, id, ichan)))
 
   /**
-   * Open a process-level output channel.
+   * Use an output channel within in the context of the process.
+   * The returned process-level output is attached as a resource
+   * to the process context, and will get closed automatically
+   * when the process terminates, unless the input is explicitly
+   * released before (see API of Output[A]).
    *
    * @param id an identifier
    * @param ochan a first-class output channel.
    * @return an action that returns the process-level channel.
    */
-  private[io] def open[A: Message](id: Int, ochan: OChan[A]): IO[Output[A]] =
+  private[io] def use[A: Message](id: Int, ochan: OChan[A]): IO[Output[A]] =
     new IO[Output[A]]((t, k) => k(Output(t, id, ochan)))
 
 }
