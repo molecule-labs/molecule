@@ -287,7 +287,7 @@ package object io {
     IO.launch(process, rc)
 
   /**
-   * Use an input channel within in the context of the process.
+   * Use an input channel in the context of the process.
    * The returned process-level input is attached as a resource
    * to the process context, and will get poisoned automatically
    * when the process terminates, unless the input is explicitly
@@ -300,7 +300,7 @@ package object io {
     IO.use(System.identityHashCode(ichan), ichan)
 
   /**
-   * Use an output channel within in the context of the process.
+   * Use an output channel in the context of the process.
    * The returned process-level output is attached as a resource
    * to the process context, and will get closed automatically
    * when the process terminates, unless the input is explicitly
