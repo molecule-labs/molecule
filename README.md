@@ -5,6 +5,7 @@ A concurrent programming library combining monadic and streaming I/O in Scala.
 By releasing Molecule as open source [Alcatel-Lucent](http://www.alcatel-lucent.com/)/[Bell Labs](http://www.bell-labs.com) is supporting research in easing the industry's transition to network function virtualization on cloud computing platforms.
 
 - [Main Features](#main-features)
+- [White Paper](#white-paper)
 - [Example](#example)
 - [Installing](#installing)
 - [Building From Sources](#building-from-sources)
@@ -21,12 +22,12 @@ By releasing Molecule as open source [Alcatel-Lucent](http://www.alcatel-lucent.
 
 Both the [paper](#white-paper) explaining the rationale and the design principles of Molecule, and the [latest API documentation](http://molecule-labs.github.io/molecule) are available online.
 
-## White paper
+## White Paper
 
 [Molecule: Using Monadic and Streaming I/O to Compose Process Networks on the JVM - pdf](https://github.com/molecule-labs/molecule/raw/docs/publications/OOPSLA_2012/molecule.pdf)
 
 ACM, 2012. This is the authors version of the work. It is posted here by permission of the ACM for
-your personal use. Nor for redistribution. For referencing, please refer to the definitive version,
+your personal use. Not for redistribution. For referencing, please refer to the definitive version,
 published in SIGPLAN Not. 47, 10 (October 2012), 315-334. http://doi.acm.org/10.1145/2398857.2384640 .
 
 Note that since the publication of the white paper, the API has been evolved. Check the [scaladoc](http://molecule-labs.github.io/molecule) and [example](#example) for the current version.
