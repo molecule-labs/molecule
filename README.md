@@ -29,7 +29,7 @@ ACM, 2012. This is the authors version of the work. It is posted here by permiss
 your personal use. Nor for redistribution. For referencing, please refer to the definitive version,
 published in SIGPLAN Not. 47, 10 (October 2012), 315-334. http://doi.acm.org/10.1145/2398857.2384640 .
 
-Note that since the publication of the white paper, the API has been evolved. Check the scaladoc(http://molecule-labs.github.io/molecule) and examples for the current version.
+Note that since the publication of the white paper, the API has been evolved. Check the [scaladoc](http://molecule-labs.github.io/molecule) and example(#example) for the current version.
 
 ## Example
 
