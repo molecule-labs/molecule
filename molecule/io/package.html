@@ -724,34 +724,6 @@ that it gets automatically closed once the process exits.
       <p class="shortcomment cmt">Close all the resources acquired by the action passed as argument
 once it terminates.</p><div class="fullcomment"><div class="comment cmt"><p>Close all the resources acquired by the action passed as argument
 once it terminates.</p></div><dl class="paramcmts block"><dt class="param">io</dt><dd class="cmt"><p>the action to manage.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="molecule.io.package" class="extype" href="package$.html">package</a></dd></dl></div>
-    </li><li visbl="pub" name="molecule.io.package#open" data-isabs="false">
-      <a id="open[A](OChan[A])(Message[A]):IO[Output[A]]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">open</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="ochan">ochan: <a name="molecule.stream.OChan" class="extype" href="../stream/OChan.html">OChan</a>[A]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a name="molecule.Message" class="extype" href="../Message.html">Message</a>[A]</span>)</span><span class="result">: <a name="molecule.io.IO" class="extype" href="IO.html">IO</a>[<a name="molecule.io.Output" class="extype" href="Output.html">Output</a>[A]]</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Open a process-level output channel.</p><div class="fullcomment"><div class="comment cmt"><p>Open a process-level output channel.
-</p></div><dl class="paramcmts block"><dt class="param">ochan</dt><dd class="cmt"><p>a first-class output channel.</p></dd><dt>returns</dt><dd class="cmt"><p>an action that returns the process-level channel.
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="molecule.io.package" class="extype" href="package$.html">package</a></dd></dl></div>
-    </li><li visbl="pub" name="molecule.io.package#open" data-isabs="false">
-      <a id="open[A](IChan[A])(Message[A]):IO[Input[A]]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">open</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="ichan">ichan: <a name="molecule.stream.IChan" class="extype" href="../stream/IChan.html">IChan</a>[A]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a name="molecule.Message" class="extype" href="../Message.html">Message</a>[A]</span>)</span><span class="result">: <a name="molecule.io.IO" class="extype" href="IO.html">IO</a>[<a name="molecule.io.Input" class="extype" href="Input.html">Input</a>[A]]</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Open a process-level input channel.</p><div class="fullcomment"><div class="comment cmt"><p>Open a process-level input channel.
-</p></div><dl class="paramcmts block"><dt class="param">ichan</dt><dd class="cmt"><p>a first-class input channel.</p></dd><dt>returns</dt><dd class="cmt"><p>an action that returns the process-level channel.
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="molecule.io.package" class="extype" href="package$.html">package</a></dd></dl></div>
     </li><li visbl="pub" name="molecule.io.package#parl" data-isabs="false">
       <a id="parl[A, That](Iterable[IO[A]])(Message[A],CanBuildFrom[Nothing, A, That]):IO[That]"></a>
       <h4 class="signature">
@@ -885,6 +857,42 @@ def forever(io:IO[Unit]):IO[Unit] = {
       </h4>
       <p class="shortcomment cmt">Execute a an action unless the guard is true.</p><div class="fullcomment"><div class="comment cmt"><p>Execute a an action unless the guard is true.
 </p></div><dl class="paramcmts block"><dt class="param">b</dt><dd class="cmt"><p>the guard.</p></dd><dt class="param">io</dt><dd class="cmt"><p>the action to execute if b is false.</p></dd><dt>returns</dt><dd class="cmt"><p>a unit action.
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="molecule.io.package" class="extype" href="package$.html">package</a></dd></dl></div>
+    </li><li visbl="pub" name="molecule.io.package#use" data-isabs="false">
+      <a id="use[A](OChan[A])(Message[A]):IO[Output[A]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">use</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="ochan">ochan: <a name="molecule.stream.OChan" class="extype" href="../stream/OChan.html">OChan</a>[A]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a name="molecule.Message" class="extype" href="../Message.html">Message</a>[A]</span>)</span><span class="result">: <a name="molecule.io.IO" class="extype" href="IO.html">IO</a>[<a name="molecule.io.Output" class="extype" href="Output.html">Output</a>[A]]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Use an output channel in the context of the process.</p><div class="fullcomment"><div class="comment cmt"><p>Use an output channel in the context of the process.
+The returned process-level output is attached as a resource
+to the process context, and will get closed automatically
+when the process terminates, unless the input is explicitly
+released before (see API of Output[A]).
+</p></div><dl class="paramcmts block"><dt class="param">ochan</dt><dd class="cmt"><p>a first-class output channel.</p></dd><dt>returns</dt><dd class="cmt"><p>an action that returns the process-level channel.
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="molecule.io.package" class="extype" href="package$.html">package</a></dd></dl></div>
+    </li><li visbl="pub" name="molecule.io.package#use" data-isabs="false">
+      <a id="use[A](IChan[A])(Message[A]):IO[Input[A]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">use</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="ichan">ichan: <a name="molecule.stream.IChan" class="extype" href="../stream/IChan.html">IChan</a>[A]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a name="molecule.Message" class="extype" href="../Message.html">Message</a>[A]</span>)</span><span class="result">: <a name="molecule.io.IO" class="extype" href="IO.html">IO</a>[<a name="molecule.io.Input" class="extype" href="Input.html">Input</a>[A]]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Use an input channel in the context of the process.</p><div class="fullcomment"><div class="comment cmt"><p>Use an input channel in the context of the process.
+The returned process-level input is attached as a resource
+to the process context, and will get poisoned automatically
+when the process terminates, unless the input is explicitly
+released before (see API of Input[A]).
+</p></div><dl class="paramcmts block"><dt class="param">ichan</dt><dd class="cmt"><p>a first-class input channel.</p></dd><dt>returns</dt><dd class="cmt"><p>an action that returns the process-level channel.
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="molecule.io.package" class="extype" href="package$.html">package</a></dd></dl></div>
     </li></ol>
             </div>
