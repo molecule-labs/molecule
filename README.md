@@ -95,11 +95,8 @@ It prompts for a name on its output, reads the name on its input, says hello on 
 We can then create a `HelloYou` process attached to the command line by "applying" its process type to the standard `Console.stdinLine` and `Console.stdoutLine` channels, which are defined in the [channel](http://molecule-labs.github.io/molecule/#molecule.channel.Console$) package: 
 
 ```scala
-  def main(args: Array[String]): Unit = {
-  
-    val platform = Platform("hello-you")
-    platform.launch(HelloYou(Console.stdinLine, Console.stdoutLine)).get_!()
-  }
+  val platform = Platform("hello-you")
+  platform.launch(HelloYou(Console.stdinLine, Console.stdoutLine)).get_!()
 ```
 
 The `stdinLine` input channel, of type `IChan[String]`, streams each lines typed on the standard input. The `stdoutLine` output channel, of type `OChan[String]`, does the reverse and prints each string it receives on consecutive lines on the standard output. 
@@ -109,7 +106,7 @@ A [`Platform`](http://molecule-labs.github.io/molecule/#molecule.platform.Platfo
 ```scala
 abstract class Platform {
 
-  final def launch[R: Message](process: Process[R]): RIChan[R] = {
+  final def launch[R: Message](process: Process[R]): RIChan[R] = ...
 
 }
 ```
