@@ -24,13 +24,13 @@ Both the [paper](#publication) explaining the rationale and the design principle
 
 ## Publication
 
-[Molecule: Using Monadic and Streaming I/O to Compose Process Networks on the JVM - pdf](https://github.com/molecule-labs/molecule/raw/docs/publications/OOPSLA_2012/molecule.pdf)
+_Molecule: Using Monadic and Streaming I/O to Compose Process Networks on the JVM_ by Sébastien Bocq and Koen Daenen. ACM SIGPLAN conference on Object-Oriented Programming, Systems, Languages, and Applications (OOPSLA 2012), Tucson, Arizona, USA, 2012. [pdf](https://github.com/molecule-labs/molecule/raw/docs/publications/OOPSLA_2012/molecule.pdf)
 
 ACM, 2012. This is the authors version of the work. It is posted here by permission of the ACM for
 your personal use. Not for redistribution. For referencing, please refer to the definitive version,
 published in SIGPLAN Not. 47, 10 (October 2012), 315-334. http://doi.acm.org/10.1145/2398857.2384640 .
 
-Note that since the publication of the white paper, the API has been evolved. Check the [scaladoc](http://molecule-labs.github.io/molecule) and [example](#example) for the current version.
+Note that the API has been evolved since the publication. Check the [scaladoc](http://molecule-labs.github.io/molecule) and [example](#example) for the current version.
 
 ## Example
 
