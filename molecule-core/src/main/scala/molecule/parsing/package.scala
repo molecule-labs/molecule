@@ -108,7 +108,7 @@ package object parsing {
             (bs, None)
           case Some(Right(Done(b, _))) =>
             (b +: bs, None)
-          case fail: Fail =>
+          case Some(Left(fail)) =>
             (bs, Some(Left(fail)))
         }
       case Some(Left((fail, rem))) =>
