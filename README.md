@@ -4,6 +4,8 @@ A concurrent programming library combining monadic and streaming I/O in Scala.
 
 By releasing Molecule as open source [Alcatel-Lucent](http://www.alcatel-lucent.com/)/[Bell Labs](http://www.bell-labs.com) is supporting research in easing the industry's transition to network function virtualization on cloud computing platforms.
 
+There is a [mailing list](https://groups.google.com/group/molecule-labs) for discussions.
+
 - [Main Features](#main-features)
 - [Publication](#publication)
 - [Example](#example)
@@ -24,13 +26,13 @@ Both the [paper](#publication) explaining the rationale and the design principle
 
 ## Publication
 
-[Molecule: Using Monadic and Streaming I/O to Compose Process Networks on the JVM - pdf](https://github.com/molecule-labs/molecule/raw/docs/publications/OOPSLA_2012/molecule.pdf)
+**_Molecule: Using Monadic and Streaming I/O to Compose Process Networks on the JVM_** by Sébastien Bocq and Koen Daenen. ACM SIGPLAN conference on Object-Oriented Programming, Systems, Languages, and Applications (OOPSLA 2012), Tucson, Arizona, USA, 2012. \[[pdf](https://github.com/molecule-labs/molecule/raw/docs/publications/OOPSLA_2012/molecule.pdf)\]
 
 ACM, 2012. This is the authors version of the work. It is posted here by permission of the ACM for
 your personal use. Not for redistribution. For referencing, please refer to the definitive version,
 published in SIGPLAN Not. 47, 10 (October 2012), 315-334. http://doi.acm.org/10.1145/2398857.2384640 .
 
-Note that since the publication of the white paper, the API has been evolved. Check the [scaladoc](http://molecule-labs.github.io/molecule) and [example](#example) for the current version.
+Note that the API has been evolved since the publication. Check the [scaladoc](http://molecule-labs.github.io/molecule) and [example](#example) for the current version.
 
 ## Example
 
@@ -95,11 +97,8 @@ It prompts for a name on its output, reads the name on its input, says hello on 
 We can then create a `HelloYou` process attached to the command line by "applying" its process type to the standard `Console.stdinLine` and `Console.stdoutLine` channels, which are defined in the [channel](http://molecule-labs.github.io/molecule/#molecule.channel.Console$) package: 
 
 ```scala
-  def main(args: Array[String]): Unit = {
-  
-    val platform = Platform("hello-you")
-    platform.launch(HelloYou(Console.stdinLine, Console.stdoutLine)).get_!()
-  }
+  val platform = Platform("hello-you")
+  platform.launch(HelloYou(Console.stdinLine, Console.stdoutLine)).get_!()
 ```
 
 The `stdinLine` input channel, of type `IChan[String]`, streams each lines typed on the standard input. The `stdoutLine` output channel, of type `OChan[String]`, does the reverse and prints each string it receives on consecutive lines on the standard output. 
@@ -109,7 +108,7 @@ A [`Platform`](http://molecule-labs.github.io/molecule/#molecule.platform.Platfo
 ```scala
 abstract class Platform {
 
-  final def launch[R: Message](process: Process[R]): RIChan[R] = {
+  final def launch[R: Message](process: Process[R]): RIChan[R] = ...
 
 }
 ```
