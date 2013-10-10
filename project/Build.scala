@@ -22,7 +22,7 @@ object Build extends Build {
 
   val buildSettings:Seq[Setting[_]] = Seq(
     organization       := "com.github.molecule-labs",
-	version            := "0.5",
+	version            := "0.5.1-SNAPSHOT",
 	manifestSetting,
     crossScalaVersions := Seq("2.9.3"),
     scalaVersion       <<= (crossScalaVersions) { versions => versions.head },
