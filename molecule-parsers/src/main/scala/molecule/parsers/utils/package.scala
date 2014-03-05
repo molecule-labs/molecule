@@ -34,7 +34,7 @@ package object utils {
 
   private[parsers] lazy val newString: (Int, Int, Array[Char]) => String = {
     import scala.collection.JavaConversions._
-    val c = classOf[String].getDeclaredConstructors().find(_.getModifiers == 0).get
+    val c = classOf[String].getDeclaredConstructors().find(c => c.getModifiers == 0 && c.getGenericParameterTypes.length == 3).get
     c.setAccessible(true)
 
     // Dummy test 
@@ -48,7 +48,7 @@ package object utils {
         false
     }
 
-    if (zeroCopyStrings)
+    if (!zeroCopyStrings)
       (offset, length, value) => new String(value, offset, length)
     else
       (offset, length, value) =>
