@@ -187,14 +187,14 @@ Molecule is available on the Sonatype OSS Maven repository (which is mirrored on
 
 	group id: com.github.molecule-labs
 	artifact ids: molecule-core_2.9.3, molecule-io_2.9.3, molecule-parsers_2.9.3, molecule-net_2.9.3
-	version: 0.5
+	version: 0.5.1
 
 Alternatively you can download the Jar files directly from Sonatype:
 
-- [molecule-core.jar](https://oss.sonatype.org/content/groups/public/com/github/molecule-labs/molecule-core_2.9.3/0.5/molecule-core_2.9.3-0.5.jar)
-- [molecule-io.jar](https://oss.sonatype.org/content/groups/public/com/github/molecule-labs/molecule-io_2.9.3/0.5/molecule-io_2.9.3-0.5.jar)
-- [molecule-parsers.jar](https://oss.sonatype.org/content/groups/public/com/github/molecule-labs/molecule-parsers_2.9.3/0.5/molecule-parsers_2.9.3-0.5.jar)
-- [molecule-net.jar](https://oss.sonatype.org/content/groups/public/com/github/molecule-labs/molecule-net_2.9.3/0.5/molecule-net_2.9.3-0.5.jar)
+- [molecule-core.jar](https://oss.sonatype.org/content/groups/public/com/github/molecule-labs/molecule-core_2.9.3/0.5.1/molecule-core_2.9.3-0.5.1.jar)
+- [molecule-io.jar](https://oss.sonatype.org/content/groups/public/com/github/molecule-labs/molecule-io_2.9.3/0.5.1/molecule-io_2.9.3-0.5.1.jar)
+- [molecule-parsers.jar](https://oss.sonatype.org/content/groups/public/com/github/molecule-labs/molecule-parsers_2.9.3/0.5.1/molecule-parsers_2.9.3-0.5.1.jar)
+- [molecule-net.jar](https://oss.sonatype.org/content/groups/public/com/github/molecule-labs/molecule-net_2.9.3/0.5.1/molecule-net_2.9.3-0.5.1.jar)
 
 ## Building From Sources
 

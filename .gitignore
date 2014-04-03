@@ -30,3 +30,6 @@ src/intellij/*.iws
 # bak files produced by ./cleanup-commit
 *.bak
 *.swp
+
+#Apple OS
+.DS_Store
