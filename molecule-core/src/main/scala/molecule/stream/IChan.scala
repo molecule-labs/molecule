@@ -338,7 +338,7 @@ abstract class IChan[+A] { outer =>
         outer.read(thread, { (seg, ichan) =>
           parser(seg) match {
             case Done(b, as) => f(b, as ++: ichan).read(thread, k)
-            case Partial(parser) => ichan._flatMapParse(seg, parser, f).read(thread, k)
+            case partial: Partial[B, C] => ichan._flatMapParse(seg, partial.parser, f).read(thread, k)
             case fail: Fail =>
               trail.poison(fail)
               ichan.poison(fail)

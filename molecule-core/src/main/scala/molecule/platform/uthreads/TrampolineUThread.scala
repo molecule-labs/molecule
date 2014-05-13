@@ -65,7 +65,7 @@ object TrampolineUThread extends UThreadFactory {
       private[this] final def bounce(task: Task, clearFirst: Boolean) {
         if (clearFirst) first = null
         try { task.run() } catch {
-          case t =>
+          case t: Throwable =>
             System.err.println("UTHREAD EXCEPTION:" + t)
             System.err.println(t.getStackTraceString)
             return

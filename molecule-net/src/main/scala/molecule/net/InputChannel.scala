@@ -69,7 +69,7 @@ trait InputChannel[T] extends Channel {
           selector.clearRead(socket)
           closed()
           return
-        case t =>
+        case t: Throwable =>
           ochan.close(Signal(t))
           selector.clearRead(socket)
           closed()

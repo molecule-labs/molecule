@@ -54,7 +54,7 @@ a) you don't perform tail calls in a for-comprehension (instead bind after the c
 b) you don't allocate recursively exception handlers.
 ============================================""")
         fatal(Signal(oom))
-      case t =>
+      case t: Throwable =>
         fatal(Signal(t))
     }
 

@@ -49,7 +49,7 @@ package object parsing {
           else {
             _parseAsMuchAsUCan1(reset, as, Seg(b), as)
           }
-        case Partial(parser) =>
+        case Partial(parser: Parser[A, B]) =>
           (NilSeg, Some(Right(parser)))
         case fail: Fail =>
           (NilSeg, Some(Left((fail, as))))
@@ -64,7 +64,7 @@ package object parsing {
           (result, None)
         else
           _parseAsMuchAsUCan1(parser, rem, result, trail ++ as)
-      case Partial(parser) =>
+      case Partial(parser: Parser[A, B]) =>
         (presult, Some(Right(parser)))
       case fail: Fail =>
         (presult, Some(Left((fail, trail ++ as))))

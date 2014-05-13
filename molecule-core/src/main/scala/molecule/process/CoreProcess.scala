@@ -41,7 +41,7 @@ object CoreProcess {
       try {
         task
       } catch {
-        case t =>
+        case t: Throwable =>
           rchan.failure_!(Signal(t))
       }
     }

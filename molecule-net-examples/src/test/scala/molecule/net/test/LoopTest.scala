@@ -52,7 +52,7 @@ object LoopTest {
    */
   object EchoHandler extends ProcessType1x1[ByteBuffer, ByteBuffer, Unit] {
 	def main(in:Input[ByteBuffer], out:Output[ByteBuffer]) = 
-	  (in forward out/**.debug("o", debug("write", _))**/) >> IO() // This will run until socket is closed
+	  (in flush out/**.debug("o", debug("write", _))**/) >> IO() // This will run until socket is closed
   }
   
   def mkIntArray(from:Int, end:Int):Array[Int] = 

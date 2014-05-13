@@ -122,7 +122,7 @@ object GetChan {
             case None => Left(EOS)
           }
         } catch {
-          case t => Left(Signal(t))
+          case t: Throwable => Left(Signal(t))
         }
       def poison(signal: Signal): Unit = close(blockingInput)
     }
@@ -159,7 +159,7 @@ object GetChan {
               case Left(signal) => k(Seg.empty, IChan.empty(signal))
             }
           } catch {
-            case t => k(Seg.empty, IChan.empty(Signal(t)))
+            case t: Throwable => k(Seg.empty, IChan.empty(Signal(t)))
           }
         }
       })

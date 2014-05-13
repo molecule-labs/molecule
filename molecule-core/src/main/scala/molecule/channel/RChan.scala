@@ -867,7 +867,7 @@ object ROChan {
   def monitoredBy[A: Message, B](correlator: B, rochan: ROChan[(B, Either[Signal, A])]): ROChan[A] =
     new ROChan[A] {
       def done(r: Either[Signal, A]): Unit = try { rochan.success_!((correlator, r)) } catch {
-        case t =>
+        case t: Throwable =>
       }
     }
 }

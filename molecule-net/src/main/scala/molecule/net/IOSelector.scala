@@ -103,7 +103,7 @@ object IOSelector {
       } catch {
         case t: java.nio.channels.CancelledKeyException =>
         // Ignore, channel has been poisoned in the meantime
-        case t =>
+        case t: Throwable =>
           System.err.println(t)
           System.err.println(t.getStackTraceString)
           channel.shutdown()
@@ -170,7 +170,7 @@ object IOSelector {
       keys foreach { k =>
         k.attachment match {
           case ch: Channel =>
-            try ch.shutdown() catch { case _ => }
+            try ch.shutdown() catch { case _: Throwable => }
           case _ => //ignore
         }
       }

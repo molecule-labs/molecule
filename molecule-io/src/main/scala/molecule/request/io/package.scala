@@ -112,7 +112,7 @@ package object io {
   def manageResponse[Req <: Response[A]: Message, A](req: Req)(action: IO[A]): IO[Unit] = try {
     (action >>\ req.rchan.reply).orCatch { case signal => implicitly[Message[Req]].poison(req, signal); IO() }
   } catch {
-    case t => implicitly[Message[Req]].poison(req, Signal(t)); IO()
+    case t: Throwable => implicitly[Message[Req]].poison(req, Signal(t)); IO()
   }
 
 }

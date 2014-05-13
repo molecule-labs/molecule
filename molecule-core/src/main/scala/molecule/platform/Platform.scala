@@ -73,8 +73,6 @@ abstract class Platform extends java.util.concurrent.Executor {
     val uthread = scheduler.mkUThread()
 
     p.start(uthread, rc)
-
-    rc
   }
 
   /**

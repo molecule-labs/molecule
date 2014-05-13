@@ -47,7 +47,7 @@ object UniTest {
   object ClientHandler extends ProcessType1x1[ByteBuffer, ByteBuffer, Unit] { 
 	 
 	def main(in:Input[ByteBuffer], out:Output[ByteBuffer]) = {
-	  in.close() >> out.connect(IChan.fill(NB_BUFFERS)(LoopTest.toSendBuffer(LoopTest.mkIntArray(0, INTS_PER_BUFFER)))).get() >> IO()
+	  in.poison() >> out.connect(IChan.fill(NB_BUFFERS)(LoopTest.toSendBuffer(LoopTest.mkIntArray(0, INTS_PER_BUFFER)))).get() >> IO()
 	}
   }
     

@@ -99,7 +99,7 @@ object PutChan {
     new PutChan[A] {
       def put_!(as: Seg[A]): PutChan[A] = try {
         apply(as.foldLeft(out)((out, a) => write(out, a)))(write)(_close)
-      } catch { case t => PutChan[A](Signal(t)) }
+      } catch { case t: Throwable => PutChan[A](Signal(t)) }
       def close(signal: Signal) = _close(out)
     }
   }
@@ -109,7 +109,7 @@ object PutChan {
     new PutChan[A] {
       def put_!(as: Seg[A]): PutChan[A] = try {
         batch(write(out, as))(write)(_close)
-      } catch { case t => PutChan[A](Signal(t)) }
+      } catch { case t: Throwable => PutChan[A](Signal(t)) }
       def close(signal: Signal) = _close(out, signal)
     }
   }
@@ -137,7 +137,7 @@ object PutChan {
           val next = try {
             putChan.put_!(seg)
           } catch {
-            case t =>
+            case t: Throwable =>
               seg.poison(Signal(t))
               k(OChan(Signal(t)))
               return
@@ -148,7 +148,7 @@ object PutChan {
               val signal = sigOpt.get
               next.close(signal)
               k(OChan(signal)) // This can cause a RejectedExecutionException if the core pool is shutdown ahead
-            } catch { case _ => () }
+            } catch { case _: Throwable => () }
           } else
             k(wrap(executor, next))
 

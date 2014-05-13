@@ -40,7 +40,7 @@ object SimpleLoopTest {
    */
   object EchoHandler extends ProcessType1x1[ByteBuffer, ByteBuffer, Unit] {
 	def main(in:Input[ByteBuffer], out:Output[ByteBuffer]) = 
-	  (in forward out) >> IO() // This will run until socket is closed
+	  (in flush out) >> IO() // This will run until socket is closed
   }
       
   /** Clients will stream some bytes to the server

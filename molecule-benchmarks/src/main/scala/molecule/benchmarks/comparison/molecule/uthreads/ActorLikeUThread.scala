@@ -30,7 +30,7 @@ object ActorLikeUThread extends UThreadFactory {
       def run(): Unit = {
 
         try { first.run() } catch {
-          case t =>
+          case t: Throwable =>
             System.err.println("UTHREAD EXCEPTION:" + t)
             System.err.println(t.getStackTraceString)
             return ()

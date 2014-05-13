@@ -42,7 +42,7 @@ trait SysIO extends java.util.concurrent.Executor {
           val r = thunk
           t.submit(k(r))
         } catch {
-          case th => t.fatal(Signal(th))
+          case th: Throwable => t.fatal(Signal(th))
         }
     })
   })
@@ -64,7 +64,7 @@ trait SysIO extends java.util.concurrent.Executor {
             seg.foreach(f)
             k(outer)
           } catch {
-            case th => k(OChan[A](Signal(th)))
+            case th: Throwable => k(OChan[A](Signal(th)))
           }
       })
 
@@ -87,7 +87,7 @@ trait SysIO extends java.util.concurrent.Executor {
           val sk: R => Unit = r => t.submit(k(r))
           thunk(sk)
         } catch {
-          case th => t.raise(Signal(th))
+          case th: Throwable => t.raise(Signal(th))
         }
     })
   })

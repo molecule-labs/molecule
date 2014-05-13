@@ -422,8 +422,7 @@ package object io {
   class RichIOProducer[A](pc: NativeProducer[A]) {
 
     def write(a: A): IO[Unit] = try { pc.send(a); IO() } catch {
-      case s: Signal => raise(s)
-      case t => raise(Signal(t))
+      case t: Throwable => raise(Signal(t))
     }
   }
 

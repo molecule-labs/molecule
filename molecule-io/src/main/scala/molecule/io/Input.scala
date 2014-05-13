@@ -542,15 +542,19 @@ private[io] object Input {
     def interleave[B](right: RInput[B])(implicit mb: Message[B]): IO[Input[Either[A, B]]] = for {
       i1 <- this.release()
       i2 <- right.release()
-      val ilvd = i1.interleave(i2)
-      i <- IO.use(System.identityHashCode(ilvd), ilvd)
+      i <- {
+        val ilvd = i1.interleave(i2)
+        IO.use(System.identityHashCode(ilvd), ilvd)
+      }
     } yield i
 
     def merge[B >: A: Message](right: RInput[B]): IO[Input[B]] = for {
       i1 <- this.release()
       i2 <- right.release()
-      val merged = i1.merge(i2)
-      i <- IO.use(System.identityHashCode(merged), merged)
+      i <- {
+        val merged = i1.merge(i2)
+        IO.use(System.identityHashCode(merged), merged)
+      }
     } yield i
 
   }

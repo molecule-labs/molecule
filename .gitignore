@@ -2,6 +2,7 @@
 *~
 
 #sbt
+.sbtopts
 project/target/
 project/project/target
 

@@ -103,7 +103,7 @@ trait OutputChannel[T] extends Channel {
         selector.clearWrite(socket)
         closed()
         return
-      case t =>
+      case t: Throwable =>
         selector.clearWrite(socket)
         ichan.poison(Signal(t))
         closed()

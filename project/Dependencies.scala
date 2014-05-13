@@ -43,6 +43,7 @@ object Dependencies {
 	// Compiler plugins
     val genjavadoc = compilerPlugin("com.typesafe.genjavadoc" %% "genjavadoc-plugin" % "0.3" cross CrossVersion.full) // ApacheV2
 	
-	lazy val mbench = "com.github.sbocq" %% "mbench" % "0.2"
+    lazy val mbench = "com.github.sbocq" %% "mbench" % "0.2.4"
+    lazy val scalaActors = "org.scala-lang" % "scala-actors" % "2.10.3"
   }
 }

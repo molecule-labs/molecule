@@ -121,7 +121,7 @@ object Console {
         val next = try {
           putChan.put_!(seg)
         } catch {
-          case t =>
+          case t: Throwable =>
             seg.poison(Signal(t))
             k(OChan(Signal(t)))
             return

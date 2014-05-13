@@ -43,7 +43,7 @@ package object utils {
       assert(s == "hi")
       true
     } catch {
-      case e =>
+      case e: Throwable =>
         System.err.println("Warning: current platform does not support zero copy strings")
         false
     }

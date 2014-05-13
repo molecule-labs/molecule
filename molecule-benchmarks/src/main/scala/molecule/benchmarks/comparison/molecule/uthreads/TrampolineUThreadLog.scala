@@ -55,7 +55,7 @@ object TrampolineUThreadLog extends UThreadFactory {
       @scala.annotation.tailrec
       private[this] final def bounce(task: Runnable) {
         try { task.run() } catch {
-          case t =>
+          case t: Throwable =>
             System.err.println("UTHREAD EXCEPTION:" + t)
             System.err.println(t.getStackTraceString)
             return

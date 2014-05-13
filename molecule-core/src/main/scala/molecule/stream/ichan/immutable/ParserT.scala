@@ -83,7 +83,8 @@ case class ParserT[A: Message, B: Message](
       }
     }
 
-    def add[C: Message](transformer: Transformer[B, C]): IChan[C] =
+    def add[C: Message](transformer: Transformer[B, C]): IChan[C] = {
+      type P = C => Boolean
       transformer match {
         case MapperT(complexity, f) =>
           ParserT[A, C](outer.complexity + complexity,
@@ -93,13 +94,14 @@ case class ParserT[A: Message, B: Message](
           ParserT[A, C](outer.complexity + complexity,
             reset.collect(pf),
             parser.collect(pf)).apply(ichan)
-        case FilterT(complexity, p) =>
+        case FilterT(complexity, p: P) =>
           ParserT[A, C](outer.complexity + complexity,
             reset.asInstanceOf[Parser[A, C]].filter(p),
             parser.asInstanceOf[Parser[A, C]].filter(p)).apply(ichan)
         case _ =>
           transformer(this)
       }
+    }
 
   }
 }

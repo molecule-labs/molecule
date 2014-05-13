@@ -10,26 +10,39 @@ import ls.Plugin.LsKeys
 import com.typesafe.sbt.SbtScalariform
 import com.typesafe.tools.mima.plugin.MimaPlugin
 
-object Build extends Build {
 
-  import Repos.sonatypeNexusSnapshots
+// check compile options 
+
+object Build extends Build {
 
   import Dependencies._
 
   // Helpers
   def projectId(state: State) = extracted(state).currentProject.id
   def extracted(state: State) = Project extract state
+  
+  lazy val scalacOptions_2_9 = 
+    Seq("-optimize", "-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8")
+
+  lazy val scalacOptions_2_10 = 
+    scalacOptions_2_9 ++
+    Seq("-feature", "-language:postfixOps", "-language:implicitConversions", "-language:reflectiveCalls", "-language:higherKinds", "-language:existentials")
+
+  lazy val javacOptions_1_6 = 
+    Seq("-target", "1.6", "-source", "1.6", "-Xlint:deprecation")
+    
+  lazy val javacOptions_1_7 = 
+    Seq("-target", "1.7", "-source", "1.7", "-Xlint:deprecation")   
 
   val buildSettings:Seq[Setting[_]] = Seq(
     organization       := "com.github.molecule-labs",
-	version            := "0.5.1",
+	version            := "0.5.2",
 	manifestSetting,
-    crossScalaVersions := Seq("2.9.3"),
-    scalaVersion       <<= (crossScalaVersions) { versions => versions.head },
-    scalacOptions      ++= Seq("-optimize", "-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8"),
-    scalacOptions      ++= Seq(), // Seq("-language:higherKinds", "-language:postfixOps", "-language:implicitConversions", "-language:reflectiveCalls", "-language:existentials"),
-    javacOptions       ++= Seq("-target", "1.6", "-source", "1.6", "-Xlint:deprecation"),
-    resolvers          ++= Seq(Repos.sonatypeNexusSnapshots),
+    crossScalaVersions := Seq("2.9.3", "2.10.4"),
+    scalaVersion       <<= crossScalaVersions(_.head),
+    scalacOptions      <++= scalaVersion.map( v => if (v.endsWith("2.10")) scalacOptions_2_10 else scalacOptions_2_9),
+    javacOptions       <++= scalaVersion.map( v => if (v.endsWith("2.10")) javacOptions_1_7 else javacOptions_1_6),
+    resolvers          ++= Seq(Repos.sonatypeNexusSnapshots,Repos.sonatypeNexusReleases),
     shellPrompt        := { "sbt (%s)> " format projectId(_) },
     (LsKeys.tags in LsKeys.lsync)    := Seq("molecule")
     //(LsKeys.docsUrl in LsKeys.lsync) := Some(new URL("http://www.molecule.org/guides/"))
@@ -54,8 +67,8 @@ object Build extends Build {
 
   lazy val sharedSettings =
     Defaults.defaultSettings ++
-      ls.Plugin.lsSettings     ++
-      Collect.settings         ++
+      ls.Plugin.lsSettings ++
+      Collect.settings ++
       SbtScalariform.scalariformSettings ++
       MimaPlugin.mimaDefaultSettings ++
       Publish.settings ++
@@ -64,11 +77,10 @@ object Build extends Build {
   lazy val doNotPublish = Seq(publish := {}, publishLocal := {})
 
   lazy val moleculeTestSettings =
-    sharedSettings         ++
-      doNotPublish             ++
+    sharedSettings ++
+      doNotPublish ++
       Seq(
-        libraryDependencies <++= scalaVersion(sv => Seq(
-        Test.scalatest(sv))),
+        libraryDependencies <++= scalaVersion(sv => Seq(Test.scalatest(sv))),
         LsKeys.skipWrite := true
       )
 
@@ -154,7 +166,7 @@ object Build extends Build {
     id = "molecule-benchmarks",
     base = file("molecule-benchmarks"),
     settings = moleculeTestSettings ++ Seq(
-	   libraryDependencies += Compilation.mbench,
+	   libraryDependencies ++= Seq(Compilation.mbench, Compilation.scalaActors),
 	   fork := true, // for mbench
 	   fork in test := true,
 	   javaOptions <++= (fullClasspath in Runtime).map(cp => Seq("-cp", cp.files.mkString(System.getProperty("path.separator")), "-Dmbench.log.stdout=true", "-Dmbench.date.dir=sbtrun")),
