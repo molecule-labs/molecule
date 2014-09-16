@@ -225,10 +225,11 @@ From command line. First make a build as described above and stay in the molecul
 	./target/2.9.3/molecule-parsers.jar \
 	molecule.examples.io.HelloYou
 	
-On Windows, use your full home directory iso '~' and use ';' iso ':' as file separator (and make it one long line, escaping CR with backslash will probably not work).
+**Note:** On Windows, use your full home directory iso '~' and use ';' iso ':' as file separator (and make it one long line, escaping CR with backslash will probably not work).
 
 
 main example classes:
+
 	- molecule.examples.io.HelloYou (interactive in command line)
 	- molecule.examples.io.EchoYou (interactive in command line)
 	- molecule.examples.io.stopwatch.StopWatch (interactive, opens 3 graphical windows)
