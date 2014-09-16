@@ -208,13 +208,44 @@ for scala 2.9.3
 
 Using [sbt](http://www.scala-sbt.org/release/docs/Getting-Started/Setup):
 
-	> git clone https://github.com/molecule-labs/molecule.git
+	> git clone git://github.com/molecule-labs/molecule.git/
 	> cd molecule
 	> sbt collect-jar
 
 ## Running the Examples
 
-Right now, the easiest way is to checkout the sources and run them from your favorite IDE with the Scala plugin installed.
+From command line. First make a build as described above and stay in the molecule folder.
+
+	java -cp ~/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.9.3.jar:\
+	./target/2.9.3/molecule-core.jar:./target/2.9.3/molecule-io.jar:\
+	./target/2.9.3/molecule-net.jar:\
+	./target/2.9.3/molecule-core-examples.jar:\
+	./target/2.9.3/molecule-io-examples.jar:\
+	./target/2.9.3/molecule-net-examples.jar:\
+	./target/2.9.3/molecule-parsers.jar \
+	molecule.examples.io.HelloYou
+	
+On Windows, use your full home directory iso '~' and use ';' iso ':' as file separator (and make it one long line, escaping CR with backslash will probably not work).
+
+
+main example classes:
+	- molecule.examples.io.HelloYou (interactive in command line)
+	- molecule.examples.io.EchoYou (interactive in command line)
+	- molecule.examples.io.stopwatch.StopWatch (interactive, opens 3 graphical windows)
+	- molecule.examples.io.primesieve.PrimeSieve (logs primes)
+	- molecule.examples.io.chameneos.ChameneosRedux (logs a single number)
+	- molecule.examples.core.Clock (logs time)
+	- molecule.examples.net.echoyou.EchoYouTelnet 
+	    (This starts a telnet server that acts like the second example.
+	     It will log the IP-address and port to connect to.
+	     To connect, open another terminal window type
+	        $ telnet <IP-address> <port>
+	     You can connect multiple clients to the same server.
+	     It should also work from another machine if your 
+	    Firewall does not block the connection over the given port.)
+
+
+Alternatively, you checkout the sources and run them from your favorite IDE with the Scala plugin installed.
 
 ## License
 
