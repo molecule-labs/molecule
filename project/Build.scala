@@ -38,7 +38,7 @@ object Build extends Build {
     organization       := "com.github.molecule-labs",
 	version            := "0.5.2",
 	manifestSetting,
-    crossScalaVersions := Seq("2.9.3", "2.10.4"),
+    crossScalaVersions := Seq("2.10.4", "2.9.3"),
     scalaVersion       <<= crossScalaVersions(_.head),
     scalacOptions      <++= scalaVersion.map( v => if (v.endsWith("2.10")) scalacOptions_2_10 else scalacOptions_2_9),
     javacOptions       <++= scalaVersion.map( v => if (v.endsWith("2.10")) javacOptions_1_7 else javacOptions_1_6),
@@ -141,6 +141,7 @@ object Build extends Build {
     id = "molecule-parsers",
     base = file("molecule-parsers"),
     settings = sharedSettings ++ Seq(
+       version := "0.5.3",
        description := "Molecule parsers"
      )
   ) dependsOn(moleculeCore)

@@ -32,27 +32,47 @@ package object utils {
     r.result
   }
 
+  /* 
+   * package private method to create a String from an Array of Char
+   * The implementation tries to use the best available method of the JRE
+   * and defines newString best on an initialisation test.
+   * 
+   * I.s.o using the standard public constructor of java.lang.String
+   *    String(byte[] bytes, int offset, int length) 
+   *        Constructs a new String by decoding the specified subarray of bytes using the platform's default charset.
+   * we try to use the package private constructor which shares value array for speed.
+   *        String(int offset, int count, char value[]) 
+   *
+   * This is possible on JDK1.6 (depending of the platform);
+   * on JDK1.7 the latter method is deprecated and its implementation is calling the standard public constructor;
+   * on JDK1.8 the latter method is not defined.
+   */
   private[parsers] lazy val newString: (Int, Int, Array[Char]) => String = {
     import scala.collection.JavaConversions._
-    val c = classOf[String].getDeclaredConstructors().find(c => c.getModifiers == 0 && c.getGenericParameterTypes.length == 3).get
-    c.setAccessible(true)
 
-    // Dummy test 
-    val zeroCopyStrings: Boolean = try {
-      val s = c.newInstance(0: java.lang.Integer, 2: java.lang.Integer, Array('h', 'i'))
-      assert(s == "hi")
-      true
-    } catch {
-      case e: Throwable =>
-        System.err.println("Warning: current platform does not support zero copy strings")
-        false
+    classOf[String].getDeclaredConstructors().find(c => c.getModifiers == 0 && c.getGenericParameterTypes.length == 3) match {
+      case None =>
+        // method not found, so probably we run on JDK1.8 or above
+        // let's use the normal constructor
+        (offset, length, value) => new String(value, offset, length)
+      case Some(c) =>
+        // Yes, constructor found, let's make it accessible (overruling the package private declaration)
+        c.setAccessible(true)
+
+        // Let's see if it works as expected 
+        try {
+          val s = c.newInstance(0: java.lang.Integer, 2: java.lang.Integer, Array('h', 'i'))
+          assert(s == "hi")
+          // OK, fine
+          (offset, length, value) =>
+            c.newInstance(offset: java.lang.Integer, length: java.lang.Integer, value).asInstanceOf[String]
+        } catch {
+          case e: Throwable =>
+            // whoops, better not to use it.
+            // System.err.println("Warning: current platform does not support zero copy strings")
+            (offset, length, value) => new String(value, offset, length)
+        }
     }
-
-    if (!zeroCopyStrings)
-      (offset, length, value) => new String(value, offset, length)
-    else
-      (offset, length, value) =>
-        c.newInstance(offset: java.lang.Integer, length: java.lang.Integer, value).asInstanceOf[String]
   }
 
   def showHex(in: Array[Byte]): String = {
