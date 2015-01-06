@@ -78,6 +78,21 @@ package object ascii {
   final def buffer(char: Char, cs: Char*): Parser[ByteBuffer, ByteBuffer] =
     bytebuffer.buffer(char.toByte, cs.map(_.toByte): _*)
 
+  val bbParsers = new Parsers[ByteBuffer] {}
+  import bbParsers._
+
+  /**
+   * Parser from ByteBuffer to ByteBuffer.
+   * This parser will build a ByteBuffer accepting all specified chars;
+   * the buffer must be at least one character long.
+   */
+  @inline
+  final def buffer1(char: Char, cs: Char*): Parser[ByteBuffer, ByteBuffer] =
+    bytebuffer.buffer(char.toByte, cs.map(_.toByte): _*) flatMap { bb =>
+      if (bb.remaining() == 0) fail("empty buffer)")
+      else success(bb)
+    }
+
   /**
    * Parser from ByteBuffer to ByteBuffer.
    * This parser will build a ByteBuffer accepting all bytes that fall in the specified ranges.
@@ -85,5 +100,17 @@ package object ascii {
   @inline
   final def buffer(range: (Char, Char), ranges: (Char, Char)*): Parser[ByteBuffer, ByteBuffer] =
     bytebuffer.buffer((range._1.toByte, range._2.toByte), ranges.map(r => (r._1.toByte, r._2.toByte)): _*)
+
+  /**
+   * Parser from ByteBuffer to ByteBuffer.
+   * This parser will build a ByteBuffer accepting all bytes that fall in the specified ranges;
+   * the buffer must be at least one character long.
+   */
+  @inline
+  final def buffer1(range: (Char, Char), ranges: (Char, Char)*): Parser[ByteBuffer, ByteBuffer] =
+    bytebuffer.buffer((range._1.toByte, range._2.toByte), ranges.map(r => (r._1.toByte, r._2.toByte)): _*) flatMap { bb =>
+      if (bb.remaining() == 0) fail("empty buffer)")
+      else success(bb)
+    }
 
 }

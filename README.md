@@ -188,20 +188,23 @@ Molecule is available on the Sonatype OSS Maven repository (which is mirrored on
 	group id: com.github.molecule-labs
 	artifact ids (scala 2.9): molecule-core_2.9.3, molecule-io_2.9.3, molecule-parsers_2.9.3, molecule-net_2.9.3
 	artifact ids (scala 2.10): molecule-core_2.10, molecule-io_2.10, molecule-parsers_2.10, molecule-net_2.10
-	version: 0.5.2 (use 0.5.3 for molecule-parsers)
+	latest versions:
+	  0.5.3 (for molecule-core)
+	  0.5.4 (for molecule-parsers)
+	  0.5.2 (for other packages)
 	
 Alternatively you can download the Jar files directly from Sonatype:
 
 for scala 2.10
-- [molecule-core.jar](https://oss.sonatype.org/content/groups/public/com/github/molecule-labs/molecule-core_2.10/0.5.2/molecule-core_2.10-0.5.2.jar)
+- [molecule-core.jar](https://oss.sonatype.org/content/groups/public/com/github/molecule-labs/molecule-core_2.10/0.5.3/molecule-core_2.10-0.5.3.jar)
 - [molecule-io.jar](https://oss.sonatype.org/content/groups/public/com/github/molecule-labs/molecule-io_2.10/0.5.2/molecule-io_2.10-0.5.2.jar)
-- [molecule-parsers.jar](https://oss.sonatype.org/content/groups/public/com/github/molecule-labs/molecule-parsers_2.10/0.5.3/molecule-parsers_2.10-0.5.3.jar)
+- [molecule-parsers.jar](https://oss.sonatype.org/content/groups/public/com/github/molecule-labs/molecule-parsers_2.10/0.5.4/molecule-parsers_2.10-0.5.4.jar)
 - [molecule-net.jar](https://oss.sonatype.org/content/groups/public/com/github/molecule-labs/molecule-net_2.10/0.5.2/molecule-net_2.10-0.5.2.jar)
 
 for scala 2.9.3
-- [molecule-core.jar](https://oss.sonatype.org/content/groups/public/com/github/molecule-labs/molecule-core_2.9.3/0.5.2/molecule-core_2.9.3-0.5.2.jar)
+- [molecule-core.jar](https://oss.sonatype.org/content/groups/public/com/github/molecule-labs/molecule-core_2.9.3/0.5.3/molecule-core_2.9.3-0.5.3.jar)
 - [molecule-io.jar](https://oss.sonatype.org/content/groups/public/com/github/molecule-labs/molecule-io_2.9.3/0.5.2/molecule-io_2.9.3-0.5.2.jar)
-- [molecule-parsers.jar](https://oss.sonatype.org/content/groups/public/com/github/molecule-labs/molecule-parsers_2.9.3/0.5.3/molecule-parsers_2.9.3-0.5.3.jar)
+- [molecule-parsers.jar](https://oss.sonatype.org/content/groups/public/com/github/molecule-labs/molecule-parsers_2.9.3/0.5.4/molecule-parsers_2.9.3-0.5.4.jar)
 - [molecule-net.jar](https://oss.sonatype.org/content/groups/public/com/github/molecule-labs/molecule-net_2.9.3/0.5.2/molecule-net_2.9.3-0.5.2.jar)
 
 ## Building From Sources
@@ -250,6 +253,6 @@ Alternatively, you checkout the sources and run them from your favorite IDE with
 
 ## License
 
-Copyright 2014 Alcatel-Lucent
+Copyright 2015 Alcatel-Lucent
 
 Licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)

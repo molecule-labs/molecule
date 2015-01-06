@@ -29,6 +29,8 @@ import parsers.utils.showHex
  * stream of byte buffers.
  */
 final private class ByteArrayParser private (size: Int, builder: ByteArrayBuilder) extends Parser[ByteBuffer, Array[Byte]] {
+  type Res = ParseResult[Array[Byte], ByteBuffer]
+
   def reset = ByteArrayParser(size)
 
   def name = "bytebuffer.byteArray"

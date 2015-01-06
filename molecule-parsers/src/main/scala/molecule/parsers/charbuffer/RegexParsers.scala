@@ -71,6 +71,7 @@ trait RegexParsers extends Parsers[CharBuffer] {
   implicit def literal(s: String): Parser[CharBuffer, String] = new LitteralParser(0, s, List.empty, skipWhitespace)
 
   class LitteralParser(idx: Int, s: String, acc: List[String], skipWhiteSpaces: Boolean) extends Parser[CharBuffer, String] {
+    type Res = ParseResult[String, CharBuffer]
 
     def name = "charbuffer.litteral"
 
@@ -124,6 +125,7 @@ trait RegexParsers extends Parsers[CharBuffer] {
   implicit def regex(r: Regex): Parser[CharBuffer, String] = new RegexParser(r, "", skipWhitespace)
 
   class RegexParser(r: Regex, found: String, skipWhitespaces: Boolean) extends Parser[CharBuffer, String] {
+    type Res = ParseResult[String, CharBuffer]
 
     def name = "charbuffer.regexparser"
 

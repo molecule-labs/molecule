@@ -29,6 +29,7 @@ package object bytebuffer {
    * Parser that accepts any byte
    */
   final val anyByte: Parser[ByteBuffer, Byte] = new Parser[ByteBuffer, Byte] {
+    type Res = ParseResult[Byte, ByteBuffer]
 
     def name = "bytebuffer.anyByte"
 
@@ -87,6 +88,7 @@ package object bytebuffer {
    * Parser that succeeds if it matches a single byte
    */
   implicit def byte(b: Byte): Parser[ByteBuffer, Byte] = new Parser[ByteBuffer, Byte] {
+    type Res = ParseResult[Byte, ByteBuffer]
 
     def name = "bytebuffer.byte"
 
@@ -122,6 +124,7 @@ package object bytebuffer {
    * so the resulting ByteBuffer will never be empty.
    */
   def splitIf(condition: Byte => Boolean): Parser[ByteBuffer, ByteBuffer] = new Parser[ByteBuffer, ByteBuffer] {
+    type Res = ParseResult[ByteBuffer, ByteBuffer]
 
     def name = "bytebuffer.splitIf"
 

@@ -42,6 +42,7 @@ package object charbuffer {
    * Parser that accepts any character
    */
   final val anyChar: Parser[CharBuffer, Char] = new Parser[CharBuffer, Char] {
+    type Res = ParseResult[Char, CharBuffer]
 
     def reset: Parser[CharBuffer, Char] = this
 
@@ -73,6 +74,7 @@ package object charbuffer {
    * Parser that matches a given character
    */
   implicit def char(c: Char): Parser[CharBuffer, Char] = new Parser[CharBuffer, Char] {
+    type Res = ParseResult[Char, CharBuffer]
 
     def name = "charbuffer.char"
 
@@ -105,6 +107,7 @@ package object charbuffer {
    * It fails if the first byte it receives is equal to byte b
    */
   def not(b: Char): Parser[CharBuffer, CharBuffer] = new Parser[CharBuffer, CharBuffer] {
+    type Res = ParseResult[CharBuffer, CharBuffer]
 
     def name = "bytebuffer.not"
 

@@ -41,8 +41,12 @@ object CombineUtils {
     def add[B: Message](t: IChan[A] => IChan[B]): IChan[B] =
       t(this)
 
-    def poison(signal: Signal): Unit =
+    def poison(signal: Signal): Unit = {
       first.poison(signal)
+      if (second.isDefinedAt(signal)) {
+        second(signal).poison(signal)
+      }
+    }
   }
 
   def append[A](first: IChan[A], second: PartialFunction[Signal, IChan[A]]): IChan[A] =
@@ -74,30 +78,26 @@ object CombineUtils {
       tia.test(t, ia => if (pending) {
         pending = false
         safeRead(ia)(t, (seg, nia) =>
-          f(Left((seg, nia, tib)))
-        )
+          f(Left((seg, nia, tib))))
       })
       if (pending) { // this is tricky because first test might be synchronous if data is buffered on tia
         tib.test(t, ib => if (pending) {
           pending = false
           safeRead(ib)(t, (seg, nib) =>
-            f(Right((seg, nib, tia)))
-          )
+            f(Right((seg, nib, tia))))
         })
       }
     } else {
       tib.test(t, ib => if (pending) {
         pending = false
         safeRead(ib)(t, (seg, nib) =>
-          f(Right((seg, nib, tia)))
-        )
+          f(Right((seg, nib, tia))))
       })
       if (pending) {
         tia.test(t, ia => if (pending) {
           pending = false
           safeRead(ia)(t, (seg, nia) =>
-            f(Left((seg, nia, tib)))
-          )
+            f(Left((seg, nia, tib))))
         })
       }
     }
@@ -117,8 +117,7 @@ object CombineUtils {
     tia.test(t, ia => if (pending) {
       pending = false
       safeRead(ia)(t, (seg, nia) =>
-        f(Left((immediate, seg, nia, tib)))
-      )
+        f(Left((immediate, seg, nia, tib))))
     })
     t.submit(
       if (pending) { // this is tricky because first test might be synchronous if data is buffered on tia
@@ -126,11 +125,9 @@ object CombineUtils {
         tib.test(t, ib => if (pending) {
           pending = false
           safeRead(ib)(t, (seg, nib) =>
-            f(Right((seg, nib, tia)))
-          )
+            f(Right((seg, nib, tia))))
         })
-      }
-    )
+      })
   }
 
   private[this] case class SelectIChan[A, B, C](tia: TestableIChan[A], tib: TestableIChan[B])(f: Either[(Seg[A], IChan[A], IChan[B]), (Seg[B], IChan[B], IChan[A])] => IChan[C]) extends IChan[C] {
@@ -146,30 +143,26 @@ object CombineUtils {
         tia.test(t, ia => if (pending) {
           pending = false
           safeRead(ia)(t, (seg, nia) =>
-            f(Left((seg, nia, tib))).read(t, k)
-          )
+            f(Left((seg, nia, tib))).read(t, k))
         })
         if (pending) { // this is tricky because first test might be synchronous if data is buffered on tia
           tib.test(t, ib => if (pending) {
             pending = false
             safeRead(ib)(t, (seg, nib) =>
-              f(Right((seg, nib, tia))).read(t, k)
-            )
+              f(Right((seg, nib, tia))).read(t, k))
           })
         }
       } else {
         tib.test(t, ib => if (pending) {
           pending = false
           safeRead(ib)(t, (seg, nib) =>
-            f(Right((seg, nib, tia))).read(t, k)
-          )
+            f(Right((seg, nib, tia))).read(t, k))
         })
         if (pending) {
           tia.test(t, ia => if (pending) {
             pending = false
             safeRead(ia)(t, (seg, nia) =>
-              f(Left((seg, nia, tib))).read(t, k)
-            )
+              f(Left((seg, nia, tib))).read(t, k))
           })
         }
       }

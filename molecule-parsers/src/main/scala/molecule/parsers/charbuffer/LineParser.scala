@@ -32,6 +32,7 @@ import parsers.utils.{ ReverseAccumulator }
  *
  */
 final private class LineParser private[charbuffer] (builder: StringBuilder, maxLength: Int, crFound: Boolean) extends Parser[CharBuffer, String] {
+  type Res = ParseResult[String, CharBuffer]
 
   def reset = LineParser(maxLength)
 

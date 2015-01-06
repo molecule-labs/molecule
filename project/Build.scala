@@ -38,7 +38,7 @@ object Build extends Build {
     organization       := "com.github.molecule-labs",
 	version            := "0.5.2",
 	manifestSetting,
-    crossScalaVersions := Seq("2.10.4", "2.9.3"),
+    crossScalaVersions := Seq( "2.9.3", "2.10.4" ),
     scalaVersion       <<= crossScalaVersions(_.head),
     scalacOptions      <++= scalaVersion.map( v => if (v.endsWith("2.10")) scalacOptions_2_10 else scalacOptions_2_9),
     javacOptions       <++= scalaVersion.map( v => if (v.endsWith("2.10")) javacOptions_1_7 else javacOptions_1_6),
@@ -107,6 +107,7 @@ object Build extends Build {
     id = "molecule-core",
     base = file("molecule-core"),
     settings = sharedSettings ++ Seq(
+      version := "0.5.3",
 	  description := "Molecule core classes",
 	  // Avoid "Unsafe" warnings
       javacOptions ++= Seq("-XDignore.symbol.file")
@@ -117,6 +118,7 @@ object Build extends Build {
      id = "molecule-core-examples",
      base = file("molecule-core-examples"),
      settings = moleculeTestSettings ++ Seq(
+       version := "0.5.3",
        description := "Molecule core examples"
      )
   ) dependsOn(moleculeCore)
@@ -125,6 +127,7 @@ object Build extends Build {
     id = "molecule-io",
     base = file("molecule-io"),
     settings = sharedSettings ++ Seq(
+      version := "0.5.2",
       description := "Molecule support for monadic processes"
     )
   ) dependsOn(moleculeCore)
@@ -141,7 +144,7 @@ object Build extends Build {
     id = "molecule-parsers",
     base = file("molecule-parsers"),
     settings = sharedSettings ++ Seq(
-       version := "0.5.3",
+       version := "0.5.4",
        description := "Molecule parsers"
      )
   ) dependsOn(moleculeCore)

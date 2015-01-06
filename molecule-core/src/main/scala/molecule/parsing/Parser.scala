@@ -89,7 +89,7 @@ abstract class Parser[A, +B] {
    */
   def name: String
 
-  protected type Res = ParseResult[B, A]
+  // protected type Res = ParseResult[B, A]
 
   /**
    * Apply this parser to the next segment.

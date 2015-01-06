@@ -28,6 +28,8 @@ import java.nio.ByteBuffer
  * stream of byte buffers.
  */
 final private class ByteBufferSegParser private[bytebuffer] (size: Int, acc: Seg[ByteBuffer], blen: Int) extends Parser[ByteBuffer, Seg[ByteBuffer]] {
+  type Res = ParseResult[Seg[ByteBuffer], ByteBuffer]
+
   def reset = ByteBufferSegParser(size)
 
   def name = "bytebuffer.byteBufferList"

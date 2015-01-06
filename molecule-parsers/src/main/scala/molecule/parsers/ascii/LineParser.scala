@@ -32,6 +32,7 @@ import ASCII.{ LF, CR }
  *
  */
 final private class LineParser private (builder: StringBuilder, maxLength: Int, crFound: Boolean) extends Parser[ByteBuffer, String] {
+  type Res = ParseResult[String, ByteBuffer]
 
   def reset = LineParser(maxLength)
 
