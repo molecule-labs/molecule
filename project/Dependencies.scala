@@ -42,11 +42,15 @@ object Dependencies {
   }
 	
   object Compilation {
+    import molecule.Compiler.Keys._
 	// Compiler plugins
     val genjavadoc = compilerPlugin("com.typesafe.genjavadoc" %% "genjavadoc-plugin" % "0.3" cross CrossVersion.full) // ApacheV2
 	
     lazy val mbench = "com.github.sbocq" %% "mbench" % "0.2.4"
-    lazy val scalaActors: Test.MM = sv => "org.scala-lang" % "scala-actors" % "2.10.3"
+    lazy val scalaActors: Test.MM = {
+      case versionXYZ("2","10", _) => "org.scala-lang" % "scala-actors" % "2.10.3"
+      case _ => "org.scala-lang" % "scala-actors" % "2.11.5"
+    }
     
   }
 }

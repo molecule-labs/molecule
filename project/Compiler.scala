@@ -15,8 +15,7 @@ object Compiler {
     scalaVersion       := "2.12.0-M2", 
     javaVersion        := alignJavaVersion( scalaVersion.value ),
     javacOptions       <++= javaVersion.map( selectJavacOptions ),
-    // scalacOptions      ++= selectScalacOptions(javaVersion.value, scalaVersion.value),
-    scalacOptions      := Seq(),
+    scalacOptions      ++= selectScalacOptions(javaVersion.value, scalaVersion.value),
     target             := updateTarget(target.value, javaVersion.value), 
     javaHomeBuild      := System.getProperty("java.version")   
   )
