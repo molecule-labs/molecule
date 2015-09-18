@@ -16,7 +16,9 @@ object Dependencies {
 	  
     private val scalatestVersion: String => String = {
       case sv if sv startsWith "2.8." => "1.8"
-      case _ => "1.9.1"
+      case sv if sv startsWith "2.9." => "1.9.1" // 1.9.2
+      case sv if sv startsWith "2.10" => "1.9.1" // 2.2.4
+      case _ => "2.2.4"      
     }
 
     private val specsCross = CrossVersion.binaryMapped {
@@ -44,6 +46,7 @@ object Dependencies {
     val genjavadoc = compilerPlugin("com.typesafe.genjavadoc" %% "genjavadoc-plugin" % "0.3" cross CrossVersion.full) // ApacheV2
 	
     lazy val mbench = "com.github.sbocq" %% "mbench" % "0.2.4"
-    lazy val scalaActors = "org.scala-lang" % "scala-actors" % "2.10.3"
+    lazy val scalaActors: Test.MM = sv => "org.scala-lang" % "scala-actors" % "2.10.3"
+    
   }
 }

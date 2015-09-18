@@ -2,6 +2,7 @@ package molecule
 
 import sbt._
 import sbt.Keys._
+import Compiler.Keys._
 import sbt.Project.Initialize
 
 object Collect {
@@ -9,7 +10,10 @@ object Collect {
   val collectDirectory = SettingKey[File]("collect-directory", "The directory where artifacts are collected using one of the 'collect-x' tasks.")
 	
   lazy val settings:Seq[Setting[_]] = collectSettings ++ Seq(
-    collectDirectory <<= (baseDirectory in ThisBuild, scalaVersion){(baseDir, sv) => baseDir / "target" / sv}
+    collectDirectory <<= (baseDirectory in ThisBuild, javaVersion, scalaVersion){ 
+      case (baseDir, "" | "1.6", sv) => baseDir / "target" / sv
+      case (baseDir, jv, sv) => baseDir / "target" / ("jvm-" + jv) / sv     
+    }
   )
 
   lazy val doNotCollect:Seq[Setting[_]] = Seq(

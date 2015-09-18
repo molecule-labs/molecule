@@ -213,14 +213,14 @@ object Telnet {
 
     sealed trait SubOption extends Serializable
     case class Is(vars: (Type, String, String)*) extends Opt(0.toByte) with SubOption {
-      def toNet() = List(vars.map { case (t, n, v) => t + " " + n + " " + v }.mkString(" "))
+      def toNet(): List[String] = List(vars.map { case (t, n, v) => t.toString + " " + n + " " + v }.mkString(" "))
     }
 
     case class Send(vars: (Type, Option[String])*) extends Opt(1.toByte) with SubOption {
-      def toNet() = List(vars.map { case (t, n) => t + (if (n.isDefined) (" " + n) else "") }.mkString(" "))
+      def toNet(): List[String] = List(vars.map { case (t, n) => t.toString + (if (n.isDefined) (" " + n) else "") }.mkString(" "))
     }
     case class Info(vars: (Type, String, String)*) extends Opt(2.toByte) with SubOption {
-      def toNet() = List(vars.map { case (t, n, v) => t + " " + n + " " + v }.mkString(" "))
+      def toNet(): List[String] = List(vars.map { case (t, n, v) => t.toString + " " + n + " " + v }.mkString(" "))
     }
   }
 

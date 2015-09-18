@@ -3,12 +3,12 @@ package molecule
 import sbt._
 import sbt.Keys._
 import scala.xml._
-import sbtgitflow.ReleasePlugin
+// import sbtgitflow.ReleasePlugin
 import Repos.{sonatypeNexusSnapshots, sonatypeNexusStaging}
 
 object Publish {
 
-  val settings = ReleasePlugin.releaseSettings ++ Seq(
+  val settings = /* ReleasePlugin.releaseSettings ++ */ Seq(
 
     publishMavenStyle := true,
 

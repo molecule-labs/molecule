@@ -4,7 +4,9 @@ package molecule
 
 import sbt._
 import Keys._
+import Compiler.Keys._
 import scala.xml._
+import scala.util.matching.Regex
 import java.net.URL
 import ls.Plugin.LsKeys
 import com.typesafe.sbt.SbtScalariform
@@ -21,27 +23,10 @@ object Build extends Build {
   def projectId(state: State) = extracted(state).currentProject.id
   def extracted(state: State) = Project extract state
   
-  lazy val scalacOptions_2_9 = 
-    Seq("-optimize", "-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8")
-
-  lazy val scalacOptions_2_10 = 
-    scalacOptions_2_9 ++
-    Seq("-feature", "-language:postfixOps", "-language:implicitConversions", "-language:reflectiveCalls", "-language:higherKinds", "-language:existentials")
-
-  lazy val javacOptions_1_6 = 
-    Seq("-target", "1.6", "-source", "1.6", "-Xlint:deprecation")
-    
-  lazy val javacOptions_1_7 = 
-    Seq("-target", "1.7", "-source", "1.7", "-Xlint:deprecation")   
-
-  val buildSettings:Seq[Setting[_]] = Seq(
+  val buildSettings:Seq[Setting[_]] = Compiler.settings ++ Seq(
     organization       := "com.github.molecule-labs",
 	version            := "0.5.2",
 	manifestSetting,
-    crossScalaVersions := Seq( "2.9.3", "2.10.4" ),
-    scalaVersion       <<= crossScalaVersions(_.head),
-    scalacOptions      <++= scalaVersion.map( v => if (v.endsWith("2.10")) scalacOptions_2_10 else scalacOptions_2_9),
-    javacOptions       <++= scalaVersion.map( v => if (v.endsWith("2.10")) javacOptions_1_7 else javacOptions_1_6),
     resolvers          ++= Seq(Repos.sonatypeNexusSnapshots,Repos.sonatypeNexusReleases),
     shellPrompt        := { "sbt (%s)> " format projectId(_) },
     (LsKeys.tags in LsKeys.lsync)    := Seq("molecule")
@@ -64,7 +49,7 @@ object Build extends Build {
         "Sealed" -> "true"
       )
   }
-
+  
   lazy val sharedSettings =
     Defaults.defaultSettings ++
       ls.Plugin.lsSettings ++
@@ -166,11 +151,21 @@ object Build extends Build {
   ) dependsOn(moleculeParsers, moleculeNet, moleculeCore, moleculeIo, moleculeIoExamples)
 
 
+  // Note: mbench is not yet available for download for all scala versions;
+  //       In case, a local compilation is required
+  
+  private def benchmarkLibDep(scalaVersion : String) = scalaVersion match {
+    case versionXYZ("2", "9", _)  => Seq( Compilation.mbench )
+    case versionXYZ("2", "10", _) => Seq( Compilation.mbench, Compilation.scalaActors(scalaVersion) )
+    case _ =>  Seq( Compilation.scalaActors(scalaVersion) )
+  }
+
   lazy val moleculeBenchmarks: Project = Project(
     id = "molecule-benchmarks",
     base = file("molecule-benchmarks"),
     settings = moleculeTestSettings ++ Seq(
-	   libraryDependencies ++= Seq(Compilation.mbench, Compilation.scalaActors),
+       unmanagedBase := baseDirectory.value.getParentFile() / "lib",
+	   libraryDependencies ++= benchmarkLibDep(scalaVersion.value),
 	   fork := true, // for mbench
 	   fork in test := true,
 	   javaOptions <++= (fullClasspath in Runtime).map(cp => Seq("-cp", cp.files.mkString(System.getProperty("path.separator")), "-Dmbench.log.stdout=true", "-Dmbench.date.dir=sbtrun")),
