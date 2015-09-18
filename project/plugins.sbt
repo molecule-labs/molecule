@@ -1,9 +1,12 @@
 resolvers ++= Seq(
+  Classpaths.sbtPluginReleases,
+  Opts.resolver.sonatypeReleases,
   Classpaths.typesafeResolver, 
   "jgit-repo" at "http://download.eclipse.org/jgit/maven",
   "sonatype-releases" at "http://oss.sonatype.org/content/repositories/releases"
 )
 
+addSbtPlugin("com.jsuereth" % "sbt-pgp" % "1.0.0")
 
 // https://github.com/sbt/sbt-multi-jvm
 // Original 0.3.5
@@ -34,9 +37,9 @@ addSbtPlugin("com.typesafe.sbt" % "sbt-ghpages" % "0.5.3")
 // Latest 0.1.7
 addSbtPlugin("com.typesafe" % "sbt-mima-plugin" % "0.1.7")
 
-
 // https://github.com/softprops/ls-sbt
-addSbtPlugin("me.lessis" % "ls-sbt" % "0.1.2")
+// addSbtPlugin("me.lessis" % "ls-sbt" % "0.1.2")
+
 
 //addSbtPlugin("com.typesafe.sbt" % "sbt-site" % "0.6.2")
 

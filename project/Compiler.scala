@@ -12,7 +12,7 @@ object Compiler {
   lazy val settings:Seq[Setting[_]] = Seq(
     crossScalaVersions := Seq( "2.11.7",  "2.9.3", "2.10.5" ),
     // scalaVersion       <<= crossScalaVersions(_.head),
-    scalaVersion       := "2.12.0-M2", 
+    scalaVersion       := "2.11.7", 
     javaVersion        := alignJavaVersion( scalaVersion.value ),
     javacOptions       <++= javaVersion.map( selectJavacOptions ),
     scalacOptions      ++= selectScalacOptions(javaVersion.value, scalaVersion.value),
@@ -77,8 +77,8 @@ object Compiler {
     scalaVersion match { 
       case versionXYZ("2","9",_) => scalacCommonOptions ++ jvmTargetOptions
       case versionXYZ("2","10",_) => scalacCommonOptions ++ scalacLangOptions ++ jvmTargetOptions
-      case versionXYZ("2","11","7") => 
-        scalacCommonOptions ++ scalacLangOptions ++ jvmTargetOptions ++ scalacInvokeDynamicOptions
+      // case versionXYZ("2","11","7") => 
+      //  scalacCommonOptions ++ scalacLangOptions ++ jvmTargetOptions ++ scalacInvokeDynamicOptions
       case versionXYZ("2","11",_) => scalacCommonOptions ++ scalacLangOptions ++ jvmTargetOptions
       case versionXYZ("2","12", _) => scalacCommonOptions ++ scalacLangOptions // jvm target is always 1.8
       case s =>

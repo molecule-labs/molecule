@@ -8,7 +8,7 @@ import Compiler.Keys._
 import scala.xml._
 import scala.util.matching.Regex
 import java.net.URL
-import ls.Plugin.LsKeys
+// import ls.Plugin.LsKeys
 import com.typesafe.sbt.SbtScalariform
 import com.typesafe.tools.mima.plugin.MimaPlugin
 
@@ -28,9 +28,9 @@ object Build extends Build {
 	version            := "0.5.2",
 	manifestSetting,
     resolvers          ++= Seq(Repos.sonatypeNexusSnapshots,Repos.sonatypeNexusReleases),
-    shellPrompt        := { "sbt (%s)> " format projectId(_) },
-    (LsKeys.tags in LsKeys.lsync)    := Seq("molecule")
-    //(LsKeys.docsUrl in LsKeys.lsync) := Some(new URL("http://www.molecule.org/guides/"))
+    shellPrompt        := { "sbt (%s)> " format projectId(_) }
+    // (LsKeys.tags in LsKeys.lsync)    := Seq("molecule")
+    // (LsKeys.docsUrl in LsKeys.lsync) := Some(new URL("http://www.molecule.org/guides/"))
   )
 
   lazy val manifestSetting:Setting[_] = packageOptions <+= (name, version, organization) map {
@@ -52,7 +52,7 @@ object Build extends Build {
   
   lazy val sharedSettings =
     Defaults.defaultSettings ++
-      ls.Plugin.lsSettings ++
+      // ls.Plugin.lsSettings ++
       Collect.settings ++
       SbtScalariform.scalariformSettings ++
       MimaPlugin.mimaDefaultSettings ++
@@ -65,8 +65,8 @@ object Build extends Build {
     sharedSettings ++
       doNotPublish ++
       Seq(
-        libraryDependencies <++= scalaVersion(sv => Seq(Test.scalatest(sv))),
-        LsKeys.skipWrite := true
+        libraryDependencies <++= scalaVersion(sv => Seq(Test.scalatest(sv)))
+        // LsKeys.skipWrite := true
       )
 
   lazy val moleculeProject = Project(
@@ -74,8 +74,8 @@ object Build extends Build {
     base = file("."),
     settings = sharedSettings ++ Site.settings ++ Collect.doNotCollect ++ doNotPublish ++ Seq(
       description := "A concurrent programming library in Scala that features streaming and monadic I/O",
-      Unidoc.unidocExclude := Seq("molecule-core-examples", "molecule-io-examples", "molecule-net-examples", "molecule-benchmarks"),
-      LsKeys.skipWrite := true
+      Unidoc.unidocExclude := Seq("molecule-core-examples", "molecule-io-examples", "molecule-net-examples", "molecule-benchmarks")
+      // LsKeys.skipWrite := true
     ),
     aggregate = Seq(
 	  moleculeCore,
